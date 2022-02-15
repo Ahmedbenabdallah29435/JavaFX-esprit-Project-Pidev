@@ -6,6 +6,7 @@
 package entity;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -91,6 +92,33 @@ public class Evennement {
     public String toString() {
         return "Evennement{" + "idEv=" + idEv + ", nom=" + nom + ", date=" + date + ", lieu=" + lieu + ", prix=" + prix + ", nbre_particip=" + nbre_particip + '}'+"\n";
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Evennement other = (Evennement) obj;
+        if (this.idEv != other.idEv) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    
     
     
 }

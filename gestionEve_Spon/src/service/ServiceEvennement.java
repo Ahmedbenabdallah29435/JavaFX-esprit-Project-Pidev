@@ -100,5 +100,31 @@ public class ServiceEvennement implements IService<Evennement>{
         }
         return le;
     }
+
+    @Override
+    public List<Evennement> afficherById(int id) {
+        List<Evennement> le =new ArrayList<>();
+        try {
+            Statement st;
+            st=cnx.createStatement();
+            
+            String query="SELECT * FROM `evenement` WHERE idEv="+id;
+            ResultSet rs=st.executeQuery(query);
+            while(rs.next()){
+                Evennement e=new Evennement();
+                e.setIdEv(rs.getInt("idEv"));
+                e.setNom(rs.getString("nom"));
+                e.setLieu(rs.getString("lieu"));
+                e.setDate(rs.getDate("date"));
+                e.setPrix(rs.getFloat("prix"));
+                e.setNbre_particip(rs.getInt(5));
+                le.add(e);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return le;
+    }
     
 }

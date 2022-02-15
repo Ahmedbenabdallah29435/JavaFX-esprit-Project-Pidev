@@ -5,6 +5,7 @@
  */
 package service;
 
+import entity.Sponsor;
 import entity.Evennement;
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface IService<T> {
     public void supprimer(int id);
     public void modifier(int id_amodifier,T modifier);
     public List<T> afficher();
+    public List<T> afficherById(int id);
+    
 }
