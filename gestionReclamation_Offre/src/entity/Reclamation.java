@@ -17,6 +17,7 @@ public class Reclamation {
     private String description ;
     private String type ;
     private Date date ;
+    public java.sql.Date getDate;
 
     public Reclamation() {
     }

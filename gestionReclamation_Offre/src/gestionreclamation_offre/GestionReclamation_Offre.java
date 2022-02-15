@@ -21,10 +21,11 @@ public class GestionReclamation_Offre {
     public static void main(String[] args) {
         // TODO code application logic here
         Date d =Date.valueOf(LocalDate.now());
-        Reclamation r1=new Reclamation("lotfi", "salut","D",d);
-        
+        Reclamation r1=new Reclamation("g", "cv","C",d);
         ServiceReclamation sr=new ServiceReclamation();
-        sr.ajouter(r1);
+      // sr.ajouter(r1);
+      //sr.supprimer(4);
+        sr.modifier(new Reclamation(6,"h", "c","B",d));
     }
     
 }

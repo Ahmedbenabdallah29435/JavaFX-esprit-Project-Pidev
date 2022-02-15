@@ -51,13 +51,35 @@ public class ServiceReclamation implements IService<Reclamation> {
     }
 
     @Override
-    public void supprimer(Reclamation t) {
-        
+    public void supprimer(int id) {
+        try {
+            Statement st;
+            st=conn.createStatement();
+            String query="DELETE FROM `reclamation` WHERE idR="+id;
+            st.executeUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceReclamation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void modifier(Reclamation t) {
+      try{
+        String req = "UPDATE commentaire SET nom = ?,  = ?, description= ? , type= ? , date= ?  WHERE idR= ?";
+        PreparedStatement ps = conn.prepareStatement(req);
        
+        ps.setString(1,t.getNom());
+        ps.setString(2,t.getDescription());
+        ps.setString(3,t.getType());
+        ps.setDate(4,t.getDate);
+         System.out.println("Modification...");
+         ps.executeUpdate();
+      
+        System.out.println("Une ligne modifiée Dans la table...");
+      }
+      catch(SQLException ex){
+          
+      }
     }
 
     @Override
