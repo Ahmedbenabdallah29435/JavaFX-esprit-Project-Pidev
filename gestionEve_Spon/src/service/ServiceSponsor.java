@@ -54,7 +54,7 @@ public class ServiceSponsor implements IService<Sponsor> {
     }
     
         public void ajouterpst(Sponsor t) {
-       String req = "insert into evenement (nom,type,adresse,tel,email) values (?,?,?,?,?)";
+       String req = "insert into sponsor (nom,type,adresse,tel,email) values (?,?,?,?,?)";
         try {
             pst = cnx.prepareStatement(req);
             pst.setString(1, t.getNom());

@@ -105,6 +105,25 @@ public class ServiceEvennement implements IService<Evennement>{
         }
     }
 
+   
+    public void modifierpst(int id_amodifier, Evennement e) {
+         
+           String req = "UPDATE evenement SET nom=?,date=?,lieu=?,Prix=?,nbre_particip=?,idS=? where idEv=?";
+        try {
+            pst = cnx.prepareStatement(req);
+            pst.setString(1, e.getNom());
+            pst.setDate(2, (Date) e.getDate());
+            pst.setString(3, e.getLieu());
+            pst.setFloat(4, e.getPrix());
+            pst.setInt(5, e.getNbre_particip());
+            pst.setInt(6, e.getIdS());
+            pst.setInt(7, id_amodifier);
+            pst.executeUpdate();
+        } catch (SQLException ex) { 
+              Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     @Override
     public List<Evennement> afficher() {
         List<Evennement> le =new ArrayList<>();
