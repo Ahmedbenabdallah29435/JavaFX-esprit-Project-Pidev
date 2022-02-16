@@ -33,12 +33,13 @@ public class ServiceEvennement implements IService<Evennement>{
             st=cnx.createStatement();
             
             
-            String query="INSERT INTO `evenement`(`nom`, `date`, `lieu`, `prix`, `nbre_particip`) VALUES "
+            String query="INSERT INTO `evenement`(`nom`, `date`, `lieu`, `prix`, `nbre_particip`,`idS`) VALUES "
                     + "('"+e.getNom()+"',"
                     + "'"+e.getDate()+"',"
                     + "'"+e.getLieu()+"',"
                     + "'"+e.getPrix()+"',"
-                    + "'"+e.getNbre_particip()
+                    + "'"+e.getNbre_particip()+"',"
+                    + "'"+e.getIdS()
                     +"')";
             st.executeUpdate(query);
         } catch (SQLException ex) {
@@ -68,6 +69,7 @@ public class ServiceEvennement implements IService<Evennement>{
                     + "`lieu`='"+modifier.getLieu()+"',"
                     + "`prix`='"+modifier.getPrix()+"',"
                     + "`nbre_particip`='"+modifier.getNbre_particip()+"' "
+                 //   + "`idS`='"+modifier.getIdS()+"' "
                     + "WHERE idEv="+id_amodifier;
             st.executeUpdate(query);
         } catch (SQLException ex) {
@@ -91,7 +93,8 @@ public class ServiceEvennement implements IService<Evennement>{
                 e.setLieu(rs.getString("lieu"));
                 e.setDate(rs.getDate("date"));
                 e.setPrix(rs.getFloat("prix"));
-                e.setNbre_particip(rs.getInt(5));
+                e.setNbre_particip(rs.getInt(6));
+                e.setIdS(rs.getInt(7));
                 le.add(e);
             }
             
@@ -117,7 +120,8 @@ public class ServiceEvennement implements IService<Evennement>{
                 e.setLieu(rs.getString("lieu"));
                 e.setDate(rs.getDate("date"));
                 e.setPrix(rs.getFloat("prix"));
-                e.setNbre_particip(rs.getInt(5));
+                e.setNbre_particip(rs.getInt(6));
+                e.setIdS(rs.getInt(7));
                 le.add(e);
             }
             

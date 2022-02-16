@@ -19,26 +19,30 @@ public class Evennement {
     private String lieu;
     private float prix;
     private int nbre_particip;
-
+    private int idS;
     public Evennement() {
     }
 
-    public Evennement(String nom, Date date, String lieu, float prix, int nbre_particip) {
+    public Evennement(String nom, Date date, String lieu, float prix, int nbre_particip,int ids) {
         this.nom = nom;
         this.date = date;
         this.lieu = lieu;
         this.prix = prix;
         this.nbre_particip = nbre_particip;
+        this.idS=ids;
     }
 
-    public Evennement(int idEv, String nom, Date date, String lieu, float prix, int nbre_particip) {
+    public Evennement(int idEv, String nom, Date date, String lieu, float prix, int nbre_particip,int ids) {
         this.idEv = idEv;
         this.nom = nom;
         this.date = date;
         this.lieu = lieu;
         this.prix = prix;
         this.nbre_particip = nbre_particip;
+        this.idS=ids;
     }
+
+   
     
     public int getIdEv() {
         return idEv;
@@ -88,11 +92,21 @@ public class Evennement {
         this.nbre_particip = nbre_particip;
     }
 
-    @Override
-    public String toString() {
-        return "Evennement{" + "idEv=" + idEv + ", nom=" + nom + ", date=" + date + ", lieu=" + lieu + ", prix=" + prix + ", nbre_particip=" + nbre_particip + '}'+"\n";
+    public int getIdS() {
+        return idS;
     }
 
+    public void setIdS(int idS) {
+        this.idS = idS;
+    }
+
+    @Override
+    public String toString() {
+        return "Evennement{" + "idEv=" + idEv + ", nom=" + nom + ", date=" + date + ", lieu=" + lieu + ", prix=" + prix + ", nbre_particip=" + nbre_particip + ", idS=" + idS + '}';
+    }
+
+    
+  
     @Override
     public int hashCode() {
         int hash = 7;
