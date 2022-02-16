@@ -7,6 +7,7 @@ package service;
 
 import entity.Sponsor;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,14 +24,18 @@ import utils.Myconnexion;
  */
 public class ServiceSponsor implements IService<Sponsor> {
 
-    Connection cnx;
+    private Connection cnx;
+    private Statement st;
+    private PreparedStatement pst;
+    private ResultSet rs;
+    
     public ServiceSponsor(){
         cnx=Myconnexion.getInstance().getCnx();
     }
     @Override
     public void ajouter(Sponsor s) {
         try {
-            Statement st;
+           
             
             st=cnx.createStatement();
             
@@ -47,11 +52,28 @@ public class ServiceSponsor implements IService<Sponsor> {
             Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+        public void ajouterpst(Sponsor t) {
+       String req = "insert into evenement (nom,type,adresse,tel,email) values (?,?,?,?,?)";
+        try {
+            pst = cnx.prepareStatement(req);
+            pst.setString(1, t.getNom());
+            pst.setString(2, t.getType());
+            pst.setString(3, t.getAdresse());
+            pst.setInt(4, (int) t.getTel());
+            pst.setString(5, t.getEmail());
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     @Override
     public void supprimer(int id) {
         try {
-            Statement st;
+       
             st=cnx.createStatement();
             String query="DELETE FROM `sponsor` WHERE idS="+id;
             st.executeUpdate(query);
@@ -63,7 +85,7 @@ public class ServiceSponsor implements IService<Sponsor> {
     @Override
     public void modifier(int id_amodifier, Sponsor modifier) {
         try {
-            Statement st;
+           
             st=cnx.createStatement();
             String query="UPDATE `sponsor` SET `nom`='"+modifier.getNom()+"',"
                     + "`type`='"+modifier.getType()+"',"
@@ -81,11 +103,11 @@ public class ServiceSponsor implements IService<Sponsor> {
     public List<Sponsor> afficher() {
         List<Sponsor> ls =new ArrayList<>();
         try {
-            Statement st;
+          
             st=cnx.createStatement();
             
             String query="SELECT * FROM `sponsor`";
-            ResultSet rs=st.executeQuery(query);
+            rs=st.executeQuery(query);
             while(rs.next()){
                 Sponsor s=new Sponsor();
                 s.setIdS(rs.getInt("idS"));
@@ -107,11 +129,11 @@ public class ServiceSponsor implements IService<Sponsor> {
     public List<Sponsor> afficherById(int id) {
         List<Sponsor> ls =new ArrayList<>();
         try {
-            Statement st;
+        
             st=cnx.createStatement();
             
             String query="SELECT * FROM `sponsor` WHERE idS="+id;
-            ResultSet rs=st.executeQuery(query);
+            rs=st.executeQuery(query);
             while(rs.next()){
                 Sponsor s=new Sponsor();
                 s.setIdS(rs.getInt("idS"));
@@ -127,6 +149,22 @@ public class ServiceSponsor implements IService<Sponsor> {
             Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ls;
+    }
+     public Sponsor afficherrById(int id) {
+            String query="SELECT * FROM `sponsor` WHERE idS=?";
+            Sponsor s=null;
+        try {
+                pst = cnx.prepareStatement(query);
+                pst.setInt(1,id);
+                rs = pst.executeQuery();
+                if (rs.next()){
+                    s = new Sponsor(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6));
+                } 
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return s;
     }
 
    

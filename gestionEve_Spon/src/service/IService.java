@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author Mortadha
+ * @author AhmedBenAbdallah
  */
 public interface IService<T> {
     public void ajouter(T t);

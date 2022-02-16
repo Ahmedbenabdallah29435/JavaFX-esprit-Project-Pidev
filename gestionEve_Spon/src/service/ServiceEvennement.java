@@ -7,6 +7,8 @@ package service;
 
 import entity.Evennement;
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,17 +20,24 @@ import utils.Myconnexion;
 
 /**
  *
- * @author Mortadha
+ * @author AhmedBenAbdallah
  */
+
+
 public class ServiceEvennement implements IService<Evennement>{
-    Connection cnx;
+    
+    private Connection cnx;
+    private Statement st;
+    private PreparedStatement pst;
+    private ResultSet rs;
+    
     public ServiceEvennement(){
         cnx=Myconnexion.getInstance().getCnx();
     }
     @Override
     public void ajouter(Evennement e) {
         try {
-            Statement st;
+            
             
             st=cnx.createStatement();
             
@@ -46,11 +55,29 @@ public class ServiceEvennement implements IService<Evennement>{
             Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+      public void ajouterpst(Evennement t) {
+       String req = "insert into evenement (nom,date,lieu,prix,nbre_particip,idS) values (?,?,?,?,?,?)";
+        try {
+            pst = cnx.prepareStatement(req);
+            pst.setString(1, t.getNom());
+            pst.setDate(2, (Date) t.getDate());
+            pst.setString(3, t.getLieu());
+            pst.setInt(4, (int) t.getPrix());
+            pst.setInt(5, (int) t.getNbre_particip());
+            pst.setInt(6, (int) t.getIdS());
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     @Override
     public void supprimer(int id) {
         try {
-            Statement st;
+           
             st=cnx.createStatement();
             String query="DELETE FROM `evenement` WHERE idEv="+id;
             st.executeUpdate(query);
@@ -62,14 +89,15 @@ public class ServiceEvennement implements IService<Evennement>{
     @Override
     public void modifier(int id_amodifier, Evennement modifier) {
         try {
-            Statement st;
+            
             st=cnx.createStatement();
             String query="UPDATE `evenement` SET `nom`='"+modifier.getNom()+"',"
                     + "`date`='"+modifier.getDate()+"',"
                     + "`lieu`='"+modifier.getLieu()+"',"
                     + "`prix`='"+modifier.getPrix()+"',"
+                    + "`idS`='"+modifier.getIdS()+"',"
                     + "`nbre_particip`='"+modifier.getNbre_particip()+"' "
-                 //   + "`idS`='"+modifier.getIdS()+"' "
+                    
                     + "WHERE idEv="+id_amodifier;
             st.executeUpdate(query);
         } catch (SQLException ex) {
@@ -81,11 +109,11 @@ public class ServiceEvennement implements IService<Evennement>{
     public List<Evennement> afficher() {
         List<Evennement> le =new ArrayList<>();
         try {
-            Statement st;
+           
             st=cnx.createStatement();
             
             String query="SELECT * FROM `evenement`";
-            ResultSet rs=st.executeQuery(query);
+            rs=st.executeQuery(query);
             while(rs.next()){
                 Evennement e=new Evennement();
                 e.setIdEv(rs.getInt("idEv"));
@@ -108,11 +136,11 @@ public class ServiceEvennement implements IService<Evennement>{
     public List<Evennement> afficherById(int id) {
         List<Evennement> le =new ArrayList<>();
         try {
-            Statement st;
+            
             st=cnx.createStatement();
             
             String query="SELECT * FROM `evenement` WHERE idEv="+id;
-            ResultSet rs=st.executeQuery(query);
+            rs=st.executeQuery(query);
             while(rs.next()){
                 Evennement e=new Evennement();
                 e.setIdEv(rs.getInt("idEv"));
@@ -129,6 +157,23 @@ public class ServiceEvennement implements IService<Evennement>{
             Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
         }
         return le;
+    }
+    
+    public Evennement afficherrById(int id) {
+            String query="SELECT * FROM `evenement` WHERE idEv=?";
+            Evennement e=null;
+        try {
+                pst = cnx.prepareStatement(query);
+                pst.setInt(1,id);
+                rs = pst.executeQuery();
+                if (rs.next()){
+                    e = new Evennement(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getFloat(5), rs.getInt(6), rs.getInt(7));
+                } 
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return e;
     }
     
 }

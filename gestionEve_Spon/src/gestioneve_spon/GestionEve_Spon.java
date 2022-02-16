@@ -29,19 +29,20 @@ public class GestionEve_Spon {
 //        se.ajouter(e);
 //        System.out.println(se.afficher());
         Date d =Date.valueOf(LocalDate.now());
-       // Sponsor s=new Sponsor("aa","eef","er",55223333,"ZEAZE");
-       // ServiceSponsor ss=new ServiceSponsor();
-        Evennement e=new Evennement("aa",d,"lieu",55,2,1);
+       Sponsor s=new Sponsor("aa","eef","er",55223333,"ZEAZE");
+        ServiceSponsor ss=new ServiceSponsor();
+        Evennement e=new Evennement("aa",d,"lieu",59,2,1);
         
        // se.ajouter(e);
        
        // ss.ajouter(s);
-       // System.out.println(se.afficher());
+     //System.out.println(se.afficher());
       // System.out.println(ss.afficherById(1));
 //        System.out.println(se.afficherById(2));
-se.modifier(6,new Evennement("aa",d,"lieu",5,59,11)); 
-
-   //ss.modifier(3,new Sponsor("aa","eef","er",55223333,"ZE"));     
+//se.modifier(6,new Evennement("aa",d,"lieu",5,59,10)); 
+//se.ajouterpst(e);
+   //ss.modifier(3,new Sponsor("aa","eef","er",55223333,"ZE"));  
+ //System.out.println(ss.afficherrById(15));   
     }
     
 }

@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  *
- * @author Mortadha
+ * @author AhmedBenAbdallah
  */
 public class Evennement {
     private int idEv;

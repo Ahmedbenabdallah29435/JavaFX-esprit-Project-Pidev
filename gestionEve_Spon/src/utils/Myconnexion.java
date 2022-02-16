@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Mortadha
+ * @author AhmedBenAbdallah
  */
 public class Myconnexion {
    final String URL="jdbc:mysql://127.0.0.1:3306/projetpidev";
