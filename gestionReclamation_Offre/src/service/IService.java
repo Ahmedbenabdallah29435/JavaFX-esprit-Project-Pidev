@@ -9,15 +9,15 @@ import java.util.List;
 
 /**
  *
- * @author wiemhjiri
+ * @author Radhouan
  */
 public interface IService<T> {
    void ajouter(T t);
    void supprimer(int id);
 
-   void modifier(T t);
+   public void modifier(int id_amodifier,T modifier);
 
    List<T>afficher(); 
-   T afficherById(int id);
+   List<T>afficherById(int id);
     
 }
