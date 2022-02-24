@@ -5,14 +5,18 @@
  */
 package interfaces;
 
+import java.util.List;
+
 /**
  *
- * @author yassin
+ *
  */
 public interface ICategorie <C>  {
     
     public boolean AjouterCategorie(C c);
     public boolean ModifierCategorie(C c);
     public boolean SupprimerCategorie(int idCategorie);
-    
+    public List<C> AfficherCategorie(C c);
+    public int countTotalCatgeorie();
+    public List<C> rechercheCategorie(String valeur);
 }

@@ -5,14 +5,20 @@
  */
 package interfaces;
 
+import entity.Categorie;
+import entity.Joueur;
+import java.util.List;
+
 /**
  *
- * @author yassin
+ *
  */
 public interface IJoueur <J> {
     
     public boolean AjouterJoueur(J j);
     public boolean ModifierJoueur(J j);
     public boolean SupprimerJoueur(int idJoueur);
-    
+    public List<Joueur> AfficherJoueur(Joueur t);
+    public List<Joueur> rechercheParFiltre(String type, String valeur);
+    public List<Categorie> MaxCategorieInJoueur();
 }

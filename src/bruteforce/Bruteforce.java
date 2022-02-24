@@ -5,6 +5,10 @@
  */
 package bruteforce;
 
+import Service.CategorieCrud;
+import Service.JoueurCrud;
+import entity.Categorie;
+import entity.Joueur;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,8 +19,9 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author yassin
+ * 
  */
+//kif tjeneri javafix yjibou howa
 public class Bruteforce extends Application {
     
     @Override
@@ -45,7 +50,57 @@ public class Bruteforce extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        launch(args);
+       
+        Categorie c= new Categorie(1,"lol");
+         CategorieCrud p=new CategorieCrud();
+         p.AjouterCategorie(c);
+        // p.SupprimerCategorie(2);
+        // p.ModifierCategorie(c); 
+        
+        for(Categorie pd : p.AfficherCategorie(c))
+        {
+         System.out.println("IdCategorie=>>> "+pd.getIdCategorie()+" NomCategorie=>>> "+pd.getNomCategorie());
+        }
+        System.out.println("\n"); 
+        System.out.println("+-+-+-+-+-+-+Metier-+-+-+-+-+-+  ===>>>>>  Categorie");
+        for(Categorie pdd : p.rechercheCategorie("lo"))
+        {
+               System.out.println("Found ==>>>>> "+pdd.getNomCategorie());   // Total Categorie
+        }
+        System.out.println("NombreTotalCategorie ==>>>>> "+p.countTotalCatgeorie());   // Total Categorie   
+        System.out.println("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
+  //+-+-+-+-+-+-+-+//+-+-+-+-+-+-+-+//+-+-+-+-+-+-+-+//+-+-+-+-+-+-+-+//+-+-+-+-+-+-+-+       
+        Categorie ccc= new Categorie(1);
+        Joueur j=new  Joueur(13,"rania1","aouadi",ccc);
+        JoueurCrud ok= new JoueurCrud() {};
+        ok.AjouterJoueur(j);
+        //ok.ModifierJoueur(j);
+        //ok.SupprimerJoueur(12);
+          
+        System.out.println("\n");
+        
+        for(Joueur pd : ok.AfficherJoueur(j))
+        {
+               System.out.println("IdJoueur =>> "+pd.getIdJoueur()+" NomJoueur =>>"+pd.getNomJoueur()+" PrenomJoueur ==>> "+pd.getPrenomJoueur());
+        }
+        System.out.println("\n");
+    
+        System.out.println("+-+-+-+-+-+-+Metier-+-+-+-+-+-+  ===>>>>>  Joueur");
+        for(Joueur pdd : ok.rechercheParFiltre("Prenom","ay")) // Nom ou Prenom
+        {
+        System.out.println("Found ==>>>>> "+pdd.getNomJoueur()+" "+pdd.getPrenomJoueur()); 
+        }
+        
+        for(Categorie pd : ok.MaxCategorieInJoueur())
+        {
+         System.out.println("MaxCategorieInJoueur =>>> "+pd.getNomCategorie());
+        }
+        
+        System.out.println("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
+        
     }
+    
+    
+    
     
 }
