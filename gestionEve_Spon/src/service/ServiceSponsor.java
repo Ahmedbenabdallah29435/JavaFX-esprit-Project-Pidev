@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package service;
-
+import entity.Evennement;
 import entity.Sponsor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,12 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import utils.Myconnexion;
-
-
 /**
  *
- * @author AhmedBenAbdallah
+ * @author Ahmed
  */
 public class ServiceSponsor implements IService<Sponsor> {
 
@@ -32,141 +31,256 @@ public class ServiceSponsor implements IService<Sponsor> {
     public ServiceSponsor(){
         cnx=Myconnexion.getInstance().getCnx();
     }
-    @Override
-    public void ajouter(Sponsor s) {
+
+  @Override
+    public boolean ajouter(Sponsor s) {
+        String req="insert into sponsor (nom,type,adresse,tel,email,imgS) values (?,?,?,?,?,?)";
+        Boolean inserted=false;
         try {
-           
-            
-            st=cnx.createStatement();
-            
-            
-            String query="INSERT INTO `sponsor`(`nom`, `type`, `adresse`, `tel`, `email`) VALUES "
-                    + "('"+s.getNom()+"',"
-                    + "'"+s.getType()+"',"
-                    + "'"+s.getAdresse()+"',"
-                    + "'"+s.getTel()+"',"
-                    + "'"+s.getEmail()
-                    +"')";
-            st.executeUpdate(query);
+            pst=cnx.prepareStatement(req);
+            pst.setString(1,s.getNom());
+            pst.setString(2,s.getType());
+            pst.setString(3,s.getAdresse());
+         
+             pst.setInt(4,s.getTel());
+              pst.setString(5,s.getEmail());
+               pst.setString(6,s.getImgS());
+        
+            inserted=pst.executeUpdate()>0;
         } catch (SQLException ex) {
             Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-        public void ajouterpst(Sponsor t) {
-       String req = "insert into sponsor (nom,type,adresse,tel,email) values (?,?,?,?,?)";
-        try {
-            pst = cnx.prepareStatement(req);
-            pst.setString(1, t.getNom());
-            pst.setString(2, t.getType());
-            pst.setString(3, t.getAdresse());
-            pst.setInt(4, (int) t.getTel());
-            pst.setString(5, t.getEmail());
-            pst.executeUpdate();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        return inserted;
     }
 
     @Override
-    public void supprimer(int id) {
+    public boolean supprimer(Sponsor s) {
+         String req="DELETE FROM sponsor WHERE id=?";
+      Boolean deleted=false;
         try {
-       
-            st=cnx.createStatement();
-            String query="DELETE FROM `sponsor` WHERE idS="+id;
-            st.executeUpdate(query);
+             pst=cnx.prepareStatement(req);
+             pst.setInt(1,s.getId());
+             deleted=pst.executeUpdate()>0;
         } catch (SQLException ex) {
             Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
         }
+     return deleted;
     }
 
     @Override
-    public void modifier(int id_amodifier, Sponsor modifier) {
+    public boolean modifier(Sponsor s) {
+          String req="UPDATE sponsor SET nom=?,type=?,adresse=?,tel=?,email=?,imgS=? WHERE id=?";
+       Boolean updated=false;
         try {
-           
-            st=cnx.createStatement();
-            String query="UPDATE `sponsor` SET `nom`='"+modifier.getNom()+"',"
-                    + "`type`='"+modifier.getType()+"',"
-                    + "`adresse`='"+modifier.getAdresse()+"',"
-                    + "`tel`='"+modifier.getTel()+"',"
-                    + "`email`='"+modifier.getEmail()+"' "
-                    + "WHERE idS="+id_amodifier;
-            st.executeUpdate(query);
+            pst=cnx.prepareStatement(req);
+          
+            pst.setString(1,s.getNom());
+            pst.setString(2,s.getType());
+            pst.setString(3,s.getAdresse());
+             pst.setInt(4,s.getTel());
+              pst.setString(5,s.getEmail());
+               pst.setString(6,s.getImgS());
+            pst.setInt(7,s.getId());
+            updated=pst.executeUpdate()>0;
         } catch (SQLException ex) {
             Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
         }
+     return updated;
     }
 
     @Override
     public List<Sponsor> afficher() {
-        List<Sponsor> ls =new ArrayList<>();
+        String req="select *from sponsor ";
+        List<Sponsor> list =new ArrayList<>();
         try {
-          
             st=cnx.createStatement();
-            
-            String query="SELECT * FROM `sponsor`";
-            rs=st.executeQuery(query);
-            while(rs.next()){
-                Sponsor s=new Sponsor();
-                s.setIdS(rs.getInt("idS"));
-                s.setNom(rs.getString("nom"));
-                s.setType(rs.getString("type"));
-                s.setAdresse(rs.getString("adresse"));
-                s.setTel(rs.getInt("tel"));
-                s.setEmail(rs.getString(5));
-                ls.add(s);
+            rs=st.executeQuery(req);
+            while(rs.next())
+            {
+               list.add(new Sponsor(rs.getInt("id"),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6),rs.getString(7)));
+              
             }
-            
         } catch (SQLException ex) {
             Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return ls;
+        return list;
     }
 
     @Override
-    public List<Sponsor> afficherById(int id) {
-        List<Sponsor> ls =new ArrayList<>();
+    public Sponsor afficher_id(int id) {
+         String req="select * from sponsor where id=?";
+        Sponsor s=null;
         try {
-        
-            st=cnx.createStatement();
-            
-            String query="SELECT * FROM `sponsor` WHERE idS="+id;
-            rs=st.executeQuery(query);
-            while(rs.next()){
-                Sponsor s=new Sponsor();
-                s.setIdS(rs.getInt("idS"));
-                s.setNom(rs.getString("nom"));
-                s.setType(rs.getString("type"));
-                s.setAdresse(rs.getString("adresse"));
-                s.setTel(rs.getInt("tel"));
-                s.setEmail(rs.getString(5));
-                ls.add(s);
-            }
-            
+            pst=cnx.prepareStatement(req);
+            pst.setInt(1,id);
+            rs = pst.executeQuery();
+             if (rs.next()) {              
+                    s = new Sponsor(rs.getInt(1), rs.getString(2), 
+                          rs.getString(3), rs.getString(4),rs.getInt(5),rs.getString(6),rs.getString(7));
+                }
         } catch (SQLException ex) {
             Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return ls;
-    }
-     public Sponsor afficherrById(int id) {
-            String query="SELECT * FROM `sponsor` WHERE idS=?";
-            Sponsor s=null;
-        try {
-                pst = cnx.prepareStatement(query);
-                pst.setInt(1,id);
-                rs = pst.executeQuery();
-                if (rs.next()){
-                    s = new Sponsor(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6));
-                } 
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+           
         return s;
     }
 
-   
-    
+//    @Override
+//    public void ajouter(Sponsor s) {
+//        try {
+//           
+//            
+//            st=cnx.createStatement();
+//            
+//            
+//            String query="INSERT INTO sponsor (nom, type, adresse, tel, email) VALUES "
+//                    + "('"+s.getNom()+"',"
+//                    + "'"+s.getType()+"',"
+//                    + "'"+s.getAdresse()+"',"
+//                    + "'"+s.getTel()+"',"
+//                    + "'"+s.getEmail()
+//                    +"')";
+//            st.executeUpdate(query);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//    
+//        public void ajouterpst(Sponsor t) {
+//       String req = "insert into sponsor (nom,type,adresse,tel,email,evenement_id_ev) values (?,?,?,?,?,?)";
+//        try {
+//            pst = cnx.prepareStatement(req);
+//            pst.setString(1, t.getNom());
+//            pst.setString(2, t.getType());
+//            pst.setString(3, t.getAdresse());
+//            pst.setInt(4, (int) t.getTel());
+//            pst.setString(5, t.getEmail());
+//            pst.setInt(6, t.getEvennement().getIdEv());
+//            pst.executeUpdate();
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//    }
+//
+//    @Override
+//    public void supprimer(int id) {
+//        try {
+//       
+//            st=cnx.createStatement();
+//            String query="DELETE FROM sponsor WHERE idS="+id;
+//            st.executeUpdate(query);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//
+//    @Override
+//    public void modifier(int id_amodifier, Sponsor modifier) {
+//        try {
+//           
+//            st=cnx.createStatement();
+//            String query="UPDATE sponsor SET `nom`='"+modifier.getNom()+"',"
+//                    + "`type`='"+modifier.getType()+"',"
+//                    + "`adresse`='"+modifier.getAdresse()+"',"
+//                    + "`tel`='"+modifier.getTel()+"',"
+//                    + "`email`='"+modifier.getEmail()+"',"
+//                    + "`evenement_id_ev`='"+modifier.getEvennement().getIdEv()+"'"
+//                    + "WHERE idS="+id_amodifier;
+//            st.executeUpdate(query);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//
+//    @Override
+//    public List<Sponsor> afficher() {
+//        ServiceEvennement se=new ServiceEvennement();
+//        List<Sponsor> ls =new ArrayList<>();
+//        try {
+//          
+//            st=cnx.createStatement();
+//            
+//            String query="SELECT * FROM sponsor";
+//            rs=st.executeQuery(query);
+//            while(rs.next()){
+//                Sponsor s=new Sponsor();
+//                Evennement e=se.rechercheParId(rs.getInt(7));
+//                s.setIdS(rs.getInt("idS"));
+//                s.setNom(rs.getString("nom"));
+//                s.setType(rs.getString("type"));
+//                s.setAdresse(rs.getString("adresse"));
+//                s.setTel(rs.getInt("tel"));
+//                s.setEmail(rs.getString(5));
+//                s.setEvennement(e);
+//                ls.add(s);
+//            }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return ls;
+//    }
+//
+//    
+//    public Sponsor afficherById(int id) {
+//      
+//        ServiceEvennement se=new ServiceEvennement();
+//        Sponsor s=new Sponsor();
+//        try {
+//        
+//            st=cnx.createStatement();
+//            
+//            String query="SELECT * FROM sponsor WHERE idS="+id;
+//            rs=st.executeQuery(query);
+//            while(rs.next()){
+//                
+//                Evennement e=se.rechercheParId(rs.getInt(7));
+//                s.setIdS(rs.getInt("idS"));
+//                s.setNom(rs.getString("nom"));
+//                s.setType(rs.getString("type"));
+//                s.setAdresse(rs.getString("adresse"));
+//                s.setTel(rs.getInt("tel"));
+//                s.setEmail(rs.getString("email"));
+//                s.setEvennement(e);
+//                
+//            }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return s;
+//    }
+//     public Sponsor afficherrById(int id) {
+//         ServiceEvennement se=new ServiceEvennement();
+//            String query="SELECT * FROM sponsor WHERE idS=?";
+//            Sponsor s=null;
+//        try {
+//                pst = cnx.prepareStatement(query);
+//                pst.setInt(1,id);
+//                rs = pst.executeQuery();
+//                if (rs.next()){
+//                    Evennement e=se.rechercheParId(rs.getInt(7));
+//                    s = new Sponsor(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6),e);
+//                } 
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return s;
+//    }
+//     public List<Sponsor> findByEvent(int id_event){
+//         List<Sponsor> sponsors=afficher();
+//         List<Sponsor> resultat=
+//                 sponsors.
+//                 stream().
+//                 filter(s->s.getEvennement().getIdEv()==id_event)
+//                 .collect(Collectors.toList());
+//         return resultat;
+//     }
+//   
+//    
+
+  
 }

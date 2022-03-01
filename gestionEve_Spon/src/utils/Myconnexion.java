@@ -15,10 +15,10 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author AhmedBenAbdallah
+ * @author Ahmed
  */
 public class Myconnexion {
-   final String URL="jdbc:mysql://127.0.0.1:3306/projetpidev";
+   final String URL="jdbc:mysql://127.0.0.1:3306/bruteforce";
     final String USER ="root";
     final String PWD ="";
   private static java.sql.Connection cnx ;

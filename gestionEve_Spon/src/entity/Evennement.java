@@ -6,43 +6,49 @@
 package entity;
 
 import java.util.Date;
-import java.util.Objects;
+import java.util.List;
 
 /**
  *
- * @author AhmedBenAbdallah
+ * @author Ahmed
  */
 public class Evennement {
     private int idEv;
     private String nom;
     private Date date;
     private String lieu;
-    private float prix;
-    private int nbre_particip;
-    private int idS;
+    private String description;
+    private int nb_place;
+    private String imageE;
+    private Sponsor sponsor;
+
     public Evennement() {
     }
 
-    public Evennement(String nom, Date date, String lieu, float prix, int nbre_particip,int ids) {
-        this.nom = nom;
-        this.date = date;
-        this.lieu = lieu;
-        this.prix = prix;
-        this.nbre_particip = nbre_particip;
-        this.idS=ids;
-    }
-
-    public Evennement(int idEv, String nom, Date date, String lieu, float prix, int nbre_particip,int ids) {
+    public Evennement(int idEv, String nom, Date date, String lieu, String description, int nb_place, String imageE, Sponsor sponsor) {
         this.idEv = idEv;
         this.nom = nom;
         this.date = date;
         this.lieu = lieu;
-        this.prix = prix;
-        this.nbre_particip = nbre_particip;
-        this.idS=ids;
+        this.description = description;
+        this.nb_place = nb_place;
+        this.imageE = imageE;
+        this.sponsor = sponsor;
     }
 
-   
+    public Evennement(String nom, Date date, String lieu, String description, int nb_place, String imageE, Sponsor sponsor) {
+        this.nom = nom;
+        this.date = date;
+        this.lieu = lieu;
+        this.description = description;
+        this.nb_place = nb_place;
+        this.imageE = imageE;
+        this.sponsor = sponsor;
+    }
+
+    
+    
+    
     
     public int getIdEv() {
         return idEv;
@@ -76,42 +82,39 @@ public class Evennement {
         this.lieu = lieu;
     }
 
-    public float getPrix() {
-        return prix;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPrix(float prix) {
-        this.prix = prix;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public int getNbre_particip() {
-        return nbre_particip;
+    public int getNb_place() {
+        return nb_place;
     }
 
-    public void setNbre_particip(int nbre_particip) {
-        this.nbre_particip = nbre_particip;
+    public void setNb_place(int nb_place) {
+        this.nb_place = nb_place;
     }
 
-    public int getIdS() {
-        return idS;
+    public String getImageE() {
+        return imageE;
     }
 
-    public void setIdS(int idS) {
-        this.idS = idS;
+    public void setImageE(String imageE) {
+        this.imageE = imageE;
     }
 
-    @Override
-    public String toString() {
-        return "Evennement{" + "idEv=" + idEv + ", nom=" + nom + ", date=" + date + ", lieu=" + lieu + ", prix=" + prix + ", nbre_particip=" + nbre_particip + ", idS=" + idS + '}';
+    public Sponsor getSponsor() {
+        return sponsor;
+    }
+
+    public void setSponsor(Sponsor sponsor) {
+        this.sponsor = sponsor;
     }
 
     
-  
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -131,8 +134,17 @@ public class Evennement {
         return true;
     }
 
-    
-    
-    
-    
+  
+
+  
+
+
+  
+
+  @Override
+    public String toString() {
+        return "Evennement{" + "idEv=" + idEv + ", nom=" + nom + ", date=" + date + ", lieu=" + lieu + ", description=" + description + ", nb_place=" + nb_place + ", imageE=" + imageE + ", sponsor=" + sponsor + '}';
+    }
+
+        
 }

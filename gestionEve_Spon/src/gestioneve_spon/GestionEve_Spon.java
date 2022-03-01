@@ -5,47 +5,75 @@
  */
 package gestioneve_spon;
 
-import entity.Sponsor;
 import entity.Evennement;
+import entity.Sponsor;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import service.ServiceSponsor;
 import service.ServiceEvennement;
+import service.ServiceSponsor;
 import utils.Myconnexion;
 
 /**
  *
- * @author Mortadha
+ * @author Ahmed
  */
 public class GestionEve_Spon {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-//        Date d =Date.valueOf(LocalDate.now());
-//        Evennement e=new Evennement("aa",d,"lieu",55,2);
-       ServiceEvennement se=new ServiceEvennement();
-//        se.ajouter(e);
-//        System.out.println(se.afficher());
+    public static void main(String[] args) throws ParseException {
         Date d =Date.valueOf(LocalDate.now());
-       Sponsor s=new Sponsor("aa","eef","er",55223333,"ZEAZEt");
-        ServiceSponsor ss=new ServiceSponsor();
-        Evennement e=new Evennement("aayyyy",d,"lieu",59,2,11);
         
-        //se.ajouter(e);
-       
-       // ss.ajouter(s);
-     //System.out.println(se.afficher());
-      // System.out.println(ss.afficherById(1));
-//        System.out.println(se.afficherById(2));
-//se.modifier(6,new Evennement("aa",d,"lieu",5,59,10)); 
-se.ajouterpst(e);
-//ss.ajouterpst(s);
-   //ss.modifier(3,new Sponsor("aa","eef","er",55223333,"ZE"));  
- //System.out.println(ss.afficherrById(15));   
-   //se.modifierpst(6,new Evennement("aa",d,"lieu",5,59,100)); 
-   
+        ServiceEvennement se=new ServiceEvennement();
+        ServiceSponsor ss=new ServiceSponsor();
+         
+        SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+           String dob="1990-12-01";
+           java.util.Date dn=sd.parse(dob);
+           long ms=dn.getTime();
+           java.sql.Date sdo=new java.sql.Date(ms);
+
+//Sponsor s4=new Sponsor("d","d","e",5,"f","r");
+//Sponsor s5=new Sponsor(91,"dd","d","e",5,"f","r");
+//Evennement e1=new Evennement(71,"bbbb",d,"e","j",2,"y",s5);
+Sponsor s4=new Sponsor("d","d","e",5,"f","r");
+Sponsor s5=new Sponsor(91,"dd","d","e",5,"f","r");
+Evennement e1=new Evennement(71,"bbbb",d,"e","j",2,"y",s5);
+//se.ajouter(e1);
+//se.modifier(e1); 
+//se.supprimer(e1)
+//
+System.out.println(se.afficher());    
+ //System.out.println(ss.afficher());    
+//
+// 
+// Sponsor s7=new Sponsor(51,"dopo","d","e",5,"f","r");
+////ss.ajouter(s7);
+//ss.modifier(s7); 
+//ss.supprimer(s7);
+//
+//System.out.println(se.afficher_id(73));    
+ //System.out.println(ss.afficher_id(50));  
+
+
+
+//Sponsor s=ss.afficherById(2);
+        //se.affecterSponsoreEvenement(1, s);
+        //System.out.println(ss.afficher());
+        
+    
+//        System.out.println(ss.afficher());
+        /*
+        System.out.println("**************************");
+        System.out.println(se.rechercheParId(7));
+        System.out.println("**************************");
+        System.out.println(se.orderByDate());
+        */
+        
+        
     }
     
 }

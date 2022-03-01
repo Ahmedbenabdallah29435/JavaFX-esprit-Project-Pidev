@@ -7,46 +7,23 @@ package entity;
 
 /**
  *
- * @author AhmedBenAbdallah
+ * @author Ahmed
  */
 public class Sponsor {
-    private int idS;
+    private int id;
     private String nom;
     private String type;
     private String adresse;
     private int tel;
     private String email;
+    private String imgS;
 
-    public Sponsor() {
+    public int getId() {
+        return id;
     }
 
-    public Sponsor(String nom, String type, String adresse, int tel, String email) {
-        this.nom = nom;
-        this.type = type;
-        this.adresse = adresse;
-        this.tel = tel;
-        this.email = email;
-    }
-
-    public Sponsor(int idS, String nom, String type, String adresse, int tel, String email) {
-        this.idS = idS;
-        this.nom = nom;
-        this.type = type;
-        this.adresse = adresse;
-        this.tel = tel;
-        this.email = email;
-    }
-    
-    
-     
-    
-    
-    public int getIdS() {
-        return idS;
-    }
-
-    public void setIdS(int idS) {
-        this.idS = idS;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {
@@ -89,14 +66,44 @@ public class Sponsor {
         this.email = email;
     }
 
+    public String getImgS() {
+        return imgS;
+    }
+
+    public void setImgS(String imgS) {
+        this.imgS = imgS;
+    }
+
+    public Sponsor() {
+    }
+
+    public Sponsor(int id, String nom, String type, String adresse, int tel, String email, String imgS) {
+        this.id = id;
+        this.nom = nom;
+        this.type = type;
+        this.adresse = adresse;
+        this.tel = tel;
+        this.email = email;
+        this.imgS = imgS;
+    }
+
+    public Sponsor(String nom, String type, String adresse, int tel, String email, String imgS) {
+        this.nom = nom;
+        this.type = type;
+        this.adresse = adresse;
+        this.tel = tel;
+        this.email = email;
+        this.imgS = imgS;
+    }
+
     @Override
     public String toString() {
-        return "Sponsor{" + "idS=" + idS + ", nom=" + nom + ", type=" + type + ", adresse=" + adresse + ", tel=" + tel + ", email=" + email + '}'+"/n";
+        return "Sponsor{" + "idS=" + id + ", nom=" + nom + ", type=" + type + ", adresse=" + adresse + ", tel=" + tel + ", email=" + email + ", imgS=" + imgS + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
+        int hash = 7;
         return hash;
     }
 
@@ -112,7 +119,7 @@ public class Sponsor {
             return false;
         }
         final Sponsor other = (Sponsor) obj;
-        if (this.idS != other.idS) {
+        if (this.id != other.id) {
             return false;
         }
         return true;

@@ -6,6 +6,7 @@
 package service;
 
 import entity.Evennement;
+import entity.Sponsor;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -16,183 +17,265 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import utils.Myconnexion;
 
-/**
- *
- * @author AhmedBenAbdallah
- */
+
 
 
 public class ServiceEvennement implements IService<Evennement>{
-    
     private Connection cnx;
-    private Statement st;
     private PreparedStatement pst;
     private ResultSet rs;
-    
-    public ServiceEvennement(){
+    private Statement st;
+public ServiceEvennement(){
         cnx=Myconnexion.getInstance().getCnx();
-    }
-    @Override
-    public void ajouter(Evennement e) {
-        try {
-            
-            
-            st=cnx.createStatement();
-            
-            
-            String query="INSERT INTO `evenement`(`nom`, `date`, `lieu`, `prix`, `nbre_particip`,`idS`) VALUES "
-                    + "('"+e.getNom()+"',"
-                    + "'"+e.getDate()+"',"
-                    + "'"+e.getLieu()+"',"
-                    + "'"+e.getPrix()+"',"
-                    + "'"+e.getNbre_particip()+"',"
-                    + "'"+e.getIdS()
-                    +"')";
-            st.executeUpdate(query);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-      public void ajouterpst(Evennement t) {
-       String req = "insert into evenement (nom,date,lieu,prix,nbre_particip,idS) values (?,?,?,?,?,?)";
-        try {
-            pst = cnx.prepareStatement(req);
-            pst.setString(1, t.getNom());
-            pst.setDate(2, (Date) t.getDate());
-            pst.setString(3, t.getLieu());
-            pst.setInt(4, (int) t.getPrix());
-            pst.setInt(5, (int) t.getNbre_particip());
-            pst.setInt(6, (int) t.getIdS());
-            pst.executeUpdate();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
+    }    
 
     @Override
-    public void supprimer(int id) {
+    public boolean ajouter(Evennement e) {
+       String req="insert into evenement (nom,date,lieu,description,nb_place,imageE,idS) values (?,?,?,?,?,?,?)";
+        Boolean inserted=false;
         try {
-           
-            st=cnx.createStatement();
-            String query="DELETE FROM `evenement` WHERE idEv="+id;
-            st.executeUpdate(query);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
-    public void modifier(int id_amodifier, Evennement modifier) {
-        try {
-            
-            st=cnx.createStatement();
-            String query="UPDATE `evenement` SET `nom`='"+modifier.getNom()+"',"
-                    + "`date`='"+modifier.getDate()+"',"
-                    + "`lieu`='"+modifier.getLieu()+"',"
-                    + "`prix`='"+modifier.getPrix()+"',"
-                    + "`idS`='"+modifier.getIdS()+"',"
-                    + "`nbre_particip`='"+modifier.getNbre_particip()+"' "
-                    
-                    + "WHERE idEv="+id_amodifier;
-            st.executeUpdate(query);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-   
-    public void modifierpst(int id_amodifier, Evennement e) {
-         
-           String req = "UPDATE evenement SET nom=?,date=?,lieu=?,Prix=?,nbre_particip=?,idS=? where idEv=?";
-        try {
-            pst = cnx.prepareStatement(req);
-            pst.setString(1, e.getNom());
+            pst=cnx.prepareStatement(req);
+            pst.setString(1,e.getNom());
             pst.setDate(2, (Date) e.getDate());
-            pst.setString(3, e.getLieu());
-            pst.setFloat(4, e.getPrix());
-            pst.setInt(5, e.getNbre_particip());
-            pst.setInt(6, e.getIdS());
-            pst.setInt(7, id_amodifier);
-            pst.executeUpdate();
-        } catch (SQLException ex) { 
-              Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+            pst.setString(3,e.getLieu());
+            pst.setString(4,e.getDescription());
+            pst.setInt(5,e.getNb_place());
+            pst.setString(6,e.getImageE());
+            if(e.getSponsor()==null){
+               pst.setNull(7,1);
+
+            }else{
+              pst.setInt(7,e.getSponsor().getId());
+
+            }
+            inserted=pst.executeUpdate()>0;
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return inserted;
     }
-    
+
+    @Override
+    public boolean supprimer(Evennement e) {
+        String req="DELETE FROM evenement WHERE idEv=?";
+      Boolean deleted=false;
+        try {
+             pst=cnx.prepareStatement(req);
+             pst.setInt(1,e.getIdEv());
+             deleted=pst.executeUpdate()>0;
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     return deleted;
+    }
+
+    @Override
+    public boolean modifier(Evennement e) {
+        String req="UPDATE evenement SET nom=?,date=?,lieu=?,description=?,nb_place=?,imageE=?,idS=? WHERE idEv=?";
+       Boolean updated=false;
+        try {
+            pst=cnx.prepareStatement(req);
+         
+            pst.setString(1,e.getNom());
+            pst.setDate(2, (Date) e.getDate());
+            
+            pst.setString(3,e.getLieu());
+            pst.setString(4,e.getDescription());
+           
+            pst.setInt(5,e.getNb_place());
+            pst.setString(6,e.getImageE());
+            pst.setInt(7,e.getSponsor().getId());
+             pst.setInt(8,e.getIdEv());
+            
+            updated=pst.executeUpdate()>0;
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     return updated;
+    }
+
     @Override
     public List<Evennement> afficher() {
-        List<Evennement> le =new ArrayList<>();
+        String req="select * from evenement";
+        List<Evennement> list =new ArrayList<>();
         try {
-           
             st=cnx.createStatement();
-            
-            String query="SELECT * FROM `evenement`";
-            rs=st.executeQuery(query);
-            while(rs.next()){
-                Evennement e=new Evennement();
-                e.setIdEv(rs.getInt("idEv"));
-                e.setNom(rs.getString("nom"));
-                e.setLieu(rs.getString("lieu"));
-                e.setDate(rs.getDate("date"));
-                e.setPrix(rs.getFloat("prix"));
-                e.setNbre_particip(rs.getInt(6));
-                e.setIdS(rs.getInt(7));
-                le.add(e);
+            rs=st.executeQuery(req);
+            ServiceSponsor se =new ServiceSponsor();
+            while(rs.next())
+            { 
+                list.add(new Evennement(rs.getInt("idEv"),rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7),se.afficher_id(rs.getInt("idS"))));
             }
-            
         } catch (SQLException ex) {
             Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return le;
+        return list;
     }
 
     @Override
-    public List<Evennement> afficherById(int id) {
-        List<Evennement> le =new ArrayList<>();
+    public Evennement afficher_id(int id) {
+        String req="select * from evenement where idEv=?";
+        Evennement j=null;
         try {
-            
-            st=cnx.createStatement();
-            
-            String query="SELECT * FROM `evenement` WHERE idEv="+id;
-            rs=st.executeQuery(query);
-            while(rs.next()){
-                Evennement e=new Evennement();
-                e.setIdEv(rs.getInt("idEv"));
-                e.setNom(rs.getString("nom"));
-                e.setLieu(rs.getString("lieu"));
-                e.setDate(rs.getDate("date"));
-                e.setPrix(rs.getFloat("prix"));
-                e.setNbre_particip(rs.getInt(6));
-                e.setIdS(rs.getInt(7));
-                le.add(e);
-            }
-            
+            pst=cnx.prepareStatement(req);
+            pst.setInt(1,id);
+            ServiceSponsor se =new ServiceSponsor();
+            rs = pst.executeQuery();
+             if (rs.next())
+             {              
+                 j = new Evennement(rs.getInt("idEv"),rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getString(7),se.afficher_id(rs.getInt("idS")));
+                
+             }
         } catch (SQLException ex) {
             Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return le;
-    }
-    
-    public Evennement afficherrById(int id) {
-            String query="SELECT * FROM `evenement` WHERE idEv=?";
-            Evennement e=null;
-        try {
-                pst = cnx.prepareStatement(query);
-                pst.setInt(1,id);
-                rs = pst.executeQuery();
-                if (rs.next()){
-                    e = new Evennement(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getFloat(5), rs.getInt(6), rs.getInt(7));
-                } 
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return e;
+           
+        return j;
+        
     }
     
 }
+//    Connection cnx;
+//    public ServiceEvennement(){
+//        cnx=Myconnexion.getInstance().getCnx();
+//    }
+//    
+//    @Override
+//    public void ajouter(Evennement e) {
+//        try {
+//            Statement st;
+//            
+//            st=cnx.createStatement();
+//            
+//            
+//            String query="INSERT INTO `evenement`(`nom`, `date`, `lieu`, `prix`, `nbre_particip`) VALUES "
+//                    + "('"+e.getNom()+"',"
+//                    + "'"+e.getDate()+"',"
+//                    + "'"+e.getLieu()+"',"
+//                    + "'"+e.getPrix()+"',"
+//                    + "'"+e.getNbre_particip()
+//                    +"')";
+//            st.executeUpdate(query);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//
+//    @Override
+//    public void supprimer(int id) {
+//        try {
+//            Statement st;
+//            st=cnx.createStatement();
+//            String query="DELETE FROM `evenement` WHERE id_ev="+id;
+//            st.executeUpdate(query);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//
+//    @Override
+//    public void modifier(int id_amodifier, Evennement modifier) {
+//        try {
+//            Statement st;
+//            st=cnx.createStatement();
+//            String query="UPDATE `evenement` SET `nom`='"+modifier.getNom()+"',"
+//                    + "`date`='"+modifier.getDate()+"',"
+//                    + "`lieu`='"+modifier.getLieu()+"',"
+//                    + "`prix`='"+modifier.getPrix()+"',"
+//                    + "`nbre_particip`='"+modifier.getNbre_particip()+"' "
+//                    + "WHERE id_ev="+id_amodifier;
+//            st.executeUpdate(query);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//
+//    @Override
+//    public List<Evennement> afficher() {
+//        List<Evennement> le =new ArrayList<>();
+//        ServiceSponsor ss =new ServiceSponsor();
+//        try {
+//            Statement st;
+//            st=cnx.createStatement();
+//            
+//            String query="SELECT * FROM `evenement`";
+//            ResultSet rs=st.executeQuery(query);
+//            while(rs.next()){
+//                Evennement e=new Evennement();
+//                e.setIdEv(rs.getInt("id_ev"));
+//                e.setNom(rs.getString("nom"));
+//                e.setLieu(rs.getString("lieu"));
+//                e.setDate(rs.getDate("date"));
+//                e.setPrix(rs.getFloat("prix"));
+//                e.setNbre_particip(rs.getInt("nbre_particip"));
+//                e.setSponsors(ss.findByEvent(e.getIdEv()));
+//                le.add(e);
+//            }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return le;
+//    }
+//    public Evennement rechercheParId(int id){
+//        Evennement e =new Evennement();
+//        try {
+//            Statement st;
+//            st=cnx.createStatement();
+//            
+//            String query="SELECT * FROM `evenement` WHERE id_ev="+id;
+//            ResultSet rs=st.executeQuery(query);
+//            while(rs.next()){
+//                
+//                e.setIdEv(rs.getInt("id_ev"));
+//                e.setNom(rs.getString("nom"));
+//                e.setLieu(rs.getString("lieu"));
+//                e.setDate(rs.getDate("date"));
+//                e.setPrix(rs.getFloat("prix"));
+//                e.setNbre_particip(rs.getInt("nbre_particip"));
+//                
+//            }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return e;
+//    }
+//    public List<Evennement> orderByDate(){
+//        List<Evennement> le =new ArrayList<>();
+//        try {
+//            Statement st;
+//            st=cnx.createStatement();
+//            
+//            String query="SELECT * FROM `evenement` ORDER BY date";
+//            ResultSet rs=st.executeQuery(query);
+//            while(rs.next()){
+//                Evennement e=new Evennement();
+//                e.setIdEv(rs.getInt("id_ev"));
+//                e.setNom(rs.getString("nom"));
+//                e.setLieu(rs.getString("lieu"));
+//                e.setDate(rs.getDate("date"));
+//                e.setPrix(rs.getFloat("prix"));
+//                e.setNbre_particip(rs.getInt("nbre_particip"));
+//                le.add(e);
+//            }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ServiceEvennement.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return le;
+//    }
+//    
+//    public void affecterSponsoreEvenement(int id_evenement,Sponsor s){
+//        ServiceSponsor ss=new ServiceSponsor();
+//        Evennement e=rechercheParId(id_evenement);
+//        s.setEvennement(e);
+//        
+//      
+//        ss.modifier(s.getIdS(), s);
+//    }
+//    
+//}
