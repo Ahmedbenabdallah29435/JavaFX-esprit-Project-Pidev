@@ -46,7 +46,7 @@ Evennement e1=new Evennement(71,"bbbb",d,"e","j",2,"y",s5);
 //se.modifier(e1); 
 //se.supprimer(e1)
 //
-System.out.println(se.afficher());    
+//System.out.println(se.afficher());    
  //System.out.println(ss.afficher());    
 //
 // 
@@ -60,10 +60,7 @@ System.out.println(se.afficher());
 
 
 
-//Sponsor s=ss.afficherById(2);
-        //se.affecterSponsoreEvenement(1, s);
-        //System.out.println(ss.afficher());
-        
+
     
 //        System.out.println(ss.afficher());
         /*
