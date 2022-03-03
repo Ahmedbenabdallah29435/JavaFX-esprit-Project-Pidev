@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *
- * @author yassin
+ * @author rania
  */
 public class CategorieCrud implements ICategorie<Categorie>  {
 

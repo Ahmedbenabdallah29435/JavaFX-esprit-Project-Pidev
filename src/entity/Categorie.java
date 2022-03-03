@@ -13,8 +13,7 @@ public class Categorie {
     int idCategorie;
     String NomCategorie;
 
-    public Categorie() {
-    }
+    public Categorie() {}
 
     public Categorie(int idCategorie, String NomCategorie) {
         this.idCategorie = idCategorie;
@@ -41,11 +40,9 @@ public class Categorie {
         this.NomCategorie = NomCategorie;
     }
 
-    
-  /*  @Override
+    @Override
     public String toString() {
         return "Categorie{" + "idCategorie=" + idCategorie + ", NomCategorie=" + NomCategorie + '}';
-    }*/
-    
-    
+    }
+   
 }
