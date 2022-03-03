@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.sun.javafx.charts.Legend?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.ParallelCamera?>
 <?import javafx.scene.control.Button?>
@@ -454,16 +455,16 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="499.0" prefWidth="936.0">
                      <children>
-                        <TableView cache="true" layoutX="38.0" layoutY="41.0" prefHeight="412.0" prefWidth="867.0" stylesheets="@../image/styleTournoi.css">
+                        <TableView fx:id="sponsorTable" cache="true" layoutX="38.0" layoutY="41.0" prefHeight="412.0" prefWidth="867.0" stylesheets="@../image/styleTournoi.css">
                            <columns>
-                              <TableColumn prefWidth="66.0" text="ID" />
-                              <TableColumn prefWidth="98.0" text="NOM" />
-                              <TableColumn prefWidth="81.0" text="TYPE" />
-                              <TableColumn prefWidth="138.4000244140625" text="ADRESSE" />
-                              <TableColumn prefWidth="93.5999755859375" text="TEL" />
-                              <TableColumn prefWidth="119.0" text="EMAIL" />
-                              <TableColumn minWidth="0.0" prefWidth="169.0" text="IMAGE" />
-                              <TableColumn minWidth="0.0" prefWidth="98.0" text="Actions" />
+                              <TableColumn fx:id="id" prefWidth="66.0" text="ID" />
+                              <TableColumn fx:id="nom" prefWidth="98.0" text="NOM" />
+                              <TableColumn fx:id="type" prefWidth="81.0" text="TYPE" />
+                              <TableColumn fx:id="adresse" prefWidth="138.4000244140625" text="ADRESSE" />
+                              <TableColumn fx:id="tel" prefWidth="93.5999755859375" text="TEL" />
+                              <TableColumn fx:id="email" prefWidth="119.0" text="EMAIL" />
+                              <TableColumn fx:id="image" minWidth="0.0" prefWidth="169.0" text="IMAGE" />
+                              <TableColumn fx:id="edit" minWidth="0.0" prefWidth="98.0" text="Actions" />
                            </columns>
                         </TableView>
                         <ImageView fitHeight="728.0" fitWidth="999.0" layoutX="-28.0" layoutY="-113.0">
@@ -610,10 +611,12 @@
             <Image url="@../image/tumblr_pgqibbgJ971wo2jbao1_1280.png" />
          </image>
       </ImageView>
-      <ImageView blendMode="COLOR_BURN" fitHeight="195.0" fitWidth="200.0" layoutX="1393.0" layoutY="687.0">
+      <ImageView blendMode="COLOR_BURN" fitHeight="195.0" fitWidth="200.0" layoutX="1708.0" layoutY="800.0">
          <image>
             <Image url="@../image/kisspng-the-wynwood-yard-clip-art-vector-red-circle-ink-5a6de493f02c47.1778542515171513799838.png" />
          </image>
       </ImageView>
+      <Legend />
+      <Button fx:id="rr" layoutX="1231.0" layoutY="308.0" mnemonicParsing="false" onMouseClicked="#refreshTable" text="actualiser" />
    </children>
 </AnchorPane>

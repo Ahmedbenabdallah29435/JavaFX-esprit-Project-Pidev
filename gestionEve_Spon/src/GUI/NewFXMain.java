@@ -38,7 +38,7 @@ public class NewFXMain extends Application {
         try {
             root = FXMLLoader.load(getClass().getResource("ajouterSponsor.fxml"));
             Scene scene = new Scene(root);
-            primaryStage.setTitle("FTdesktop");
+            primaryStage.setTitle("bruteForce");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
