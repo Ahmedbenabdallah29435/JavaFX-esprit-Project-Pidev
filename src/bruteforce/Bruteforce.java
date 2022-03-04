@@ -27,14 +27,14 @@ import javafx.stage.StageStyle;
  *
  * 
  */
-//kif tjeneri javafix yjibou howa
+//kif tjeneri javafx yjibou howa
 public class Bruteforce extends Application {
     double xOffset, yOffset;
     public static Stage stage = null;
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Joueur.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Categorie.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
@@ -65,57 +65,5 @@ public class Bruteforce extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-       
-//         Categorie c= new Categorie(1,"lol");
-//         CategorieCrud p=new CategorieCrud();
-//         p.AjouterCategorie(c);
-//        // p.SupprimerCategorie(2);
-//        // p.ModifierCategorie(c); 
-//        
-//        for(Categorie pd : p.AfficherCategorie(c)) //Afficher tableau Categorie
-//        {
-//         System.out.println("IdCategorie=>>> "+pd.getIdCategorie()+" NomCategorie=>>> "+pd.getNomCategorie());
-//        }
-//        System.out.println("\n"); 
-//        System.out.println("+-+-+-+-+-+-+Metier-+-+-+-+-+-+  ===>>>>>  Categorie");
-//        for(Categorie pdd : p.rechercheCategorie("lo"))
-//        {
-//               System.out.println("Found ==>>>>> "+pdd.getNomCategorie());   // Metier --> Rechercher selon le nom categorie
-//        }
-//        System.out.println("NombreTotalCategorie ==>>>>> "+p.countTotalCatgeorie()); // Metier --> Total Categorie dabs base de donnée
-//        System.out.println("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
-//  //+-+-+-+-+-+-+-+//+-+-+-+-+-+-+-+//+-+-+-+-+-+-+-+//+-+-+-+-+-+-+-+//+-+-+-+-+-+-+-+       
-//        Categorie ccc= new Categorie(1);
-//        Joueur j=new  Joueur(13,"rania1","aouadi",ccc);
-//        JoueurCrud ok= new JoueurCrud() {};
-//        ok.AjouterJoueur(j);
-//        //ok.ModifierJoueur(j);
-//        //ok.SupprimerJoueur(12);
-//          
-//        System.out.println("\n");
-//        
-//        for(Joueur pd : ok.AfficherJoueur(j))
-//        {
-//               System.out.println("IdJoueur =>> "+pd.getIdJoueur()+" NomJoueur =>>"+pd.getNomJoueur()+" PrenomJoueur ==>> "+pd.getPrenomJoueur());
-//        }
-//        System.out.println("\n");
-//    
-//        System.out.println("+-+-+-+-+-+-+Metier-+-+-+-+-+-+  ===>>>>>  Joueur");
-//        for(Joueur pdd : ok.rechercheParFiltre("Prenom","ay")) // Metier --> Nom ou Prenom (filtre et recherche selon filtre)
-//        {
-//        System.out.println("Found ==>>>>> "+pdd.getNomJoueur()+" "+pdd.getPrenomJoueur()); 
-//        }
-//        
-//        for(Categorie pd : ok.MaxCategorieInJoueur()) // Metier --> Show Nom Categorie plus utilisé dans table Joueur
-//        {
-//         System.out.println("MaxCategorieInJoueur =>>> "+pd.getNomCategorie());
-//        }
-//        
-//        System.out.println("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
-//        
-//    }
-//    
-    
-    
-    
+
 }

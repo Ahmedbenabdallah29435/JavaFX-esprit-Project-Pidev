@@ -5,24 +5,53 @@
  */
 package entity;
 
+import java.sql.Date;
+import javafx.scene.image.ImageView;
+
 /**
  *
-
+ *
  */
 public class Joueur {
+
     int idJoueur;
     String NomJoueur;
     String PrenomJoueur;
-    Categorie categ;
+    String Nomcategorie;
+    Date DateDeNaissance;
+    int Age;
+    String Sexe;
+    String Ville;
+    ImageView imgJoueur;
+    ////
+    String imgJ;
 
-    public Joueur(int idJoueur, String NomJoueur, String PrenomJoueur, Categorie categ) {
+    public Joueur() {
+    }
+
+//    public Joueur(int idJoueur, String NomJoueur, String PrenomJoueur, String Nomcategorie, Date DateDeNaissance, int Age, String Sexe, String Ville, ImageView imgJoueur) {
+//        this.idJoueur = idJoueur;
+//        this.NomJoueur = NomJoueur;
+//        this.PrenomJoueur = PrenomJoueur;
+//        this.Nomcategorie = Nomcategorie;
+//        this.DateDeNaissance = DateDeNaissance;
+//        this.Age = Age;
+//        this.Sexe = Sexe;
+//        this.Ville = Ville;
+//        this.imgJoueur = imgJoueur;
+//    }
+
+    public Joueur(int idJoueur, String NomJoueur, String PrenomJoueur, String Nomcategorie, Date DateDeNaissance, int Age, String Sexe, String Ville, String imgJoueur) {
         this.idJoueur = idJoueur;
         this.NomJoueur = NomJoueur;
         this.PrenomJoueur = PrenomJoueur;
-        this.categ = categ;
+        this.Nomcategorie = Nomcategorie;
+        this.DateDeNaissance = DateDeNaissance;
+        this.Age = Age;
+        this.Sexe = Sexe;
+        this.Ville = Ville;
+        this.imgJ = imgJ;
     }
-
-    public Joueur() {}
 
     public int getIdJoueur() {
         return idJoueur;
@@ -48,22 +77,65 @@ public class Joueur {
         this.PrenomJoueur = PrenomJoueur;
     }
 
-    public Categorie getCateg() {
-        return categ;
+    public Date getDateDeNaissance() {
+        return DateDeNaissance;
     }
 
-    public void setCateg(Categorie categ) {
-        this.categ = categ;
+    public void setDateDeNaissance(Date DateDeNaissance) {
+        this.DateDeNaissance = DateDeNaissance;
+    }
+
+    public int getAge() {
+        return Age;
+    }
+
+    public void setAge(int Age) {
+        this.Age = Age;
+    }
+
+    public String getSexe() {
+        return Sexe;
+    }
+
+    public void setSexe(String Sexe) {
+        this.Sexe = Sexe;
+    }
+
+    public String getVille() {
+        return Ville;
+    }
+
+    public void setVille(String Ville) {
+        this.Ville = Ville;
+    }
+
+    public ImageView getImgJoueur() {
+        return imgJoueur;
+    }
+
+    public void setImgJoueur(ImageView imgJoueur) {
+        this.imgJoueur = imgJoueur;
+    }
+
+    public String getImgJ() {
+        return imgJ;
+    }
+
+    public void setImgJ(String imgJ) {
+        this.imgJ = imgJ;
+    }
+
+    public String getCategorie() {
+        return Nomcategorie;
+    }
+
+    public void setCategorie(String Nomcategorie) {
+        this.Nomcategorie = Nomcategorie;
     }
 
     @Override
     public String toString() {
-        return "Joueur{" + "idJoueur=" + idJoueur + ", NomJoueur=" + NomJoueur + ", PrenomJoueur=" + PrenomJoueur + ", categ=" + categ + '}';
+        return "Joueur{" + "idJoueur=" + idJoueur + ", NomJoueur=" + NomJoueur + ", PrenomJoueur=" + PrenomJoueur + ", Nomcategorie=" + Nomcategorie + ", DateDeNaissance=" + DateDeNaissance + ", Age=" + Age + ", Sexe=" + Sexe + ", Ville=" + Ville + ", imgJoueur=" + imgJoueur + '}';
     }
 
-
-    
-    
-    
-    
 }

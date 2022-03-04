@@ -10,19 +10,19 @@ package entity;
  *
  */
 public class Categorie {
+    
     int idCategorie;
     String NomCategorie;
+    String Genre;
 
     public Categorie() {}
 
-    public Categorie(int idCategorie, String NomCategorie) {
+    public Categorie(int idCategorie, String NomCategorie, String Genre) {
         this.idCategorie = idCategorie;
         this.NomCategorie = NomCategorie;
+        this.Genre = Genre;
     }
     
-    public Categorie(int idCategorie) {
-        this.idCategorie = idCategorie;
-    }
 
     public int getIdCategorie() {
         return idCategorie;
@@ -40,9 +40,17 @@ public class Categorie {
         this.NomCategorie = NomCategorie;
     }
 
+    public String getGenre() {
+        return Genre;
+    }
+
+    public void setGenre(String Genre) {
+        this.Genre = Genre;
+    }
+
     @Override
     public String toString() {
-        return "Categorie{" + "idCategorie=" + idCategorie + ", NomCategorie=" + NomCategorie + '}';
+        return "Categorie{" + "idCategorie=" + idCategorie + ", NomCategorie=" + NomCategorie + ", Genre=" + Genre + '}';
     }
    
 }

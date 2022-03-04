@@ -19,6 +19,5 @@ public interface IJoueur <J> {
     public boolean ModifierJoueur(J j);
     public boolean SupprimerJoueur(int idJoueur);
     public List<Joueur> AfficherJoueur(Joueur t);
-    public List<Joueur> rechercheParFiltre(String type, String valeur);
     public List<Categorie> MaxCategorieInJoueur();
 }
