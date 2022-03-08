@@ -49,7 +49,54 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
@@ -87,9 +134,6 @@ public class ASController implements Initializable {
      @FXML
     private TableView<Sponsor> sponsorTable;
     @FXML
-    
-    private TableColumn<Sponsor,String> id;
-    @FXML
     private TableColumn<Sponsor,String> nom;
     @FXML
     private TableColumn<Sponsor,String> type;
@@ -103,24 +147,60 @@ public class ASController implements Initializable {
     private TableColumn<Sponsor,String> image;
     @FXML
     private TableColumn<Sponsor,String> edit;
-    @FXML
-    private Button btt;
-    @FXML
-    private Button act;
-     @FXML
-    private Button upd;
-    @FXML
     private ImageView imagev;
-
+    int idsponsor;
+    String col,ord ;
     
     
  private StackPane contentArea;
+    @FXML
+    private ImageView imview;
+    @FXML
+    private TextField txtrecherche;
+    @FXML
+    private ComboBox<String> combomag;
+    @FXML
+    private Button ASC;
+    @FXML
+    private Button DESC;
+    @FXML
+    private TextField nbmag;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+      combomag.getItems().removeAll(combomag.getItems());
+    combomag.getItems().addAll("nom","type", "adresse", "tel","email");
+    combomag.getSelectionModel().select("nom");
+    col="nom";
+    ord="ASC";        
         LoadDate();
+        
+        txtrecherche.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+               research();
+            }
+        });
+
+
+
+combomag.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+    
+    if (combomag.getSelectionModel().getSelectedItem().equals("nom"))
+            col="nom";
+    else if   (combomag.getSelectionModel().getSelectedItem().equals("nype"))
+            col="type" ;
+        else if   (combomag.getSelectionModel().getSelectedItem().equals("adresse"))
+            col="adresse" ;
+        else  if (combomag.getSelectionModel().getSelectedItem().equals("tel"))
+             col="tel";
+    else if   (combomag.getSelectionModel().getSelectedItem().equals("email"))
+            col="email" ;
+        research();
+}); 
         
     } 
      public static boolean isNumericint(String strNum){
@@ -150,7 +230,7 @@ public class ASController implements Initializable {
     
      void setTextField(int id,String nome, String typee, String adressee, int tele,  String emaile, String imgSe) 
      {
-        id=id;
+        idsponsor=id;
         nomfld.setText(nome);
         typefld.setText(typee);
         adressefld.setText(adressee);
@@ -170,7 +250,7 @@ public class ASController implements Initializable {
        
          refreshTable();
          
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+      
         nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         type.setCellValueFactory(new PropertyValueFactory<>("type"));
         adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
@@ -196,7 +276,7 @@ public class ASController implements Initializable {
                         
                         FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.REMOVE);
                         FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL);
-                      
+                      FontAwesomeIconView addIcon = new FontAwesomeIconView(FontAwesomeIcon.PLUS_SQUARE_ALT);
                         deleteIcon.setStyle(
                                 " -fx-cursor: hand ;"
                                 + "-glyph-size:28px;"
@@ -207,7 +287,11 @@ public class ASController implements Initializable {
                                 + "-glyph-size:28px;"
                                 + "-fx-fill:#730800;"
                         );
-                        
+                        addIcon.setStyle(
+                                " -fx-cursor: hand ;"
+                                + "-glyph-size:28px;"
+                                + "-fx-fill:#00E676;"
+                        );
                         
                        
                         
@@ -247,14 +331,29 @@ public class ASController implements Initializable {
                            
 
                         });
+                          addIcon.setOnMouseClicked((MouseEvent event) -> {
+                            
+                             sponsor = sponsorTable.getSelectionModel().getSelectedItem();
+                             Image image;
+                            try {
+                                image = new Image(new FileInputStream(sponsor.getImgS()));
+                                imview.setImage(image); 
+                            } catch (FileNotFoundException ex) {
+                                Logger.getLogger(ASController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                                                     
+                        });
                          
                          
                          
                          
-                        HBox managebtn = new HBox(editIcon, deleteIcon);
+                         
+                        HBox managebtn = new HBox( deleteIcon,editIcon,addIcon);
                         managebtn.setStyle("-fx-alignment:center");
+                         
                         HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
-                        HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
+                       HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
+                         HBox.setMargin(addIcon, new Insets(2, 3, 0, 2));
                       
                         setGraphic(managebtn);
 
@@ -289,9 +388,6 @@ public class ASController implements Initializable {
     private void logout(ActionEvent event) {
     }
 
-    @FXML
-    private void select(ActionEvent event) {
-    }
 
     @FXML
     private void ajouter(ActionEvent event) {
@@ -306,7 +402,7 @@ public class ASController implements Initializable {
 //        if(nomfld.getText().trim().isEmpty()){
 //            errors.append("Please enter a name\n");
 //        }
-        if(( Pattern.matches("[a-zA-Z]*", nomfld.getText()))||(nomfld.getText().trim().isEmpty())){
+        if(( !Pattern.matches("[a-zA-Z]*", nomfld.getText()))||(nomfld.getText().trim().isEmpty())){
             errors.append("Please enter a valid name\n");
         }
         if(typefld.getText().trim().isEmpty()){
@@ -315,7 +411,7 @@ public class ASController implements Initializable {
         if(adressefld.getText().trim().isEmpty()){
             errors.append("Please enter an adresse\n");
         }
-        if(telfld.getText().isEmpty()){
+        if(Pattern.matches("[a-zA-Z]*", telfld.getText())||telfld.getText().isEmpty()){
             errors.append("please enter a valid number\n");
         
         }
@@ -374,6 +470,89 @@ public class ASController implements Initializable {
          emailfld.setText(null);
           imgSfld.setText(null);
     }
+    @FXML
+    private void updatee(ActionEvent event) throws ParseException {
+      
+         
+        String nome =nomfld.getText();
+         String type =typefld.getText();
+         String adresse=adressefld.getText();
+          Integer tele = Integer.parseInt(telfld.getText());
+         String emaile=emailfld.getText();
+               
+         
+        
+         String imagee = imgSfld.getText();
+       
+         
+         
+      
+           Sponsor s=new Sponsor(nome,type,adresse,tele,emaile,imagee);
+           s.setId(idsponsor);
+            ss.modifier(s);
+             clean();
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("Sponsor modifié");
+            alert.showAndWait();
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @FXML
+    private void trimag(ActionEvent event) {
+        if (combomag.getSelectionModel().equals("nom"))
+            col="nom";
+        else if   (combomag.getSelectionModel().equals("type"))
+            col="type" ;
+        else if   (combomag.getSelectionModel().equals("adresse"))
+            col="adresse" ;
+        else  if (combomag.getSelectionModel().equals("tel"))
+            col="tel";
+        else if   (combomag.getSelectionModel().equals("email"))
+            col="email" ;
+        research();
+        
 
- 
+        
+
+    }
+
+    @FXML
+    private void ordremag(ActionEvent event) {
+        
+            ord="ASC";
+      
+        
+        research();
+    }
+     @FXML
+    private void ordremag1(ActionEvent event) {
+        
+            ord="DESC";
+      
+        
+        research();
+    }
+public void research()
+{
+  ServiceSponsor sm = new ServiceSponsor ();
+        List<Sponsor> lm = sm.recherchermutli(txtrecherche.getText(),col,ord);
+    sponsorTable.getItems().clear();
+      ObservableList<Sponsor> datalist = FXCollections.observableArrayList(lm);
+        
+         
+        
+        nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        type.setCellValueFactory(new PropertyValueFactory<>("type"));
+        adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));   
+         image.setCellValueFactory(new PropertyValueFactory<>("image"));   
+       
+         
+         
+    sponsorTable.setItems(datalist); 
+    
+    nbmag.setText(String.valueOf(lm.size()));
+}
 }

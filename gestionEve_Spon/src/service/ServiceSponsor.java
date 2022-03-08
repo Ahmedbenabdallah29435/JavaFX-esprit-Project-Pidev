@@ -124,7 +124,43 @@ public class ServiceSponsor implements IService<Sponsor> {
            
         return s;
     }
+///////////////////////////////////////////////////
+    
+ public  List<Sponsor> recherchermutli(String critere, String col, String ordre)
+       {
+             List<Sponsor> lm =new ArrayList<>();
+        try {
+            System.out.println(critere);
+            st=cnx.createStatement();
+           // System.out.println(" SELECT * FROM  magasin where nom like '%"+critere+"%' or adresse like '%"+critere+"%' or cast(nombrebloc as char) like '%"+critere+"%' order by "+col+" "+ordre);
+            String query=" SELECT * FROM  sponsor where nom like '%"+critere+"%' or type like '%"+critere+"%' or adresse like '%"+critere+"%' or cast(tel as char) like '%"+critere+"%' or email like '%"+critere+"%' order by "+col+" "+ordre;
+           
+                rs=st.executeQuery(query);
+                while(rs.next()){
+                Sponsor s =new Sponsor();
+               
+                 s.setNom(rs.getString("nom"));
+                 s.setType(rs.getString("type"));
+               
+                s.setAdresse(rs.getString("Adresse"));
+              s.setTel(rs.getInt("tel"));
+               s.setEmail(rs.getString("email"));
+                
+              
 
+                
+                lm.add(s);
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return lm ;
+       }
+    
+    
+    
+    
 //    @Override
 //    public void ajouter(Sponsor s) {
 //        try {
@@ -279,8 +315,7 @@ public class ServiceSponsor implements IService<Sponsor> {
 //                 .collect(Collectors.toList());
 //         return resultat;
 //     }
-//   
-//    
+  
 
   
 }
