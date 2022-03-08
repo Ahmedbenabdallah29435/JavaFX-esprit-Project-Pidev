@@ -5,6 +5,7 @@
  */
 package Controllers;
 
+import com.itextpdf.text.BaseColor;
 import entity.Sponsor;
 import java.io.File;
 import java.io.FileInputStream;
@@ -97,6 +98,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.CMYKColor;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.util.Locale;
 /**
  * FXML Controller class
  *
@@ -165,6 +177,8 @@ public class ASController implements Initializable {
     private Button DESC;
     @FXML
     private TextField nbmag;
+    @FXML
+    private ImageView btnpdf;
     /**
      * Initializes the controller class.
      */
@@ -555,4 +569,111 @@ public void research()
     
     nbmag.setText(String.valueOf(lm.size()));
 }
+
+    @FXML
+    private void exportPDF(MouseEvent event)throws ClassNotFoundException, ClassNotFoundException, SQLException, IOException, URISyntaxException, DocumentException {
+        try {
+                
+            Font blueFont = FontFactory.getFont(FontFactory.HELVETICA, 8, Font.NORMAL, new CMYKColor(255, 0, 0, 0));
+Font redFont = FontFactory.getFont(FontFactory.COURIER, 12, Font.BOLD, new CMYKColor(0, 255, 0, 0));
+Font Sponsor = FontFactory.getFont(FontFactory.TIMES_BOLD, 40, Font.UNDERLINE, new CMYKColor(0, 100, 0, 50));
+Font titledate = FontFactory.getFont(FontFactory.TIMES_BOLD, 12, Font.BOLD, new CMYKColor(0, 100, 100, 80));
+
+Font titledesc = FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD, new CMYKColor(50, 100, 0, 0));
+            
+            Class.forName("com.mysql.jdbc.Driver");
+                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bruteforce", "root", "");
+                 PreparedStatement pt = con.prepareStatement("select * from sponsor");
+                 ResultSet rs = pt.executeQuery();
+            
+                       /* Step-2: Initialize PDF documents - logical objects */
+
+                       Document my_pdf_report = new Document(){};
+                       
+                       PdfWriter.getInstance(my_pdf_report, new FileOutputStream("pdf_report_from_sql_using_java.pdf"));
+                       
+                              my_pdf_report.open();  
+//                             my_pdf_report.add(new Paragraph(new Date().toString()));
+//                            Image img = Image.getInstance("c:/6.png");
+//                            my_pdf_report.add(img);
+                             my_pdf_report.add(new Paragraph("                                                                Sponsor"));
+                             my_pdf_report.add(new Paragraph("                         "));
+                             my_pdf_report.addCreationDate();
+              long millis = System.currentTimeMillis();
+        java.sql.Date DateRapport = new java.sql.Date(millis);
+
+        String DateLyoum = new SimpleDateFormat("yyyyMMddHHmmss", Locale.ENGLISH).format(DateRapport);//yyyyMMddHHmmss
+        System.out.println("DateLyoummmmmmmmmmmmmmmmmmmmm   " + DateLyoum);
+                             my_pdf_report.add(new Paragraph("                                                              "+DateRapport));
+            my_pdf_report.add(new Paragraph("                         "));
+                       
+                       //we have four columns in our table
+                       PdfPTable my_report_table = new PdfPTable(5);
+                             
+                       //create a cell object
+                       PdfPCell table_cell;
+                       
+                       
+                                       table_cell=new PdfPCell(new Phrase(" nom"));
+                                      table_cell.setBackgroundColor(BaseColor.WHITE);
+                                       my_report_table.addCell(table_cell);
+                                       table_cell=new PdfPCell(new Phrase(" type"));
+                                      table_cell.setBackgroundColor(BaseColor.WHITE);
+                                       my_report_table.addCell(table_cell);
+                                       table_cell=new PdfPCell(new Phrase("adresse"));
+                                       table_cell.setBackgroundColor(BaseColor.WHITE);
+                                       my_report_table.addCell(table_cell);
+                                       table_cell=new PdfPCell(new Phrase(" tel"));
+                                      table_cell.setBackgroundColor(BaseColor.WHITE);
+                                       my_report_table.addCell(table_cell);
+                                       table_cell=new PdfPCell(new Phrase("email"));
+                                       table_cell.setBackgroundColor(BaseColor.WHITE);
+                                       my_report_table.addCell(table_cell);
+                                       
+                                       
+
+                                      while(rs.next()){
+                                      
+                                       String nom= rs.getString("nom");
+                                       table_cell=new PdfPCell(new Phrase(nom));
+                                       my_report_table.addCell(table_cell);
+                                       String type= rs.getString("type");
+                                       table_cell=new PdfPCell(new Phrase(type));
+                                       my_report_table.addCell(table_cell);
+                                       String adresse=rs.getString("adresse");
+                                       table_cell=new PdfPCell(new Phrase(adresse));
+                                       my_report_table.addCell(table_cell);
+                                       String tel= rs.getString("tel");
+                                       table_cell=new PdfPCell(new Phrase(tel));
+                                       my_report_table.addCell(table_cell);
+                                       String email=rs.getString("email");
+                                       table_cell=new PdfPCell(new Phrase(email));
+                                       my_report_table.addCell(table_cell);
+                                       
+                                        
+                       }
+                       /* Attach report table to PDF */
+                       
+                       my_pdf_report.add(my_report_table); 
+                       
+                       System.out.println(my_pdf_report);
+                       my_pdf_report.close();
+                       JOptionPane.showMessageDialog(null, "impression effectuée");
+
+                       /* Close all DB related objects */
+                       rs.close();
+                       pt.close(); 
+                       con.close();               
+    File myFile = new File("C:/Users/AhmedBenAbdallah/Desktop/gestionEve_Spon/pdf_report_from_sql_using_java.pdf");
+    Desktop.getDesktop().open(myFile);
+
+       } catch (FileNotFoundException e) {
+       // TODO Auto-generated catch block
+       e.printStackTrace();
+       }
+
+
+    
+        
+    }
 }
