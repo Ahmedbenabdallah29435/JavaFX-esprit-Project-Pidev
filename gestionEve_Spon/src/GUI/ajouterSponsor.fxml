@@ -429,7 +429,7 @@
                         <TextField fx:id="nbmag" layoutX="905.0" layoutY="495.0" prefHeight="46.0" prefWidth="46.0" />
                         <Button fx:id="DESC" layoutX="964.0" layoutY="293.0" mnemonicParsing="false" onAction="#ordremag1" text="Decroissant" />
                         <Button fx:id="ASC" layoutX="1054.0" layoutY="293.0" mnemonicParsing="false" onAction="#ordremag" text="Croissant" />
-                        <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="947.0" layoutY="360.0">
+                        <ImageView fx:id="btnexcel" fitHeight="48.0" fitWidth="48.0" layoutX="947.0" layoutY="360.0" onMouseClicked="#exportExcel">
                            <image>
                               <Image url="@../image/excel.png" />
                            </image>

@@ -109,6 +109,10 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.util.Locale;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import utils.Myconnexion;
 /**
  * FXML Controller class
  *
@@ -179,6 +183,8 @@ public class ASController implements Initializable {
     private TextField nbmag;
     @FXML
     private ImageView btnpdf;
+    @FXML
+    private ImageView btnexcel;
     /**
      * Initializes the controller class.
      */
@@ -484,7 +490,7 @@ combomag.getSelectionModel().selectedItemProperty().addListener((options, oldVal
          emailfld.setText(null);
           imgSfld.setText(null);
     }
-    @FXML
+      @FXML
     private void updatee(ActionEvent event) throws ParseException {
       
          
@@ -676,4 +682,51 @@ Font titledesc = FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD, new 
     
         
     }
+
+    @FXML
+    private void exportExcel(MouseEvent event) throws SQLException, FileNotFoundException, IOException {
+        Connection cnx = Myconnexion.getInstance().getCnx();
+        String query = "Select * from sponsor";
+         PreparedStatement pst = cnx.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            XSSFWorkbook wb = new XSSFWorkbook();
+            XSSFSheet sheet = wb.createSheet("Détails sponsor");
+            XSSFRow header = sheet.createRow(0);
+            header.createCell(0).setCellValue("Nom");
+            header.createCell(1).setCellValue("Type");
+            header.createCell(2).setCellValue("Adresse");
+            header.createCell(3).setCellValue("Telephone");
+             header.createCell(4).setCellValue("Email");
+        
+              
+            
+            int index = 1;
+            while(rs.next()){
+                XSSFRow row = sheet.createRow(index);
+                row.createCell(0).setCellValue(rs.getString("nom"));
+                row.createCell(1).setCellValue(rs.getString("type"));
+                row.createCell(2).setCellValue(rs.getString("adresse"));
+                row.createCell(3).setCellValue(rs.getInt("tel"));
+                row.createCell(4).setCellValue(rs.getString("email"));
+                
+               
+                index++;
+            }
+            
+            FileOutputStream file = new FileOutputStream("Détails sponsor.xlsx");
+            wb.write(file);
+            file.close();
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Exportation effectuée!!!");
+            alert.showAndWait();
+            pst.close();
+            rs.close();
+            File myFile = new File("C:/Users/AhmedBenAbdallah/Desktop/gestionEve_Spon/Détails sponsor.xlsx");
+             Desktop.getDesktop().open(myFile);
+    }
+
+    
 }
