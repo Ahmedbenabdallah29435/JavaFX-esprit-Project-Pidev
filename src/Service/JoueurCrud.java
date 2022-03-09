@@ -32,7 +32,7 @@ public class JoueurCrud implements IJoueur<Joueur> {
     public boolean AjouterJoueur(Joueur j) {
 
         try {
-            String requete = "INSERT INTO joueur(NomJoueur,PrenomJoueur,Categorie,DateDeNaissance,Age,Sexe,Ville,imgJoueur)" + "VALUES (?,?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO joueur(NomJoueur,PrenomJoueur,Categorie,DateDeNaissance,Age,Sexe,Ville,imgJoueur,Myid)" + "VALUES (?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = Myconnexion.getInstance().getCnx().prepareStatement(requete);
 
             pst.setString(1, j.getNomJoueur());
@@ -44,6 +44,7 @@ public class JoueurCrud implements IJoueur<Joueur> {
             pst.setString(6, j.getSexe());
             pst.setString(7, j.getVille());
             pst.setString(8, j.getImgJ());
+            pst.setInt(9, j.getMyid());
             /// 
             pst.executeUpdate();
 
@@ -72,7 +73,6 @@ public class JoueurCrud implements IJoueur<Joueur> {
             pst.setString(7, j.getVille());
             pst.setString(8, j.getImgJ());
             pst.setInt(9, j.getIdJoueur());
-
             pst.executeUpdate();
 
             System.out.println("Joueur été modifiée");
@@ -107,10 +107,10 @@ public class JoueurCrud implements IJoueur<Joueur> {
     }
 
     @Override
-    public List<Joueur> AfficherJoueur(Joueur t) {
+    public List<Joueur> AfficherForAdmin(Joueur t) {
         List<Joueur> JoueurList = new ArrayList<>();
         try {
-            String requete = "SELECT idJoueur,NomJoueur,PrenomJoueur,DateDeNaissance,Age,Sexe,Ville,imgJoueur,idCategorie,NomCategorie FROM joueur INNER JOIN categorie ON joueur.Categorie = categorie.idCategorie";
+            String requete = "SELECT idJoueur,NomJoueur,PrenomJoueur,DateDeNaissance,Age,Sexe,Ville,imgJoueur,idCategorie,NomCategorie,Myid FROM joueur INNER JOIN categorie ON joueur.Categorie = categorie.idCategorie";
             Statement pst = Myconnexion.getInstance().getCnx().createStatement();
             ResultSet rs = pst.executeQuery(requete);
             while (rs.next()) {
@@ -141,6 +141,7 @@ public class JoueurCrud implements IJoueur<Joueur> {
                 r.setVille(rs.getString(7));
                 r.setImgJoueur(img);
                 r.setCategorie(rs.getString(10));
+                r.setMyid(rs.getInt(11));
                 JoueurList.add(r);
             }
         } catch (SQLException ex) {
@@ -212,6 +213,52 @@ public class JoueurCrud implements IJoueur<Joueur> {
             ex.getStackTrace();
         }
         return cu;
+    }
+
+    public List<Joueur> AfficherForUser(Joueur t) {
+        List<Joueur> JoueurList = new ArrayList<>();
+        try {
+            String requete = "SELECT idJoueur,NomJoueur,PrenomJoueur,DateDeNaissance,Age,Sexe,Ville,imgJoueur,idCategorie,NomCategorie,Myid FROM joueur INNER JOIN categorie ON joueur.Categorie = categorie.idCategorie where Myid = '" + t.getMyid()+ "'";
+            Statement pst = Myconnexion.getInstance().getCnx().createStatement();
+            ResultSet rs = pst.executeQuery(requete);
+            while (rs.next()) {
+                Joueur r = new Joueur();
+
+                ImageView img = new ImageView();
+                Image image;
+                try {
+                    if (rs.getString("imgJoueur") == null) {
+                    } else if (rs.getString("imgJoueur") != null) {
+                        image = new Image(new FileInputStream((rs.getString("imgJoueur"))));
+                        img.setImage(image);
+                        img.setPreserveRatio(true);
+                        img.setFitWidth(50);
+                        img.setFitHeight(50);
+                    }
+                } catch (FileNotFoundException ex) {
+                    System.out.println(ex.getMessage());
+                    img.setImage(new Image(getClass().getResource("/ressource/AvatarJ.png").toString()));
+                }
+
+                r.setIdJoueur(rs.getInt(1));
+                r.setNomJoueur(rs.getString(2));
+                r.setPrenomJoueur(rs.getString(3));
+                r.setDateDeNaissance(rs.getDate(4));
+                r.setAge(rs.getInt(5));
+                r.setSexe(rs.getString(6));
+                r.setVille(rs.getString(7));
+                r.setImgJoueur(img);
+                r.setCategorie(rs.getString(10));
+                r.setMyid(rs.getInt(11));
+
+                JoueurList.add(r);
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLSTATE: " + ex.getSQLState());
+            System.out.println("VnedorError: " + ex.getErrorCode());
+        }
+        return JoueurList;
     }
 
 }

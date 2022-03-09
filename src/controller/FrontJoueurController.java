@@ -5,13 +5,6 @@
  */
 package controller;
 
-import com.google.zxing.*;
-import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.common.HybridBinarizer;
-import com.google.zxing.qrcode.QRCodeWriter;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.Image;
 import Notifcation.AlertType;
 import Notifcation.AlertsBuilder;
 import Notifcation.NotificationType;
@@ -19,13 +12,16 @@ import Notifcation.NotificationsBuilder;
 import Service.JoueurCrud;
 import animations.Animations;
 import bruteforce.Bruteforce;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXColorPicker;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
-import static controller.CategorieController.closeStage;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
-import entity.Categorie;
 import entity.Joueur;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -34,6 +30,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -47,6 +44,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -56,6 +55,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -63,8 +63,8 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Parent;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
@@ -79,6 +79,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
@@ -89,10 +90,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Duration;
+import javax.imageio.ImageIO;
 import utils.Constants;
 import utils.JFXDialogTool;
 import utils.Myconnexion;
@@ -102,12 +105,38 @@ import utils.Myconnexion;
  *
  * @author rania
  */
-public class JoueurController implements Initializable {
+public class FrontJoueurController implements Initializable {
 
     @FXML
     private StackPane stckJoueur;
     @FXML
     private AnchorPane rootJoueur;
+    @FXML
+    private AnchorPane containerAjouterJoueur;
+    @FXML
+    private Text textTitreUser;
+    @FXML
+    private JFXButton btnSaveJoueur;
+    @FXML
+    private JFXButton btnCancelAddJoueur;
+    @FXML
+    private JFXButton btnModifierJoueur;
+    @FXML
+    private JFXTextField txtLocationJoueur;
+    @FXML
+    private JFXTextField txtPrenomJoueur;
+    @FXML
+    private JFXTextField txtNomJoueur;
+    @FXML
+    private JFXDatePicker txtDateNaissanceJoueur;
+    @FXML
+    private JFXComboBox<String> comboSexeJoueur;
+    @FXML
+    private JFXTextField txtAgeJoueur;
+    @FXML
+    private JFXComboBox<String> comboCategorie;
+    @FXML
+    private ImageView DragimgRec;
     @FXML
     private Pane ContainerJoueur;
     @FXML
@@ -135,19 +164,23 @@ public class JoueurController implements Initializable {
     @FXML
     private TableColumn<Joueur, String> col_PrenomJoueur;
     @FXML
+    private TableColumn<Joueur, ImageView> col_SexeJoueur;
+    @FXML
     private TableColumn<Joueur, Date> col_NaissanceJoueur;
     @FXML
     private TableColumn<Joueur, Integer> col_AgeJoueur;
     @FXML
     private TableColumn<Joueur, String> col_VilleJoueur;
     @FXML
-    private TableColumn<Joueur, ImageView> col_imageJoueur;
+    private TableColumn<Joueur, String> col_imageJoueur;
     @FXML
-    private TableColumn<Joueur, Integer> col_Categorie;
+    private TableColumn<Joueur, String> col_Categorie;
     @FXML
     private TableColumn<Joueur, String> col_ActionJoueur;
     @FXML
-    private TableColumn<Joueur, ImageView> col_SexeJoueur;
+    private AnchorPane ContainerCodeQR;
+    @FXML
+    private ImageView imgQRCodeGen;
     @FXML
     private AnchorPane ContainerDeleteJoueur;
     @FXML
@@ -156,30 +189,6 @@ public class JoueurController implements Initializable {
     private TextField txtSearch;
     @FXML
     private ComboBox<String> CombofiltreSearch;
-    @FXML
-    private AnchorPane containerAjouterJoueur;
-    @FXML
-    private Text textTitreUser;
-    @FXML
-    private JFXButton btnSaveJoueur;
-    @FXML
-    private JFXButton btnCancelAddJoueur;
-    @FXML
-    private JFXButton btnModifierJoueur;
-    @FXML
-    private JFXTextField txtLocationJoueur;
-    @FXML
-    private JFXTextField txtPrenomJoueur;
-    @FXML
-    private JFXTextField txtNomJoueur;
-    @FXML
-    private JFXDatePicker txtDateNaissanceJoueur;
-    @FXML
-    private JFXComboBox<String> comboSexeJoueur;
-    @FXML
-    private JFXTextField txtAgeJoueur;
-    @FXML
-    private JFXComboBox<String> comboCategorie;
     private static final Stage stage = new Stage();
     private JFXDialogTool dialogDeleteJoueur;
     private JFXDialogTool dialogAjouterJoueur;
@@ -189,39 +198,102 @@ public class JoueurController implements Initializable {
     //////////////////////////////
     Joueur Joueur = new Joueur();
     JoueurCrud JoueurCrud = new JoueurCrud();
-    /////////////////////////////
-    @FXML
-    private ImageView DragimgRec;
     private String path = "";
     String ImagePath = "";
     String idCategorieSelected;
-    @FXML
-    private PieChart sexeChart;
-    @FXML
-    private Label txtStatSexe;
-    @FXML
-    private AnchorPane ContainerCodeQR;
-    @FXML
-    private ImageView imgQRCodeGen;
     private Image genQRCodeImg; // Generated QR Code image
+    @FXML
+    private JFXColorPicker colorpicker;
+    @FXML
+    private JFXColorPicker colorpicker1;
+    @FXML
+    private Rectangle rectangle1;
+    @FXML
+    private Rectangle rectangle;
+    @FXML
+    private Pane PanePull;
+    @FXML
+    private TextField tfNomEquipe;
+    @FXML
+    private Label nomEquipemaillot;
+    @FXML
+    private JFXButton btnSavePull;
+    @FXML
+    private ImageView imageViewPull;
+    File filePull = new File(System.getProperty("user.home") + "/Desktop/Pull.png");
     
-    public static int idUserConnected = 2;  // ======>>>>>>>>>>>>>> idUserConnected
+    
+    public static int idUserConnected = 1;  // ======>>>>>>>>>>>>>> idUserConnected
 
+    /////////////////////////////
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO   
+        // TODO
+
         comboSexeJoueur.getItems().addAll("Homme", "Femme");
         FiltreJou = FXCollections.observableArrayList();
         LoadTableJoueur();
         CombofiltreSearch.getItems().addAll("Homme", "Femme", "ViewAll");
         RemplirComboCategorie();
-        LoadStatistique();       
+
         Animations.fadeInUp(rootJoueur);
-        ///////////////////////////////////////////////////////////////////
-                Calendar cal = Calendar.getInstance();
+
+        //////////////////////////////////////////////////////// Pull
+        colorpicker.setOnAction(new EventHandler() {
+            public void handle(Event t) {
+                rectangle.setFill(colorpicker.getValue());
+                colorpicker.setVisible(false);
+                colorpicker1.setVisible(true);
+
+            }
+        });
+        colorpicker1.setOnAction(new EventHandler() {
+            public void handle(Event t) {
+                rectangle1.setFill(colorpicker1.getValue());
+                colorpicker.setVisible(true);
+                colorpicker1.setVisible(false);
+            }
+        });
+        tfNomEquipe.textProperty().addListener((observable, oldValue, newValue) -> {
+            nomEquipemaillot.setText(newValue);
+            nomEquipemaillot.setVisible(true);
+
+        });
+
+        if (filePull.exists()) {
+            try {
+                tfNomEquipe.setVisible(false);
+                colorpicker1.setVisible(false);
+                colorpicker.setVisible(false);
+                btnSavePull.setVisible(false);
+                nomEquipemaillot.setVisible(false);
+                //PanePull.setVisible(false);
+                ///
+                Image img = new Image(new FileInputStream(filePull));
+                imageViewPull.setImage(img);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(FrontJoueurController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        imageViewPull.setOnMouseClicked(ev -> {
+            if (ev.getButton().equals(MouseButton.PRIMARY) && ev.getClickCount() == 2) {
+                imageViewPull.setImage(new Image("/ressource/big.png"));
+                tfNomEquipe.setVisible(true);
+                colorpicker1.setVisible(true);
+                colorpicker.setVisible(true);
+                btnSavePull.setVisible(true);
+                nomEquipemaillot.setVisible(true);
+            }
+        });
+        
+        
+        
+        
+        Calendar cal = Calendar.getInstance();
 
         int years = cal.get(Calendar.YEAR)-8;
         int month = cal.get(Calendar.MONTH) + 1;
@@ -246,39 +318,9 @@ public class JoueurController implements Initializable {
         };
 //Finally, we just need to update our DatePicker cell factory as follow:
         txtDateNaissanceJoueur.setDayCellFactory(dayCellFactory);
-    }
 
-    private void LoadStatistique() {
+    
 
-        // Changing random data after every 1 second.
-        Timeline timeline = new Timeline();
-        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(1000), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                ////-------->>>>>Statistique Pie Chart
-                int nbTotalHomme = JoueurCrud.countTotalHomme();
-                int nbTotalFemme = JoueurCrud.countTotalFemme();
-                ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                        new PieChart.Data("Homme", nbTotalHomme),
-                        new PieChart.Data("Femme", nbTotalFemme)
-                );
-                sexeChart.setData(pieChartData);
-                ///Afficher En Pourcentage
-                int Total = nbTotalFemme + nbTotalHomme;
-                Double pourcentageHomme = (((double) nbTotalHomme) / Total) * 100;
-                Double pourcentageFemme = (((double) nbTotalFemme) / Total) * 100;
-                DecimalFormat df = new DecimalFormat("########.00");
-                String enfinHomme = df.format(pourcentageHomme);
-                String enfinFemmme = df.format(pourcentageFemme);
-
-                txtStatSexe.setText("Homme: " + String.valueOf(enfinHomme) + "%" + "\n" + "Femme: " + String.valueOf(enfinFemmme) + "%");
-
-            }
-        }));
-        ///Repeat indefinitely until stop() method is called.
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.setAutoReverse(true);
-        timeline.play();
     }
 
     private void RemplirComboCategorie() {
@@ -303,6 +345,32 @@ public class JoueurController implements Initializable {
         }
     }
 
+    @FXML
+    private void OpenCamera(MouseEvent event) {
+
+    }
+
+    @FXML
+    private void SavePull(ActionEvent event) {
+
+        WritableImage image = PanePull.snapshot(new SnapshotParameters(), null);
+
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", filePull);
+            tfNomEquipe.setVisible(false);
+            colorpicker1.setVisible(false);
+            colorpicker.setVisible(false);
+            btnSavePull.setVisible(false);
+            //PanePull.setVisible(false);
+            Image img = new Image(new FileInputStream(filePull));
+            imageViewPull.setImage(img);
+
+        } catch (IOException ex) {
+            Logger.getLogger(FrontJoueurController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     private class SexeUserCellValueFactory implements Callback<TableColumn.CellDataFeatures<Joueur, ImageView>, ObservableValue<ImageView>> {
 
         @Override
@@ -323,7 +391,8 @@ public class JoueurController implements Initializable {
     private void LoadTableJoueur() {
 
         List<Joueur> listeJoueur = new ArrayList<>();
-        listeJoueur = JoueurCrud.AfficherForAdmin(Joueur);
+        Joueur.setMyid(idUserConnected);
+        listeJoueur = JoueurCrud.AfficherForUser(Joueur);
         ObservableList<Joueur> Listeeee = FXCollections.observableArrayList(listeJoueur);
         col_NomJoueur.setCellValueFactory(new PropertyValueFactory<>("NomJoueur"));
         col_PrenomJoueur.setCellValueFactory(new PropertyValueFactory<>("PrenomJoueur"));
@@ -368,7 +437,9 @@ public class JoueurController implements Initializable {
                             System.out.println("icon edit is pressed !");
 
                             int idJoueur = Integer.valueOf((TableViewJoueur.getSelectionModel().getSelectedItem().getIdJoueur()));
-                            btnModifierJoueur.toFront();
+                            //btnUpdateReclam.toFront();
+                            
+                            System.out.println(""+idJoueur);
 
                             txtNomJoueur.setText(TableViewJoueur.getSelectionModel().getSelectedItem().getNomJoueur());
                             txtPrenomJoueur.setText(TableViewJoueur.getSelectionModel().getSelectedItem().getPrenomJoueur());
@@ -573,7 +644,7 @@ public class JoueurController implements Initializable {
 
     @FXML
     private void AjouterJoueur(MouseEvent event) {
-        
+
         if (txtNomJoueur.getText().isEmpty()) {
             txtNomJoueur.requestFocus();
             Animations.shake(txtNomJoueur);
@@ -671,6 +742,7 @@ public class JoueurController implements Initializable {
             Animations.shake(comboSexeJoueur);
             return;
         }
+        Joueur.setMyid(idUserConnected);
         Joueur.setIdJoueur(id);
         Joueur.setNomJoueur(txtNomJoueur.getText());
         Joueur.setPrenomJoueur(txtPrenomJoueur.getText());
@@ -686,7 +758,7 @@ public class JoueurController implements Initializable {
         path = "";
         ImagePath = "";
         System.out.println("===========================>>>>>>>>>>>>>>>>>>> " + idCategorieSelected);
-        /////////////////////////////////////////////////////////////////////
+        ///////////////////////
         Boolean result = JoueurCrud.ModifierJoueur(Joueur);
 
         if (result) {
@@ -773,25 +845,14 @@ public class JoueurController implements Initializable {
 
     @FXML
     private void handleDrop_reclamation(DragEvent event) throws FileNotFoundException {
+        //File dest = new File("C:\\wamp64\\www\\BruteForce\\Web\\Uploads\\images");
         List<File> files = event.getDragboard().getFiles();
         Image img = new Image(new FileInputStream(files.get(0)));
         DragimgRec.setImage(img);
         path = files.get(0).getAbsolutePath();
-        System.out.println(path);
-    }
+        System.out.println(files.get(0));
 
-    @FXML
-    private void GoToCategorie(MouseEvent event) throws IOException {
-        Parent menu = FXMLLoader.load(getClass().getResource("/GUI/Categorie.fxml"));
-        stckJoueur.getChildren().removeAll();
-        stckJoueur.getChildren().setAll(menu);
-    }
-
-    @FXML
-    private void GoToJoueur(MouseEvent event) throws IOException {
-        Parent menu = FXMLLoader.load(getClass().getResource("/GUI/Joueur.fxml"));
-        stckJoueur.getChildren().removeAll();
-        stckJoueur.getChildren().setAll(menu);
+        //FileUtils.copyFileToDirectory(files.get(0), dest);
     }
 
     @FXML

@@ -34,7 +34,7 @@ public class Bruteforce extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Categorie.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GUI/Joueur.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);

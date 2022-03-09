@@ -190,7 +190,6 @@
                            <children>
                               <TableView fx:id="TableViewJoueur" prefHeight="317.0" prefWidth="1186.0" stylesheets="@Style.css">
                                  <columns>
-                                    <TableColumn fx:id="col_idJoueur" prefWidth="89.0" text="idJoueur" />
                                     <TableColumn fx:id="col_NomJoueur" prefWidth="129.0" text="Nom" />
                                     <TableColumn fx:id="col_PrenomJoueur" prefWidth="136.0" text="Prenom" />
                                     <TableColumn fx:id="col_SexeJoueur" prefWidth="106.0" text="Sexe" />

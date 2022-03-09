@@ -171,13 +171,13 @@ public class CategorieController implements Initializable {
         comboGenre.getItems().addAll("Action", "Adventure", "Strategy", "Sports", "Simulation");
         CombofiltreSearch.getItems().addAll("Action", "Adventure", "Strategy", "Sports", "Simulation", "ViewAll");
         LoadStat();
-                Animations.fadeInUp(rootCategorie);
+        Animations.fadeInUp(rootCategorie);
 
     }
 
     private void LoadStat() {
 
-        // Changing random data after every 1 second.GeneratePDF
+        // Changing random data after every 1 second.
         Timeline timeline = new Timeline();
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(1000), new EventHandler<ActionEvent>() {
             @Override
@@ -190,7 +190,6 @@ public class CategorieController implements Initializable {
             }
         }));
         ///Repeat indefinitely until stop() method is called.
-        
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.setAutoReverse(true);
         timeline.play();
@@ -559,12 +558,86 @@ public class CategorieController implements Initializable {
         document.close();
 
         ///Open FilePdf
-        File file = new File(DateLyoum+".pdf");
+        File file = new File(DateLyoum + ".pdf");
         if (file.exists()) //checks file exists or not  
         {
             desktop.open(file); //opens the specified file   
         }
 
+    }
+
+    @FXML
+    private void ExporterExcel(ActionEvent event) {
+
+//         try {
+//            String query = "SELECT * from coach";
+//            PreparedStatement pst = edu.takwira.tools.Connection.getInstance().getCnx().prepareStatement(query);
+//            ResultSet rs = pst.executeQuery();
+//
+//            XSSFWorkbook wb = new XSSFWorkbook();
+//            XSSFSheet sheet = wb.createSheet("Exercices Infos");
+//            XSSFRow header = sheet.createRow(0);
+//            header.createCell(0).setCellValue("id_coach");
+//            header.createCell(1).setCellValue("nom_coach");
+////            header.createCell(2).setCellValue("prenom_coach");
+////            header.createCell(3).setCellValue("date_naissance");
+////            header.createCell(4).setCellValue("grade");
+////             header.createCell(5).setCellValue("date_fin_contrat");
+////            header.createCell(6).setCellValue("adresse_mail");
+////            header.createCell(7).setCellValue("salaire");
+//            //header.createCell(8).setCellValue("level");
+//            //header.createCell(9).setCellValue("price");
+//           // sheet.autoSizeColumn(0);
+//
+//            sheet.autoSizeColumn(1);
+//            sheet.autoSizeColumn(2);
+//            sheet.autoSizeColumn(3);
+//            sheet.autoSizeColumn(4);
+//            sheet.autoSizeColumn(5);
+//            sheet.autoSizeColumn(6);
+//            sheet.autoSizeColumn(7);
+//            //sheet.autoSizeColumn(8);
+//            //sheet.autoSizeColumn(9);
+//            sheet.setColumnWidth(3, 256 * 25);
+//            sheet.setZoom(150);
+//            
+//            int index = 1;
+//            while (rs.next()) {
+//                XSSFRow row = sheet.createRow(index);
+//                row.createCell(0).setCellValue(rs.getInt("id_coach"));
+//                row.createCell(1).setCellValue(rs.getString("nom_coach"));
+//                row.createCell(2).setCellValue(rs.getString("prenom_coach"));
+//                row.createCell(3).setCellValue(rs.getDate("date_naissance"));
+//                row.createCell(4).setCellValue(rs.getString("grade"));
+//                row.createCell(5).setCellValue(rs.getDate("date_fin_contrat"));
+//                row.createCell(6).setCellValue(rs.getString("adresse_mail"));
+//                row.createCell(7).setCellValue(rs.getFloat("salaire"));
+//               // row.createCell(8).setCellValue(rs.getString("level"));
+//                //row.createCell(9).setCellValue(rs.getFloat("price"));
+//               
+//                
+//                index++;
+//            }
+//
+//            FileOutputStream fileOut = new FileOutputStream("EListe Coach" + index + ".xlsx");
+//            index++;
+//            wb.write(fileOut);
+//            fileOut.close();
+//
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Inforamtion dialog");
+//            alert.setHeaderText(null);
+//            alert.setContentText("Liste Coach Exported in Excel Sheet");
+//            alert.showAndWait();
+//
+//            pst.close();
+//            rs.close();
+//
+//        } catch (SQLException | FileNotFoundException ex) {
+//          //  Logger.getLogger(TestController.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//          //  Logger.getLogger(TestController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
 }

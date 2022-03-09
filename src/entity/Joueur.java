@@ -25,6 +25,7 @@ public class Joueur {
     ImageView imgJoueur;
     ////
     String imgJ;
+    int myid;
 
     public Joueur() {
     }
@@ -41,7 +42,7 @@ public class Joueur {
 //        this.imgJoueur = imgJoueur;
 //    }
 
-    public Joueur(int idJoueur, String NomJoueur, String PrenomJoueur, String Nomcategorie, Date DateDeNaissance, int Age, String Sexe, String Ville, String imgJoueur) {
+    public Joueur(int idJoueur, String NomJoueur, String PrenomJoueur, String Nomcategorie, Date DateDeNaissance, int Age, String Sexe, String Ville, String imgJoueur,int myid) {
         this.idJoueur = idJoueur;
         this.NomJoueur = NomJoueur;
         this.PrenomJoueur = PrenomJoueur;
@@ -51,6 +52,7 @@ public class Joueur {
         this.Sexe = Sexe;
         this.Ville = Ville;
         this.imgJ = imgJ;
+        this.myid = myid;
     }
 
     public int getIdJoueur() {
@@ -133,9 +135,21 @@ public class Joueur {
         this.Nomcategorie = Nomcategorie;
     }
 
+    public int getMyid() {
+        return myid;
+    }
+
+    public void setMyid(int myid) {
+        this.myid = myid;
+    }
+
     @Override
     public String toString() {
-        return "Joueur{" + "idJoueur=" + idJoueur + ", NomJoueur=" + NomJoueur + ", PrenomJoueur=" + PrenomJoueur + ", Nomcategorie=" + Nomcategorie + ", DateDeNaissance=" + DateDeNaissance + ", Age=" + Age + ", Sexe=" + Sexe + ", Ville=" + Ville + ", imgJoueur=" + imgJoueur + '}';
+        return "Joueur{" + "idJoueur=" + idJoueur + ", NomJoueur=" + NomJoueur + ", PrenomJoueur=" + PrenomJoueur + ", Nomcategorie=" + Nomcategorie + ", DateDeNaissance=" + DateDeNaissance + ", Age=" + Age + ", Sexe=" + Sexe + ", Ville=" + Ville + ", imgJoueur=" + imgJoueur + ", imgJ=" + imgJ + ", myid=" + myid + '}';
     }
+    
+    
+
+
 
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXColorPicker?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
@@ -24,10 +24,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="stckJoueur" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1194.0" styleClass="Applicationlkol" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.JoueurController">
+<StackPane fx:id="stckJoueur" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1194.0" styleClass="Applicationlkol" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FrontJoueurController">
    <children>
       <AnchorPane fx:id="rootJoueur" prefHeight="801.0" prefWidth="1250.0" styleClass="Applicationlkol" stylesheets="@Style.css">
          <children>
@@ -105,9 +106,9 @@
                         <Image url="@../ressource/categorize.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="DragimgRec" fitHeight="159.0" fitWidth="295.0" layoutX="158.0" layoutY="398.0" onDragDropped="#handleDrop_reclamation" onDragOver="#handleDragOver_reclamation" pickOnBounds="true" smooth="false">
+                  <ImageView fx:id="DragimgRec" fitHeight="159.0" fitWidth="295.0" layoutX="158.0" layoutY="398.0" onDragDropped="#handleDrop_reclamation" onDragOver="#handleDragOver_reclamation" onMouseClicked="#OpenCamera" pickOnBounds="true" smooth="false">
                      <image>
-                        <Image url="file:/D:/3éme/2émesemestre/Pi/Desktop/CoTakwira/images/drag-drop.gif" />
+                        <Image url="@../ressource/drag-drop.gif" />
                      </image>
                   </ImageView>
                </children>
@@ -277,9 +278,9 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <TextField fx:id="txtSearch" layoutX="283.0" layoutY="161.0" onKeyReleased="#SearchAnything" prefHeight="45.0" prefWidth="263.0" promptText="Tapez Quelque chose Pour chercher" style="-fx-prompt-text-fill: white;" styleClass="iconbar" stylesheets="@Style.css" />
-             <ComboBox fx:id="CombofiltreSearch" layoutX="565.0" layoutY="168.0" prefHeight="31.0" prefWidth="145.0" promptText="Filtre" styleClass="NbUser" stylesheets="@Style.css" />
-            <JFXButton layoutX="719.0" layoutY="165.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#SearchParFiltre" prefHeight="37.0" prefWidth="45.0" text="Filtre">
+            <TextField fx:id="txtSearch" layoutX="14.0" layoutY="147.0" onKeyReleased="#SearchAnything" prefHeight="45.0" prefWidth="263.0" promptText="Tapez Quelque chose Pour chercher" style="-fx-prompt-text-fill: white;" styleClass="iconbar" stylesheets="@Style.css" />
+             <ComboBox fx:id="CombofiltreSearch" layoutX="46.0" layoutY="205.0" prefHeight="31.0" prefWidth="145.0" promptText="Filtre" styleClass="NbUser" stylesheets="@Style.css" />
+            <JFXButton layoutX="199.0" layoutY="202.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#SearchParFiltre" prefHeight="37.0" prefWidth="45.0" text="Filtre">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -288,26 +289,30 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Text fill="#6f6f6f" layoutX="414.0" layoutY="31.0" onMouseClicked="#GoToCategorie" strokeType="OUTSIDE" strokeWidth="0.0" text="Categorie" wrappingWidth="121.99999684095383">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Text>
-            <Text fill="#6f6f6f" layoutX="543.0" layoutY="33.0" onMouseClicked="#GoToJoueur" strokeType="OUTSIDE" strokeWidth="0.0" text="Joueur" wrappingWidth="121.99999684095383">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Text>
-            <Pane layoutX="830.0" layoutY="61.0" prefHeight="200.0" prefWidth="341.0" styleClass="StatAdmin">
+            <Pane fx:id="PanePull" layoutX="483.0" layoutY="31.0" prefHeight="217.0" prefWidth="238.0">
                <children>
-                  <PieChart fx:id="sexeChart" layoutY="1.0" prefHeight="200.0" prefWidth="200.0" />
+                  <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#f2f5f8" height="189.0" layoutX="109.0" layoutY="20.0" stroke="#f2f5f8" strokeType="INSIDE" width="87.0" />
+                  <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#f2f5f8" height="189.0" layoutX="43.0" layoutY="20.0" stroke="#f2f5f8" strokeType="INSIDE" width="75.0" />
+                  <ImageView fx:id="imageViewPull" fitHeight="198.0" fitWidth="196.0" layoutX="21.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/big.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="nomEquipemaillot" layoutX="64.0" layoutY="-2.0" prefHeight="21.0" prefWidth="112.0" style="-fx-alignment: center;" textFill="#656565">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
-            <Label fx:id="txtStatSexe" layoutX="1018.0" layoutY="92.0" prefHeight="132.0" prefWidth="138.0" textFill="WHITE">
+            <JFXButton fx:id="btnSavePull" layoutX="721.0" layoutY="202.0" onAction="#SavePull" prefHeight="25.0" prefWidth="100.0" styleClass="NbUser" text="Save" textFill="WHITE">
                <font>
-                  <Font size="19.0" />
+                  <Font name="System Bold" size="12.0" />
                </font>
-            </Label>
+            </JFXButton>
+            <JFXColorPicker fx:id="colorpicker" layoutX="717.0" layoutY="110.0" />
+            <JFXColorPicker fx:id="colorpicker1" layoutX="717.0" layoutY="110.0" />
+            <TextField fx:id="tfNomEquipe" layoutX="717.0" layoutY="154.0" prefHeight="31.0" prefWidth="100.0" />
          </children>
       </Pane>
    </children>
