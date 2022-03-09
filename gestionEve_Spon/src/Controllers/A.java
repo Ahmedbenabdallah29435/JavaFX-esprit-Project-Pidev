@@ -30,6 +30,8 @@ public class A implements Initializable {
     private Button btnsp1;
     @FXML
     private Button btnSignout1;
+    @FXML
+    private Button btnres;
 
     /**
      * Initializes the controller class.
@@ -57,5 +59,9 @@ public class A implements Initializable {
     @FXML
     private void logout(ActionEvent event) {
     }
-    
+ @FXML
+    private void gererreservation(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/affichereservation.fxml"));
+        btnres.getScene().setRoot(root);
+    }
 }

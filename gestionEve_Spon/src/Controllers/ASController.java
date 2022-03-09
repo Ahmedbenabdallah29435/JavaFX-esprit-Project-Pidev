@@ -191,6 +191,8 @@ public class ASController implements Initializable {
     private Button btnev;
     @FXML
     private Button btnsp;
+    @FXML
+    private Button btnres;
     /**
      * Initializes the controller class.
      */
@@ -761,6 +763,12 @@ Font titledesc = FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD, new 
     private void gerersponsor(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../GUI/ajouterSponsor.fxml"));
         btnsp.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gererreservation(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/affichereservation.fxml"));
+        btnres.getScene().setRoot(root);
     }
 
     

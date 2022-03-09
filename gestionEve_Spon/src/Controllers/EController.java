@@ -151,6 +151,8 @@ public class EController implements Initializable {
     private Button btnstat;
     @FXML
     private Button imgSbtn;
+    @FXML
+    private Button btnres;
 
     /**
      * Initializes the controller class.
@@ -699,17 +701,12 @@ public void research()
         btnAcceuil.getScene().setRoot(root);
 
     }
-    private void acceuil1(ActionEvent event) throws IOException {
-           Parent root = FXMLLoader.load(getClass().getResource("../GUI/Acceuil.fxml"));
-        btnAcceuil.getScene().setRoot(root);
+   @FXML
+    private void gererreservation(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/affichereservation.fxml"));
+        btnres.getScene().setRoot(root);
     }
-    private void gererevent1(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../GUI/Even.fxml"));
-        btnev1.getScene().setRoot(root);
-    }
-    private void gerersponsor1(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../GUI/ajouterSponsor.fxml"));
-        btnsp.getScene().setRoot(root);
-    }
-    
+
+   
+   
 }

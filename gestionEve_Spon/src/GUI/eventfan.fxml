@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="560.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.EventfanController">
+   <children>
+      <ImageView fitHeight="614.0" fitWidth="962.0" layoutX="-65.0" layoutY="-52.0">
+         <image>
+            <Image url="@../image/esportfrance.jpg" />
+         </image>
+      </ImageView>
+      <Text blendMode="HARD_LIGHT" fill="RED" layoutX="342.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="5.0" text="LISTE EVENEMENTS" wrappingWidth="413.6708984375">
+         <font>
+            <Font name="Cooper Black" size="37.0" />
+         </font>
+         <effect>
+            <GaussianBlur radius="0.0" />
+         </effect>
+         <stroke>
+            <RadialGradient centerX="0.2777777777777778" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#801b1b" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </stroke>
+      </Text>
+      <Button fx:id="reserv" blendMode="LIGHTEN" layoutX="627.0" layoutY="384.0" mnemonicParsing="false" onAction="#reserver" prefHeight="41.0" prefWidth="194.0" style="-fx-background-color: #aac0f9;" text="réserver">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></Button>
+      <Button fx:id="txtacceuil" blendMode="RED" layoutX="656.0" layoutY="439.0" mnemonicParsing="false" onAction="#acceuil" prefHeight="35.0" prefWidth="137.0" style="-fx-background-color: #aac0f9;" text="acceuil">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Button>
+      <VBox fx:id="box" layoutX="87.0" layoutY="83.0" prefHeight="307.0" prefWidth="726.0" />
+   </children>
+</AnchorPane>

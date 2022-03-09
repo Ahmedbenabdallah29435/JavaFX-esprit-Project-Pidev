@@ -217,6 +217,28 @@ public ServiceEvennement(){
 return x;
         
     }
+          public List<Integer> afficherid()  {
+        List<Integer> Quiz = new ArrayList<>();
+        try {
+            String req = "SELECT idEv FROM evenement ";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                Quiz.add(rs.getInt(1));
+        
+    }
+            } catch (SQLException ex) {
+            ex.getStackTrace();
+        }
+        return Quiz;
+        }
+           public void modifierNB() throws SQLException{
+
+        String req="UPDATE evenement E join reservation R SET `nb_place`=nb_place-1 where E.idEv=R.idr ;";
+        Statement st=cnx.createStatement();
+        st.executeUpdate(req);
+    }
+      
 }
 //    Connection cnx;
 //    public ServiceEvennement(){

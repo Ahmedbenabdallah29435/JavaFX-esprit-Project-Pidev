@@ -29,14 +29,14 @@ import javafx.stage.StageStyle;
  *
  * @author Ahmed
  */
-public class NewFXMain extends Application {
+public class NewFXMain1 extends Application {
 
     Parent root;
 
     @Override
     public void start(Stage primaryStage) {
         try {
-            root = FXMLLoader.load(getClass().getResource("Acceuil.fxml"));
+            root = FXMLLoader.load(getClass().getResource("acceuilFan.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("bruteForce");
             primaryStage.setScene(scene);

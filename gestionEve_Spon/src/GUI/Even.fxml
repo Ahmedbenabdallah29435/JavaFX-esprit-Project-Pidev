@@ -150,7 +150,7 @@
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
             </Button>
-            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+            <Button fx:id="btnres" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gererreservation" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Reservation">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -171,6 +171,13 @@
                <font>
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="26.0" fitWidth="22.0">
+                     <image>
+                        <Image url="@../image/participant.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
             <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
                <padding>
