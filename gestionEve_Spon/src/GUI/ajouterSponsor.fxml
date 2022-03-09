@@ -434,7 +434,7 @@
                               <Image url="@../image/excel.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="54.0" fitWidth="52.0" layoutX="1016.0" layoutY="360.0">
+                        <ImageView fx:id="btnsms" fitHeight="54.0" fitWidth="52.0" layoutX="1016.0" layoutY="360.0" onMouseClicked="#sms">
                            <image>
                               <Image url="@../image/sms.png" />
                            </image>

@@ -125,10 +125,6 @@ public class ASController implements Initializable {
       Sponsor sponsor=null;
     
     @FXML
-    private Button btnAcceuil;
-    @FXML
-    private Button btnSignout;
-    @FXML
     
     private TextField nomfld;
     @FXML
@@ -146,8 +142,6 @@ public class ASController implements Initializable {
     @FXML
     private ImageView imgSV;
     @FXML
-    private Button rr;
-     @FXML
     private TableView<Sponsor> sponsorTable;
     @FXML
     private TableColumn<Sponsor,String> nom;
@@ -176,15 +170,23 @@ public class ASController implements Initializable {
     @FXML
     private ComboBox<String> combomag;
     @FXML
-    private Button ASC;
+    private TextField nbmag;
+    @FXML
+    private Button btnAcceuil;
+    @FXML
+    private Button btnSignout;
+    @FXML
+    private Button rr;
     @FXML
     private Button DESC;
     @FXML
-    private TextField nbmag;
-    @FXML
-    private ImageView btnpdf;
+    private Button ASC;
     @FXML
     private ImageView btnexcel;
+    @FXML
+    private ImageView btnsms;
+    @FXML
+    private ImageView btnpdf;
     /**
      * Initializes the controller class.
      */
@@ -237,9 +239,6 @@ combomag.getSelectionModel().selectedItemProperty().addListener((options, oldVal
     }
 
     @FXML
-    private void acceuil(ActionEvent event) {
-    }
-     @FXML
     private void refreshTable() {
        
           SponsorList.clear();
@@ -404,9 +403,6 @@ combomag.getSelectionModel().selectedItemProperty().addListener((options, oldVal
                             }
     
 }
-    @FXML
-    private void logout(ActionEvent event) {
-    }
 
 
     @FXML
@@ -490,7 +486,7 @@ combomag.getSelectionModel().selectedItemProperty().addListener((options, oldVal
          emailfld.setText(null);
           imgSfld.setText(null);
     }
-      @FXML
+    @FXML
     private void updatee(ActionEvent event) throws ParseException {
       
          
@@ -545,7 +541,7 @@ combomag.getSelectionModel().selectedItemProperty().addListener((options, oldVal
         
         research();
     }
-     @FXML
+    @FXML
     private void ordremag1(ActionEvent event) {
         
             ord="DESC";
@@ -726,6 +722,26 @@ Font titledesc = FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD, new 
             rs.close();
             File myFile = new File("C:/Users/AhmedBenAbdallah/Desktop/gestionEve_Spon/Détails sponsor.xlsx");
              Desktop.getDesktop().open(myFile);
+    }
+
+    @FXML
+    private void sms(MouseEvent event) throws IOException {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("../GUI/SMS.fxml"));
+        Parent root= loader.load();
+        Scene scene= new Scene(root);
+                Stage primaryStage = new Stage();
+
+        primaryStage.setScene(scene);
+        
+        primaryStage.show();
+    }
+
+    @FXML
+    private void acceuil(ActionEvent event) {
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
     }
 
     
