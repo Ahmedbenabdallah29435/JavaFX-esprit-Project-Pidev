@@ -46,6 +46,20 @@ public class Evennement {
         this.sponsor = sponsor;
     }
 
+    public Evennement(String nom, Date date, String lieu, String description, int nb_place, String imageE) {
+        this.nom = nom;
+        this.date = date;
+        this.lieu = lieu;
+        this.description = description;
+        this.nb_place = nb_place;
+        this.imageE = imageE;
+    }
+
+    
+
+    
+
+
     
     
     

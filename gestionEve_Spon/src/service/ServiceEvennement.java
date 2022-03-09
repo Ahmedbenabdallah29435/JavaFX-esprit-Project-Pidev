@@ -137,6 +137,41 @@ public ServiceEvennement(){
         
     }
     
+    
+    
+    
+    
+     public  List<Evennement> recherchermutli(String critere, String col, String ordre)
+       {
+             List<Evennement> lm =new ArrayList<>();
+        try {
+            System.out.println(critere);
+            st=cnx.createStatement();
+           // System.out.println(" SELECT * FROM  magasin where nom like '%"+critere+"%' or adresse like '%"+critere+"%' or cast(nombrebloc as char) like '%"+critere+"%' order by "+col+" "+ordre);
+            String query=" SELECT * FROM  evenement where nom like '%"+critere+"%' or cast(date as char) like '%"+critere+"%' or lieu like '%"+critere+"%' or description like '%"+critere+"%' or cast(nb_place as char) like '%"+critere+"%' order by "+col+" "+ordre;
+           
+                rs=st.executeQuery(query);
+                while(rs.next()){
+               Evennement s =new Evennement();
+               
+                 s.setNom(rs.getString("nom"));
+                 s.setDate(rs.getDate("date"));
+               
+                s.setLieu(rs.getString("lieu"));
+           
+               s.setDescription(rs.getString("description"));
+                   s.setNb_place(rs.getInt("nb_place"));
+              
+
+                
+                lm.add(s);
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return lm ;
+       }
 }
 //    Connection cnx;
 //    public ServiceEvennement(){

@@ -36,7 +36,7 @@ public class NewFXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            root = FXMLLoader.load(getClass().getResource("ajouterSponsor.fxml"));
+            root = FXMLLoader.load(getClass().getResource("Even.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("bruteForce");
             primaryStage.setScene(scene);

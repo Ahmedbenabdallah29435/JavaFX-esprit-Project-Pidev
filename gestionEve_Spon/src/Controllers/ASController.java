@@ -213,7 +213,7 @@ combomag.getSelectionModel().selectedItemProperty().addListener((options, oldVal
     
     if (combomag.getSelectionModel().getSelectedItem().equals("nom"))
             col="nom";
-    else if   (combomag.getSelectionModel().getSelectedItem().equals("nype"))
+    else if   (combomag.getSelectionModel().getSelectedItem().equals("type"))
             col="type" ;
         else if   (combomag.getSelectionModel().getSelectedItem().equals("adresse"))
             col="adresse" ;
