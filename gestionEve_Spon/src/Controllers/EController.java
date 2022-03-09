@@ -113,8 +113,6 @@ public class EController implements Initializable {
     @FXML
     private TextField nbrfld;
     @FXML
-    private Button imgSbtn;
-    @FXML
     private ImageView imgSV;
     @FXML
     private DatePicker datefld;
@@ -133,19 +131,26 @@ public class EController implements Initializable {
     @FXML
     private Button btnAcceuil;
     @FXML
+    private TextField tot;
+    @FXML
+    private Button btnev;
+    @FXML
+    private Button btnsp;
+    private Button btnev1;
+    @FXML
     private Button btnSignout;
     @FXML
     private Button rr;
     @FXML
     private ImageView btnexcel;
     @FXML
-    private Button btnstat;
-    @FXML
     private Button totbtn;
     @FXML
-    private TextField tot;
-    @FXML
     private Button btnjour;
+    @FXML
+    private Button btnstat;
+    @FXML
+    private Button imgSbtn;
 
     /**
      * Initializes the controller class.
@@ -362,40 +367,42 @@ public class EController implements Initializable {
        sponsornom.setText(String.valueOf(s));
          
         StringBuilder errors =new StringBuilder();
-//        if(nomfld.getText().trim().isEmpty()){
-//            errors.append("Please enter a name\n");
-//        }
-//        if(( !Pattern.matches("[a-zA-Z]*", nomfld.getText()))||(nomfld.getText().trim().isEmpty())){
-//            errors.append("Please enter a valid name\n");
-//        }
-//        if(typefld.getText().trim().isEmpty()){
-//            errors.append("Please enter a type\n");
-//        }
-//        if(adressefld.getText().trim().isEmpty()){
-//            errors.append("Please enter an adresse\n");
-//        }
-//        if(Pattern.matches("[a-zA-Z]*", telfld.getText())||telfld.getText().isEmpty()){
-//            errors.append("please enter a valid number\n");
-//        
-//        }
-//     
-//        if(emailfld.getText().trim().isEmpty()){
-//            errors.append("Please enter an email\n");
-//        }
-//        
-//        if(imgSfld.getText().trim().isEmpty()){
-//            errors.append("Please enter a photo\n");
-//        }
-//       
-//        
-//        if(errors.length()>0){
-//            Alert alert =new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("Errors");
-//            alert.setContentText(errors.toString());
-//            alert.showAndWait();
-//        }
-//        else
-//        {
+//      
+ if(nomfld.getText().trim().isEmpty()){
+            errors.append("Please enter a name\n");
+        }
+        if(( !Pattern.matches("[a-zA-Z]*", nomfld.getText()))||(nomfld.getText().trim().isEmpty())){
+            errors.append("Please enter a valid name\n");
+        }
+        if(datefld.getValue()==null){
+            errors.append("Please enter a date\n");
+        }
+        if(lieufld.getText().trim().isEmpty()){
+            errors.append("Please enter an place\n");
+        }
+        if(Pattern.matches("[a-zA-Z]*",nbrfld.getText())||nbrfld.getText().isEmpty()){
+            errors.append("please enter a valid number\n");
+        
+        }
+     
+        if(desfld.getText().trim().isEmpty()){
+            errors.append("Please enter a description\n");
+        }
+        
+        if(imgEfld.getText().trim().isEmpty()){
+            errors.append("Please enter a photo\n");
+        }
+       
+        
+        if(errors.length()>0){
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Errors");
+            alert.setContentText(errors.toString());
+            alert.showAndWait();
+        }
+        else
+        {
+           
             
            Evennement e=new Evennement(nom,datee,lieu,description,nb_place,imageE,s);
             se.ajouter(e);
@@ -406,7 +413,7 @@ public class EController implements Initializable {
             alert.showAndWait();
             
         }
-    
+    }
 
     @FXML
     private void getImgS(ActionEvent event) {
@@ -453,40 +460,40 @@ public class EController implements Initializable {
        sponsornom.setText(String.valueOf(s));
          
         StringBuilder errors =new StringBuilder();
-//        if(nomfld.getText().trim().isEmpty()){
-//            errors.append("Please enter a name\n");
-//        }
-//        if(( !Pattern.matches("[a-zA-Z]*", nomfld.getText()))||(nomfld.getText().trim().isEmpty())){
-//            errors.append("Please enter a valid name\n");
-//        }
-//        if(typefld.getText().trim().isEmpty()){
-//            errors.append("Please enter a type\n");
-//        }
-//        if(adressefld.getText().trim().isEmpty()){
-//            errors.append("Please enter an adresse\n");
-//        }
-//        if(Pattern.matches("[a-zA-Z]*", telfld.getText())||telfld.getText().isEmpty()){
-//            errors.append("please enter a valid number\n");
-//        
-//        }
-//     
-//        if(emailfld.getText().trim().isEmpty()){
-//            errors.append("Please enter an email\n");
-//        }
-//        
-//        if(imgSfld.getText().trim().isEmpty()){
-//            errors.append("Please enter a photo\n");
-//        }
-//       
-//        
-//        if(errors.length()>0){
-//            Alert alert =new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("Errors");
-//            alert.setContentText(errors.toString());
-//            alert.showAndWait();
-//        }
-//        else
-//        {
+        if(nomfld.getText().trim().isEmpty()){
+            errors.append("Please enter a name\n");
+        }
+        if(( !Pattern.matches("[a-zA-Z]*", nomfld.getText()))||(nomfld.getText().trim().isEmpty())){
+            errors.append("Please enter a valid name\n");
+        }
+        if(datefld.getValue()==null){
+            errors.append("Please enter a date\n");
+        }
+        if(lieufld.getText().trim().isEmpty()){
+            errors.append("Please enter an place\n");
+        }
+        if(Pattern.matches("[a-zA-Z]*",nbrfld.getText())||nbrfld.getText().isEmpty()){
+            errors.append("please enter a valid number\n");
+        
+        }
+     
+        if(desfld.getText().trim().isEmpty()){
+            errors.append("Please enter a description\n");
+        }
+        
+        if(imgEfld.getText().trim().isEmpty()){
+            errors.append("Please enter a photo\n");
+        }
+       
+        
+        if(errors.length()>0){
+            Alert alert =new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Errors");
+            alert.setContentText(errors.toString());
+            alert.showAndWait();
+        }
+        else
+        {
             
            Evennement e=new Evennement(nom,datee,lieu,description,nb_place,imageE,s);
             se.modifier(e);
@@ -497,6 +504,7 @@ public class EController implements Initializable {
             alert.showAndWait();
             
             
+    }
     }
 //    
 //    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -559,7 +567,7 @@ public void research()
 
 
    
-@FXML
+    @FXML
     private void select(ActionEvent event) {
       
         String s=sponsor.getSelectionModel().getSelectedItem().getNom();
@@ -567,9 +575,7 @@ public void research()
        
     }
 
-    @FXML
-    private void acceuil(ActionEvent event) {
-    }
+    
 
     @FXML
     private void logout(ActionEvent event) {
@@ -674,6 +680,36 @@ public void research()
         }
     }
 
-   
+    @FXML
+    private void gererevent(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/Even.fxml"));
+        btnev.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gerersponsor(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/ajouterSponsor.fxml"));
+        btnsp.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void acceuil(ActionEvent event) throws IOException {
+       
+         Parent root = FXMLLoader.load(getClass().getResource("../GUI/Acceuil.fxml"));
+        btnAcceuil.getScene().setRoot(root);
+
+    }
+    private void acceuil1(ActionEvent event) throws IOException {
+           Parent root = FXMLLoader.load(getClass().getResource("../GUI/Acceuil.fxml"));
+        btnAcceuil.getScene().setRoot(root);
+    }
+    private void gererevent1(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/Even.fxml"));
+        btnev1.getScene().setRoot(root);
+    }
+    private void gerersponsor1(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/ajouterSponsor.fxml"));
+        btnsp.getScene().setRoot(root);
+    }
     
 }

@@ -92,7 +92,7 @@
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
             </Button>
-            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Evénements">
+            <Button fx:id="btnev" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gererevent" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Evénements">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -121,7 +121,7 @@
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
             </Button>
-            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Sponsor">
+            <Button fx:id="btnsp" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gerersponsor" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Sponsor">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>

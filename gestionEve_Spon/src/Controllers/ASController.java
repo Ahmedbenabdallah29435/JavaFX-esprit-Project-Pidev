@@ -187,6 +187,10 @@ public class ASController implements Initializable {
     private ImageView btnsms;
     @FXML
     private ImageView btnpdf;
+    @FXML
+    private Button btnev;
+    @FXML
+    private Button btnsp;
     /**
      * Initializes the controller class.
      */
@@ -486,7 +490,6 @@ combomag.getSelectionModel().selectedItemProperty().addListener((options, oldVal
          emailfld.setText(null);
           imgSfld.setText(null);
     }
-    @FXML
     private void updatee(ActionEvent event) throws ParseException {
       
          
@@ -737,11 +740,27 @@ Font titledesc = FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD, new 
     }
 
     @FXML
-    private void acceuil(ActionEvent event) {
+    private void acceuil(ActionEvent event) throws IOException {
+      
+         Parent root = FXMLLoader.load(getClass().getResource("../GUI/Acceuil.fxml"));
+        btnAcceuil.getScene().setRoot(root);
+
     }
 
     @FXML
     private void logout(ActionEvent event) {
+    }
+
+    @FXML
+    private void gererevent(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/Even.fxml"));
+        btnev.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gerersponsor(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/ajouterSponsor.fxml"));
+        btnsp.getScene().setRoot(root);
     }
 
     
