@@ -105,6 +105,24 @@ public class ServiceSponsor implements IService<Sponsor> {
         }
         return list;
     }
+    public List<String> afficher_S() {
+         List<String> le =new ArrayList<>();
+        try {
+            Statement st;
+            st=cnx.createStatement();
+            
+            String query="SELECT * FROM `sponsor`";
+            ResultSet rs=st.executeQuery(query);
+            while(rs.next()){
+
+                le.add(rs.getString("nom"));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceSponsor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return le; 
+    }
 
     @Override
     public Sponsor afficher_id(int id) {

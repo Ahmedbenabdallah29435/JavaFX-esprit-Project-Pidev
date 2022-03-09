@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import javafx.event.Event;
 import utils.Myconnexion;
 
 
@@ -173,6 +174,49 @@ public ServiceEvennement(){
         }
         return lm ;
        }
+     public String test1(Evennement e)
+   {
+       
+     String x = null;
+       
+       java.util.Date date=new java.util.Date();
+       java.sql.Date sqlDate=new Date(date.getTime());
+      
+       
+        String sql ="select DATEDIFF((select date from evenement where idEv='"+e.getIdEv()+"'),'"+sqlDate+"')";
+        
+        try {
+             Statement ste= cnx.createStatement();
+            ResultSet rs =ste.executeQuery(sql);
+            while(rs.next()){
+             x=rs.getString(1);
+             System.out.println("event date "+x);
+             
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return x;
+   }
+          public String TotalEvent()
+    {
+        
+       String x=null;
+        String sql ="select count(*) from evenement";
+        try {
+            Statement ste= cnx.createStatement();
+            ResultSet rs =ste.executeQuery(sql);
+            while(rs.next()){
+             x=rs.getString(1);
+             System.out.println("total event "+x);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+       
+return x;
+        
+    }
 }
 //    Connection cnx;
 //    public ServiceEvennement(){

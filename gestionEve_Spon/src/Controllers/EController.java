@@ -5,16 +5,23 @@
  */
 package Controllers;
 
+import GUI.ChartController;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import entity.Evennement;
 import entity.Sponsor;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -54,8 +61,13 @@ import javafx.util.Callback;
 import static javafx.util.Duration.millis;
 import javafx.util.StringConverter;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import service.ServiceEvennement;
 import service.ServiceSponsor;
+import utils.Myconnexion;
 
 /**
  * FXML Controller class
@@ -127,7 +139,13 @@ public class EController implements Initializable {
     @FXML
     private ImageView btnexcel;
     @FXML
-    private ImageView btnstat;
+    private Button btnstat;
+    @FXML
+    private Button totbtn;
+    @FXML
+    private TextField tot;
+    @FXML
+    private Button btnjour;
 
     /**
      * Initializes the controller class.
@@ -416,7 +434,6 @@ public class EController implements Initializable {
         sponsornom.setText(null);
           imgEfld.setText(null);
     }
-    @FXML
     private void updatee(ActionEvent event) throws ParseException {
       
          String nom =nomfld.getText();
@@ -559,11 +576,102 @@ public void research()
     }
 
     @FXML
-    private void exportExcel(MouseEvent event) {
+    private void exportExcel(MouseEvent event)throws SQLException, FileNotFoundException, IOException {
+        Connection cnx = Myconnexion.getInstance().getCnx();
+        String query = "Select * from evenement";
+         PreparedStatement pst = cnx.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            XSSFWorkbook wb = new XSSFWorkbook();
+            XSSFSheet sheet = wb.createSheet("Détails evenement");
+            XSSFRow header = sheet.createRow(0);
+            header.createCell(0).setCellValue("Nom");
+            header.createCell(1).setCellValue("Date");
+            header.createCell(2).setCellValue("Lieu");
+            header.createCell(3).setCellValue("Description");
+             header.createCell(4).setCellValue("Nb_place");
+      
+              
+            
+            int index = 1;
+            while(rs.next()){
+                XSSFRow row = sheet.createRow(index);
+                row.createCell(0).setCellValue(rs.getString("nom"));
+                row.createCell(1).setCellValue(rs.getDate("date"));
+                row.createCell(2).setCellValue(rs.getString("lieu"));
+                row.createCell(3).setCellValue(rs.getString("description"));
+                row.createCell(4).setCellValue(rs.getInt("nb_place"));
+                
+                
+               
+                index++;
+            }
+            
+            FileOutputStream file = new FileOutputStream("Détails evenement.xlsx");
+            wb.write(file);
+            file.close();
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Exportation effectuée!!!");
+            alert.showAndWait();
+            pst.close();
+            rs.close();
+            File myFile = new File("C:/Users/AhmedBenAbdallah/Desktop/gestionEve_Spon/Détails evenement.xlsx");
+             Desktop.getDesktop().open(myFile);
+    }
+    
+
+
+    @FXML
+    private void totalevent(ActionEvent event) {
+         ServiceEvennement s=new ServiceEvennement();
+        Connection cnx =Myconnexion.getInstance().getCnx();
+         
+              String l=s.TotalEvent();
+              
+                    
+                    
+                    
+                    tot.setText(l);
+    }
+
+
+    @FXML
+    private void rester(ActionEvent event) {
+        Evennement e=evenTable.getSelectionModel().getSelectedItem();
+       ServiceEvennement se=new ServiceEvennement();
+       //sp.supprimer(sponsor.getId());
+       String x=null;
+      x=se.test1(e);
+              JOptionPane.showMessageDialog(null,"jours restants "+x);
     }
 
     @FXML
-    private void showchart(MouseEvent event) {
+    private void showchart(ActionEvent event) {
+           try {
+            List<Evennement> le=se.afficher();
+    ObservableList<Evennement> data =FXCollections.observableArrayList(le);
+            FXMLLoader chart= new FXMLLoader(getClass().getResource("../GUI/chart.fxml"));
+            Parent root = chart.load();
+            ChartController mc = chart.getController();
+           
+           
+            Scene scene = new Scene(root);
+           Stage modifStage = new Stage();
+            
+            modifStage.setTitle("Nombre des Evenements / Sponsors");
+            modifStage.setScene(scene);
+            modifStage.show();
+            
+             ChartController controller = chart.getController();
+        controller.setEvennementData(data,le.size());
+            
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(EController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
    

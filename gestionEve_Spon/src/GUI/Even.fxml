@@ -426,11 +426,22 @@
                               <Image url="@../image/excel.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="btnstat" fitHeight="57.0" fitWidth="63.0" layoutX="1009.0" layoutY="316.0" onMouseClicked="#showchart">
-                           <image>
-                              <Image url="@../image/statistiques%20(1).png" />
-                           </image>
-                        </ImageView>
+                        <Button fx:id="totbtn" blendMode="COLOR_BURN" layoutX="994.0" layoutY="432.0" mnemonicParsing="false" onAction="#totalevent" prefHeight="45.0" prefWidth="166.0" style="-fx-background-color: b3c4f0;" text="total event">
+                           <font>
+                              <Font name="Cooper Black" size="24.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="tot" layoutX="932.0" layoutY="432.0" prefHeight="46.0" prefWidth="55.0" />
+                        <Button fx:id="btnjour" blendMode="COLOR_BURN" layoutX="397.0" layoutY="506.0" mnemonicParsing="false" onAction="#rester" prefHeight="46.0" prefWidth="136.0" style="-fx-background-color: b3c4f0;" text="restant">
+                           <font>
+                              <Font name="Cooper Black" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnstat" blendMode="COLOR_BURN" layoutX="966.0" layoutY="334.0" mnemonicParsing="false" onAction="#showchart" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: b3c4f0;" text="Statistiques">
+                           <font>
+                              <Font name="Cooper Black" size="19.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </content>
