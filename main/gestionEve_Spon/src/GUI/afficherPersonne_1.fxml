@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="628.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherPersonneController">
+   <children>
+      <HBox layoutX="-17.0" layoutY="-10.0" prefHeight="97.0" prefWidth="1180.0" style="-fx-background-color: #aac0f9;">
+         <children>
+            <HBox prefHeight="97.0" prefWidth="228.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="101.0" prefWidth="247.0" style="-fx-background-color: transparent;" text="Connect Sport" textFill="#18347d">
+                     <font>
+                        <Font name="Cooper Black" size="22.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <ImageView fitHeight="59.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true" translateX="-20.0" translateY="20.0">
+               <image>
+                  <Image url="@img/connect.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" translateX="790.0" translateY="40.0">
+               <image>
+                  <Image url="@img/notifications.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <TableView fx:id="tablePersonne" layoutX="285.0" layoutY="157.0" prefHeight="297.0" prefWidth="862.0" style="-fx-border-color: #3f62b6;">
+        <columns>
+          <TableColumn fx:id="txtnom" prefWidth="59.0" text="Nom" />
+            <TableColumn fx:id="txtprenom" prefWidth="82.0" text="Prénom" />
+            <TableColumn fx:id="txtdatenaissance" prefWidth="120.0" text="Date Naissance" />
+            <TableColumn fx:id="txtadresse" prefWidth="74.0" text="Adresse" />
+            <TableColumn fx:id="txtmail" prefWidth="77.0" text="Mail" />
+            <TableColumn fx:id="txttel" prefWidth="73.0" text="Tel" />
+            <TableColumn fx:id="txtrole" prefWidth="56.0" text="Role" />
+            <TableColumn fx:id="txtmdp" prefWidth="81.0" text="Mdp" />
+            <TableColumn fx:id="txtnomEquipe" prefWidth="105.0" text="NomEquipe" />
+            <TableColumn fx:id="txtetat" prefWidth="63.0" text="Etat" />
+            <TableColumn fx:id="txtid" prefWidth="63.0" text="id" visible="false" />
+        </columns>
+      </TableView>
+      <HBox layoutX="-2.0" layoutY="87.0" prefHeight="464.0" prefWidth="201.0">
+         <children>
+            <ImageView fitHeight="542.0" fitWidth="257.0" pickOnBounds="true">
+               <image>
+                  <Image url="@img/bca2e9c009b7f3cfa563efba92ad257a.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <Button fx:id="txtajouter" layoutX="401.0" layoutY="538.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="56.0" prefWidth="145.0" style="-fx-background-color: #b182d3;" text="Ajouter" textFill="#17337d">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="516.0" layoutY="551.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/add-user.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnpdf" layoutX="555.0" layoutY="537.0" mnemonicParsing="false" onAction="#pdf" prefHeight="56.0" prefWidth="133.0" style="-fx-background-color: #b182d3;" text="PDF" textFill="#17337d">
+         <font>
+            <Font name="Cooper Black" size="21.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="639.0" layoutY="542.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/pdf-file.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="rech" layoutX="589.0" layoutY="105.0" mnemonicParsing="false" onAction="#recherche" prefHeight="35.0" prefWidth="65.0" style="-fx-background-color: white;" />
+      <ImageView fx:id="rech1" fitHeight="21.0" fitWidth="23.0" layoutX="595.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" scaleX="1.5" scaleY="1.5" translateX="10.0">
+         <image>
+            <Image url="@img/search.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnlogout" layoutX="1095.0" layoutY="26.0" mnemonicParsing="false" onAction="#logout" prefHeight="45.0" prefWidth="59.0" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="45.0" fitWidth="35.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" translateX="1100.0" translateY="20.0">
+         <image>
+            <Image url="@img/logout.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="retourAcceuil" layoutX="289.0" layoutY="537.0" mnemonicParsing="false" onAction="#retourAcceuil" prefHeight="56.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#17337d">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="317.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/home%20(1).png" />
+         </image>
+      </ImageView>
+      <Button fx:id="afficher" layoutX="661.0" layoutY="105.0" mnemonicParsing="false" onAction="#afficher" prefHeight="31.0" prefWidth="59.0" style="-fx-background-color: white;" />
+      <Button fx:id="btnsupprimer" layoutX="734.0" layoutY="105.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: white;" />
+      <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="673.0" layoutY="107.0" pickOnBounds="true">
+         <image>
+            <Image url="@img/refresh.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="749.0" layoutY="104.0" pickOnBounds="true">
+         <image>
+            <Image url="@img/delete.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="rechfield" layoutX="387.0" layoutY="106.0" />
+      <Label fx:id="nomadmin" layoutX="-66.0" layoutY="-15.0" prefHeight="45.0" prefWidth="159.0" text="Label" textFill="#18347d" translateX="960.0" translateY="40.0">
+         <font>
+            <Font name="Cooper Black" size="26.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnavertir" layoutX="865.0" layoutY="538.0" mnemonicParsing="false" onAction="#avertir" prefHeight="56.0" prefWidth="133.0" style="-fx-background-color: #b182d3;" text="Avertir" textFill="#17337d">
+         <font>
+            <Font name="Cooper Black" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnexcel" layoutX="708.0" layoutY="539.0" mnemonicParsing="false" onAction="#excel" prefHeight="56.0" prefWidth="145.0" style="-fx-background-color: #b182d3;" text="EXCEL" textFill="#17337d">
+         <font>
+            <Font name="Cooper Black" size="21.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="818.0" layoutY="551.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/excel.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="965.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/gmail.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnsms" layoutX="1010.0" layoutY="537.0" mnemonicParsing="false" onAction="#sms" prefHeight="56.0" prefWidth="133.0" style="-fx-background-color: #b182d3;" text="SMS" textFill="#17337d">
+         <font>
+            <Font name="Cooper Black" size="21.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="tri" layoutX="807.0" layoutY="105.0" prefWidth="150.0" />
+      <Button fx:id="btntri" layoutX="965.0" layoutY="96.0" mnemonicParsing="false" onAction="#trier" prefHeight="56.0" prefWidth="71.0" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="35.0" fitWidth="45.0" layoutX="975.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/sort.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1102.0" layoutY="546.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/conversation.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

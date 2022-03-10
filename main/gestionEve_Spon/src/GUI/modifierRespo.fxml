@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="641.0" prefWidth="614.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI.ModifierRespoController">
+   <children>
+      <HBox prefHeight="206.0" prefWidth="636.0" style="-fx-background-color: b399cc;">
+         <children>
+            <Text fill="#d5dff8" strokeType="OUTSIDE" strokeWidth="0.0" text="Connect Sport" translateX="80.0" translateY="20.0" wrappingWidth="313.3818359375">
+               <font>
+                  <Font name="Cooper Black" size="40.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <Button layoutX="212.0" layoutY="95.0" mnemonicParsing="false" prefHeight="187.0" prefWidth="207.0" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="187.0" fitWidth="207.0" layoutX="232.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/profile.png" />
+         </image>
+      </ImageView>
+      <Text fill="#a56dbf" layoutX="66.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="80.6708984375">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Text fill="#a56dbf" layoutX="326.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom" wrappingWidth="126.99999162554741">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Text fill="#a56dbf" layoutX="30.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date naissance" wrappingWidth="171.6708984375">
+         <font>
+            <Font name="Cooper Black" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#a56dbf" layoutX="332.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" wrappingWidth="141.99999421834946">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Text fill="#a56dbf" layoutX="332.0" layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel" wrappingWidth="141.99999421834946">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Text fill="#a56dbf" layoutX="57.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="97.99999988079071">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tf_nom" layoutX="155.0" layoutY="343.0" prefHeight="31.0" prefWidth="163.0" />
+      <TextField fx:id="tf_mail" layoutX="163.0" layoutY="448.0" prefHeight="31.0" prefWidth="163.0" />
+      <TextField fx:id="tf_tel" layoutX="453.0" layoutY="449.0" prefHeight="31.0" prefWidth="163.0" />
+      <TextField fx:id="tf_adresse" layoutX="459.0" layoutY="398.0" prefHeight="31.0" prefWidth="163.0" />
+      <TextField fx:id="tf_prenom" layoutX="459.0" layoutY="343.0" prefHeight="31.0" prefWidth="163.0" />
+      <TextField fx:id="tf_date" layoutX="194.0" layoutY="398.0" prefHeight="31.0" prefWidth="127.0" />
+      <Button fx:id="btnmodif" layoutX="116.0" layoutY="541.0" mnemonicParsing="false" onAction="#modifier" prefHeight="60.0" prefWidth="207.0" style="-fx-background-color: #aac0f9;" text="Enregsitrer" textFill="#18347d">
+         <font>
+            <Font name="Cooper Black" size="22.0" />
+         </font>
+      </Button>
+      <Text fill="#a56dbf" layoutX="129.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsable ID" wrappingWidth="270.9999912381172">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Label fx:id="lb_id" layoutX="398.0" layoutY="282.0" prefHeight="57.0" prefWidth="142.0" text="Label">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="73.0" fitWidth="91.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/connect.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnacceuil" layoutX="373.0" layoutY="541.0" mnemonicParsing="false" onAction="#acceuil" prefHeight="60.0" prefWidth="172.0" style="-fx-background-color: #aac0f9;" text="Acceuil" textFill="#18347d">
+         <font>
+            <Font name="Cooper Black" size="22.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="46.0" fitWidth="42.0" layoutX="503.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/home-button.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="42.0" layoutX="279.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/complain.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

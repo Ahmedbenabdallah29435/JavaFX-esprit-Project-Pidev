@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="pane_afficherProfil" prefHeight="643.0" prefWidth="636.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ProfilResponsableController">
+   <children>
+      <Label fx:id="lb_nom" layoutX="159.0" layoutY="319.0" prefHeight="57.0" prefWidth="127.0" text="nom">
+         <font>
+            <Font name="Cooper Black" size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_prenom" layoutX="459.0" layoutY="318.0" prefHeight="57.0" prefWidth="142.0" text="Label">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_adresse" layoutX="459.0" layoutY="376.0" prefHeight="57.0" prefWidth="142.0" text="Label">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_datenaissance" layoutX="184.0" layoutY="376.0" prefHeight="57.0" prefWidth="142.0" text="Label">
+         <font>
+            <Font name="Cooper Black" size="21.0" />
+         </font>
+      </Label>
+      <Text fill="#a56dbf" layoutX="56.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="80.6708984375">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Text fill="#a56dbf" layoutX="316.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom" wrappingWidth="126.99999162554741">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Text fill="#a56dbf" layoutX="20.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date naissance" wrappingWidth="171.6708984375">
+         <font>
+            <Font name="Cooper Black" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#a56dbf" layoutX="322.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" wrappingWidth="141.99999421834946">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Text fill="#a56dbf" layoutX="322.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel" wrappingWidth="141.99999421834946">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Text fill="#a56dbf" layoutX="47.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="97.99999988079071">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Label fx:id="lb_tel" layoutX="459.0" layoutY="425.0" prefHeight="57.0" prefWidth="162.0" text="Label">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_mail" layoutX="163.0" layoutY="426.0" prefHeight="57.0" prefWidth="162.0" text="Label">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="206.0" prefWidth="636.0" style="-fx-background-color: b399cc;">
+         <children>
+            <Text fill="#d5dff8" strokeType="OUTSIDE" strokeWidth="0.0" text="Connect Sport" translateX="80.0" translateY="20.0" wrappingWidth="313.3818359375">
+               <font>
+                  <Font name="Cooper Black" size="40.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <Button fx:id="btnacceuil" layoutX="427.0" layoutY="535.0" mnemonicParsing="false" onAction="#acceuilR" prefHeight="60.0" prefWidth="166.0" style="-fx-background-color: #aac0f9;" text="Acceuil" textFill="#18347d">
+         <font>
+            <Font name="Cooper Black" size="22.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="73.0" fitWidth="91.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/connect.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="202.0" layoutY="85.0" mnemonicParsing="false" prefHeight="187.0" prefWidth="207.0" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="187.0" fitWidth="207.0" layoutX="222.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/profile.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="32.0" layoutX="552.0" layoutY="549.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/home-button.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnsupp" layoutX="43.0" layoutY="535.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="60.0" prefWidth="187.0" style="-fx-background-color: #aac0f9;" text="Supprimer" textFill="#18347d">
+         <font>
+            <Font name="Cooper Black" size="22.0" />
+         </font>
+      </Button>
+      <Text fill="#a56dbf" layoutX="119.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsable ID" wrappingWidth="270.9999912381172">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Label fx:id="lb_id" layoutX="388.0" layoutY="272.0" prefHeight="57.0" prefWidth="142.0" text="Label">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnmodif" layoutX="243.0" layoutY="535.0" mnemonicParsing="false" onAction="#modifier" prefHeight="60.0" prefWidth="166.0" style="-fx-background-color: #aac0f9;" text="Modifier" textFill="#18347d">
+         <font>
+            <Font name="Cooper Black" size="22.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="36.0" fitWidth="32.0" layoutX="374.0" layoutY="549.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/refresh%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="32.0" layoutX="192.0" layoutY="549.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/delete.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

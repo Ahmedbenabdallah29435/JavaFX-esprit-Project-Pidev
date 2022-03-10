@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="556.0" prefWidth="859.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <HBox layoutX="-4.0" prefHeight="83.0" prefWidth="869.0" style="-fx-background-color: b399cc;">
+         <children>
+            <ImageView fitHeight="73.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/connect.png" />
+               </image>
+            </ImageView>
+            <Text fill="#d5dff8" strokeType="OUTSIDE" strokeWidth="0.0" text="Connect Sport" translateX="10.0" translateY="15.0" wrappingWidth="326.3818359375">
+               <font>
+                  <Font name="Cooper Black" size="40.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="53.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" translateX="350.0" translateY="15.0">
+               <image>
+                  <Image url="@img/notifications.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" translateX="350.0" translateY="15.0">
+               <image>
+                  <Image url="@img/logout%20(1).png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <ImageView fitHeight="477.0" fitWidth="257.0" layoutX="-2.0" layoutY="83.0" pickOnBounds="true">
+         <image>
+            <Image url="@img/5.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="#18347d" layoutX="363.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Evénement" wrappingWidth="392.6708984375">
+         <font>
+            <Font name="Cooper Black" size="39.0" />
+         </font>
+      </Text>
+      <TextField layoutX="369.0" layoutY="208.0" prefHeight="31.0" prefWidth="155.0" />
+      <TextField layoutX="634.0" layoutY="208.0" prefHeight="31.0" prefWidth="147.0" />
+      <TextField layoutX="369.0" layoutY="275.0" prefHeight="31.0" prefWidth="155.0" />
+      <TextField layoutX="644.0" layoutY="275.0" prefHeight="31.0" prefWidth="147.0" />
+      <TextField layoutX="369.0" layoutY="343.0" prefHeight="31.0" prefWidth="155.0" />
+      <TextField layoutX="644.0" layoutY="343.0" prefHeight="31.0" prefWidth="137.0" />
+      <Text layoutX="302.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="60.000007688999176">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="526.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Participants" wrappingWidth="113.99998086690903">
+         <font>
+            <Font name="Cooper Black" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="302.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="60.000007688999176">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="553.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu" wrappingWidth="60.000007688999176">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="283.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="79.00000768899918">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="553.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" wrappingWidth="60.000007688999176">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

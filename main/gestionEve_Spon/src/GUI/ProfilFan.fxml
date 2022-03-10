@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="717.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ProfilFanController">
+   <children>
+      <Button layoutX="212.0" layoutY="95.0" mnemonicParsing="false" prefHeight="187.0" prefWidth="207.0" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="187.0" fitWidth="219.0" layoutX="226.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" translateX="-20.0" translateY="-50.0">
+         <image>
+            <Image url="@img/man%20(1).png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lb_nom" layoutX="173.0" layoutY="300.0" prefHeight="57.0" prefWidth="127.0" text="nom">
+         <font>
+            <Font name="Cooper Black" size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_prenom" layoutX="469.0" layoutY="299.0" prefHeight="57.0" prefWidth="142.0" text="Label">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_adresse" layoutX="469.0" layoutY="365.0" prefHeight="57.0" prefWidth="142.0" text="Label">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_datenaissance" layoutX="192.0" layoutY="366.0" prefHeight="57.0" prefWidth="142.0" text="Label">
+         <font>
+            <Font name="Cooper Black" size="21.0" />
+         </font>
+      </Label>
+      <Text fill="RED" layoutX="66.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="80.6708984375">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Text fill="RED" layoutX="312.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom" wrappingWidth="126.99999162554741">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Text fill="RED" layoutX="20.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date naissance" wrappingWidth="171.6708984375">
+         <font>
+            <Font name="Cooper Black" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="RED" layoutX="305.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" wrappingWidth="141.99999421834946">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Text fill="RED" layoutX="332.0" layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel" wrappingWidth="141.99999421834946">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Text fill="RED" layoutX="57.0" layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="97.99999988079071">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Label fx:id="lb_tel" layoutX="469.0" layoutY="435.0" prefHeight="57.0" prefWidth="162.0" text="Label">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_mail" layoutX="173.0" layoutY="436.0" prefHeight="57.0" prefWidth="162.0" text="Label">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Label>
+      <Text fill="RED" layoutX="206.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FAN ID" wrappingWidth="152.99999123811722">
+         <font>
+            <Font name="Cooper Black" size="31.0" />
+         </font>
+      </Text>
+      <Label fx:id="lb_id" layoutX="348.0" layoutY="235.0" prefHeight="57.0" prefWidth="142.0" text="Label">
+         <font>
+            <Font name="Cooper Black" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnsupp" blendMode="DIFFERENCE" layoutX="53.0" layoutY="545.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="60.0" prefWidth="187.0" style="-fx-background-color: #aac0f9;" text="Supprimer" textFill="#18347d">
+         <font>
+            <Font name="Cooper Black" size="22.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="36.0" fitWidth="32.0" layoutX="202.0" layoutY="559.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/delete.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnmodif" blendMode="DIFFERENCE" layoutX="253.0" layoutY="545.0" mnemonicParsing="false" onAction="#modifier" prefHeight="60.0" prefWidth="166.0" style="-fx-background-color: #aac0f9;" text="Modifier" textFill="#18347d">
+         <font>
+            <Font name="Cooper Black" size="22.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="36.0" fitWidth="32.0" layoutX="384.0" layoutY="559.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/refresh%20(1).png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnacceuil" blendMode="DIFFERENCE" layoutX="437.0" layoutY="545.0" mnemonicParsing="false" onAction="#acceuilR" prefHeight="60.0" prefWidth="166.0" style="-fx-background-color: #aac0f9;" text="Acceuil" textFill="#18347d">
+         <font>
+            <Font name="Cooper Black" size="22.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="36.0" fitWidth="32.0" layoutX="562.0" layoutY="559.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/home-button.png" />
+         </image>
+      </ImageView>
+      <Text fill="RED" layoutX="159.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BruteForce" wrappingWidth="313.3818359375">
+         <font>
+            <Font name="Cooper Black" size="40.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

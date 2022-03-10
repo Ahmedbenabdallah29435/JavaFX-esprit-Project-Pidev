@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" blendMode="DARKEN" prefHeight="673.0" prefWidth="1208.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LoginController">
+   <children>
+      <Text fill="#18347d" layoutX="344.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BruteForce" textAlignment="CENTER" wrappingWidth="519.6708984375">
+         <font>
+            <Font name="Cooper Black" size="61.0" />
+         </font>
+         <effect>
+            <Reflection>
+               <input>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </input>
+            </Reflection>
+         </effect>
+      </Text>
+      <HBox layoutX="353.0" layoutY="159.0" prefHeight="230.0" prefWidth="501.0" style="-fx-border-color: #18347d;">
+         <effect>
+            <GaussianBlur />
+         </effect></HBox>
+      <TextField fx:id="txtmail" layoutX="580.0" layoutY="166.0" prefHeight="45.0" prefWidth="215.0" />
+      <Text fill="RED" layoutX="475.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="88.6708984375">
+         <font>
+            <Font name="Cooper Black" size="29.0" />
+         </font>
+      </Text>
+      <Text fill="#ff0d00" layoutX="376.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" wrappingWidth="197.6708984375">
+         <font>
+            <Font name="Cooper Black" size="29.0" />
+         </font>
+      </Text>
+      <PasswordField fx:id="txtmdp" layoutX="580.0" layoutY="229.0" prefHeight="45.0" prefWidth="215.0" />
+      <Button fx:id="btnlogin" alignment="TOP_LEFT" blendMode="DIFFERENCE" layoutX="652.0" layoutY="495.0" mnemonicParsing="false" onAction="#login" prefHeight="56.0" prefWidth="198.0" style="-fx-background-color: #aac0f9;" text="Se connecter" textFill="#00faff">
+         <font>
+            <Font name="Cooper Black" size="23.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="816.0" layoutY="506.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/login.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btninscrire" alignment="TOP_LEFT" blendMode="DIFFERENCE" layoutX="428.0" layoutY="495.0" mnemonicParsing="false" onAction="#inscrire" prefHeight="56.0" prefWidth="182.0" style="-fx-background-color: #aac0f9;" text="S'inscrire" textFill="#00d0ff">
+         <font>
+            <Font name="Cooper Black" size="23.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="563.0" layoutY="506.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/add-user.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnmdp" alignment="TOP_LEFT" blendMode="DIFFERENCE" layoutX="531.0" layoutY="411.0" mnemonicParsing="false" onAction="#oublier" prefHeight="56.0" prefWidth="191.0" style="-fx-background-color: #aac0f9;" text="Mdp oublié" textFill="#00e1ff">
+         <font>
+            <Font name="Cooper Black" size="23.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="34.0" fitWidth="40.0" layoutX="679.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/padlock.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="673.0" fitWidth="354.0">
+         <image>
+            <Image url="@../image/—Pngtree—wolf%20logo%20for%20esport_5526612.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="673.0" fitWidth="354.0" layoutX="850.0" layoutY="-1.0">
+         <image>
+            <Image url="@../image/—Pngtree—wolf%20logo%20for%20esport_5526612.png" />
+         </image>
+      </ImageView>
+   </children>
+   <effect>
+      <ColorAdjust brightness="-0.19" contrast="0.22" hue="-0.1" saturation="-0.05" />
+   </effect>
+</AnchorPane>

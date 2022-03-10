@@ -5,6 +5,8 @@
  */
 package GUI;
 
+
+import static GUI.main.Userconnected;
 import controller.FrontJoueurController;
 import java.io.IOException;
 import java.net.URL;
@@ -19,7 +21,7 @@ import javafx.scene.control.Button;
 /**
  * FXML Controller class
  *
- * @author malak_6
+ * @author ahmed
  */
 public class AcceuilFanController implements Initializable {
 
@@ -31,7 +33,10 @@ public class AcceuilFanController implements Initializable {
     private Button actualitebtn;
     @FXML
     private Button eventbtn;
-
+ @FXML
+    private Button btnprofil;
+    @FXML
+    private Button btnlogout;
     /**
      * Initializes the controller class.
      */
@@ -55,5 +60,35 @@ public class AcceuilFanController implements Initializable {
         EventfanController ap= loader.getController();
         eventbtn.getScene().setRoot(root);
     }
+    @FXML
+    private void profil(ActionEvent event) throws IOException {
+         FXMLLoader loader= new FXMLLoader(getClass().getResource("ProfilFan.fxml"));
+        Parent root = loader.load();
+        ProfilFanController ap= loader.getController();
+        
+        btnprofil.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void logout(ActionEvent event) throws IOException {
+          Userconnected.setId(0);
+                  Userconnected.setNom("");
+                  Userconnected.setPrenom("");              
+                  //Userconnected.setDatenaissance(d);                       
+                  Userconnected.setAdresse("");                               
+                  Userconnected.setMail("");                                     
+                  Userconnected.setTel(0);
+                  Userconnected.setRole("");
+                  Userconnected.setMdp("");
+                  Userconnected.setNomEquipe("");
+                  Userconnected.setEtat("");
+        
+       FXMLLoader loader= new FXMLLoader(getClass().getResource("Login.fxml"));
+        Parent root = loader.load();
+        LoginController ap= loader.getController();
+        
+        btnlogout.getScene().setRoot(root);
+    }
+    
     
 }

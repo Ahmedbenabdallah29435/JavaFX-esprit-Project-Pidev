@@ -5,6 +5,7 @@
  */
 package controller;
 
+import GUI.AcceuilFanController;
 import Notifcation.AlertType;
 import Notifcation.AlertsBuilder;
 import Notifcation.NotificationType;
@@ -66,6 +67,7 @@ import javafx.scene.Parent;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
@@ -146,15 +148,7 @@ public class FrontJoueurController implements Initializable {
     @FXML
     private Pane imageProfileContainer;
     @FXML
-    private ImageView imageViewProfile;
-    @FXML
     private MaterialDesignIconView icon;
-    @FXML
-    private Text textName;
-    @FXML
-    private Text textUserType;
-    @FXML
-    private ImageView verified;
     @FXML
     private TabPane PaneTableau;
     @FXML
@@ -224,6 +218,8 @@ public class FrontJoueurController implements Initializable {
     
     
     public static int idUserConnected = 1;  // ======>>>>>>>>>>>>>> idUserConnected
+    @FXML
+    private Button txtacceuil;
 
     /////////////////////////////
     /**
@@ -369,6 +365,14 @@ public class FrontJoueurController implements Initializable {
             Logger.getLogger(FrontJoueurController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+     @FXML
+    private void acceuil(ActionEvent event) throws IOException {
+         FXMLLoader loader= new FXMLLoader(getClass().getResource("../GUI/acceuilFan.fxml"));
+        Parent root = loader.load();
+        AcceuilFanController ap= loader.getController();
+        txtacceuil.getScene().setRoot(root);
     }
 
     private class SexeUserCellValueFactory implements Callback<TableColumn.CellDataFeatures<Joueur, ImageView>, ObservableValue<ImageView>> {
@@ -816,7 +820,6 @@ public class FrontJoueurController implements Initializable {
         }
     }
 
-    @FXML
     private void close_app(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are You sure do you want Exit !");
         Optional<ButtonType> result = alert.showAndWait();

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="488.0" prefWidth="837.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI.EventfanController_1">
+   <children>
+      <ImageView fitHeight="488.0" fitWidth="837.0" pickOnBounds="true">
+         <image>
+            <Image url="@img/6383f2c5c6dfa8b85c45fde859730056.jpg" />
+         </image>
+      </ImageView>
+      <VBox fx:id="afficheEvent" layoutX="528.0" layoutY="112.0" prefHeight="300.0" prefWidth="283.0">
+         <children>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

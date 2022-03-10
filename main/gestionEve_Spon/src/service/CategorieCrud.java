@@ -128,16 +128,16 @@ public class CategorieCrud implements ICategorie<Categorie> {
         return cu;
     }
 
-    public String MaxUsedGenre() {
+ public String MaxUsedGenre() {
         String Genre="";
         try {
-            String requete = "SELECT MAX(Genre) FROM categorie";
+            String requete = "SELECT  Genre ,COUNT(Genre) AS Genre FROM categorie GROUP BY Genre ORDER BY COUNT(Genre) DESC";
             Statement pst = Myconnexion.getInstance().getCnx().prepareStatement(requete); // import java.sql.Statement
             ResultSet rs = pst.executeQuery(requete);
             while (rs.next()) {
                 Genre=rs.getString(1);
-                System.out.println("Genre"+Genre);
-                break;
+               // System.out.println("Genre"+Genre);
+               break;
             }
 
         } catch (SQLException ex) {
@@ -147,5 +147,4 @@ public class CategorieCrud implements ICategorie<Categorie> {
         }
         return Genre;
     }
-
 }

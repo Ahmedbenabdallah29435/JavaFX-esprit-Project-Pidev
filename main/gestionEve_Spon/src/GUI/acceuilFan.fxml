@@ -7,9 +7,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="546.0" prefWidth="799.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AcceuilFanController">
+<AnchorPane id="AnchorPane" prefHeight="704.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AcceuilFanController">
    <children>
-      <ImageView fitHeight="546.0" fitWidth="799.0">
+      <ImageView fitHeight="850.0" fitWidth="1433.0">
          <image>
             <Image url="@../image/Nng67j.jpg" />
          </image>
@@ -39,5 +39,20 @@
             <Font name="Cooper Black" size="59.0" />
          </font>
       </Text>
+      <Button fx:id="btnprofil" blendMode="RED" layoutX="14.0" layoutY="305.0" mnemonicParsing="false" onAction="#profil" prefHeight="83.0" prefWidth="171.0" style="-fx-background-color: #aac0f9;" text="Profil" textFill="#18347d">
+         <font>
+            <Font name="Cooper Black" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnlogout" layoutX="728.0" layoutY="482.0" mnemonicParsing="false" onAction="#logout" prefHeight="46.0" prefWidth="64.0" style="-fx-background-color: white;" textFill="#18347d">
+         <font>
+            <Font name="Cooper Black" size="25.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="749.0" layoutY="495.0">
+         <image>
+            <Image url="@../image/back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
