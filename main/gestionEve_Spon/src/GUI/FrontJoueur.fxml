@@ -117,6 +117,11 @@
       </AnchorPane>
       <Pane fx:id="ContainerJoueur" prefHeight="700.0" prefWidth="1198.0" styleClass="pageApplication" stylesheets="@Style.css">
          <children>
+            <ImageView fitHeight="700.0" fitWidth="1194.0">
+               <image>
+                  <Image url="@../image/Nng67j.jpg" />
+               </image>
+            </ImageView>
             <HBox fx:id="Userinformations" layoutX="26.0" layoutY="22.0" prefHeight="100.0" prefWidth="238.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="100.0">
@@ -125,11 +130,6 @@
                            <children>
                               <Pane fx:id="imageProfileContainer">
                                  <children>
-                                    <ImageView fx:id="imageViewProfile" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../ressource/image-not-found.png" />
-                                       </image>
-                                    </ImageView>
                                     <MaterialDesignIconView fx:id="icon" fill="WHITE" glyphName="BORDER_COLOR" layoutX="48.0" layoutY="70.0" size="25" visible="false" />
                                  </children>
                               </Pane>
@@ -138,23 +138,6 @@
                      </children>
                   </HBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="163.0" spacing="5.0">
-                     <children>
-                        <Text fx:id="textName" fill="#ababab" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h3" text="Administrator">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="textUserType" fill="#bebec2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="Administrator">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <ImageView fx:id="verified" fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../ressource/checkkk.png" />
-                           </image>
-                        </ImageView>
-                     </children>
                      <padding>
                         <Insets left="15.0" />
                      </padding>
@@ -165,9 +148,6 @@
                <font>
                   <Font size="15.0" />
                </font>
-               <graphic>
-                  <MaterialDesignIconView fill="#76787c" glyphName="SETTINGS" size="25" />
-               </graphic>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -176,9 +156,6 @@
                <font>
                   <Font size="15.0" />
                </font>
-               <graphic>
-                  <MaterialDesignIconView fill="#76787c" glyphName="EXIT_TO_APP" size="25" />
-               </graphic>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -260,24 +237,7 @@
                </children>
             </AnchorPane>
              <Circle fx:id="imgOnline" fill="#2f9a48" layoutX="37.0" layoutY="34.0" radius="9.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" />
-            <JFXButton layoutX="1149.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#close_app" prefHeight="30.0" prefWidth="40.0">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../ressource/close_window.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton layoutX="1114.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#minimize_app" prefHeight="30.0" prefWidth="40.0">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../ressource/minimize_window.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
+           
             <TextField fx:id="txtSearch" layoutX="14.0" layoutY="147.0" onKeyReleased="#SearchAnything" prefHeight="45.0" prefWidth="263.0" promptText="Tapez Quelque chose Pour chercher" style="-fx-prompt-text-fill: white;" styleClass="iconbar" stylesheets="@Style.css" />
              <ComboBox fx:id="CombofiltreSearch" layoutX="46.0" layoutY="205.0" prefHeight="31.0" prefWidth="145.0" promptText="Filtre" styleClass="NbUser" stylesheets="@Style.css" />
             <JFXButton layoutX="199.0" layoutY="202.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#SearchParFiltre" prefHeight="37.0" prefWidth="45.0" text="Filtre">

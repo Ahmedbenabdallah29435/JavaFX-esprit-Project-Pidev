@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import controller.FrontJoueurController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,7 +41,11 @@ public class AcceuilFanController implements Initializable {
     }    
 
     @FXML
-    private void goequipe(ActionEvent event) {
+    private void goequipe(ActionEvent event) throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("FrontJoueur.fxml"));
+        Parent root = loader.load();
+        FrontJoueurController ap= loader.getController();
+        equipebtn.getScene().setRoot(root);
     }
 
     @FXML

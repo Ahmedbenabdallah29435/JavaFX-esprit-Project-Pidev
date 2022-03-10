@@ -191,7 +191,7 @@
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="25.0">
+                  <ImageView fitHeight="25.0" fitWidth="25.0">
                      <image>
                         <Image url="@../image/development.png" />
                      </image>
@@ -220,7 +220,7 @@
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="28.0" fitWidth="29.0">
+                  <ImageView fitHeight="25.0" fitWidth="25.0">
                      <image>
                         <Image url="@../image/application.png" />
                      </image>
@@ -249,7 +249,7 @@
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="31.0">
+                  <ImageView fitHeight="25.0" fitWidth="25.0">
                      <image>
                         <Image url="@../image/call.png" />
                      </image>
@@ -278,7 +278,7 @@
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="31.0">
+                  <ImageView fitHeight="25.0" fitWidth="25.0">
                      <image>
                         <Image url="@../image/view.png" />
                      </image>
