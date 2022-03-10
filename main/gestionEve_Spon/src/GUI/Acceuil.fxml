@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.sun.javafx.charts.Legend?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.ParallelCamera?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.MotionBlur?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="968.0" prefWidth="1827.0" style="-fx-background-color: linear-gradient(to right top, #000000, #250d12, #410f1a, #5f0d1d, #7d0b1b, #7d0b1b, #7d0b1b, #7d0b1b, #5f0d1d, #410f1a, #250d12, #000000);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.A">
+   <children>
+      <VBox blendMode="OVERLAY" layoutX="-7.0" layoutY="170.0" prefHeight="831.0" prefWidth="238.0" style="-fx-background-color: #171717;" stylesheets="@../image/style.css">
+         <children>
+            <Button fx:id="btnAcceuil1" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#acceuil1" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Accueil" textFill="#e7e5e5">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_Home_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                          
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+            </Button>
+            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="238.0" styleClass="button" stylesheets="@../style.css" text="Utilisateurs">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_Person_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                           
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnev1" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gererevent1" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Evénements">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/event.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                          
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnsp1" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gerersponsor1" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Sponsor">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/category.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                           
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnres" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gererreservation" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Reservation">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                          
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="26.0" fitWidth="22.0">
+                     <image>
+                        <Image url="@../image/participant.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                         
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+            </Button>
+            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                      
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+            </Button>
+            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                        
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+            </Button>
+            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                        
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+            </Button>
+            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                          
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+            </Button>
+            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                        
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+            </Button>
+            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                        
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+            </Button>
+            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                         
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSignout1" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#logout" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Déconnexion">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_Sign_Out_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="-1.0" hue="1.0">
+                     <input>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                       
+                           </light>
+                        </Lighting>
+                     </input>
+                  </ColorAdjust>
+               </effect>
+               <font>
+                  <Font name="Eras Medium ITC" size="15.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="26.0" fitWidth="22.0">
+               <image>
+                  <Image url="@../image/participant.png" />
+               </image>
+            </ImageView>
+         </children></VBox>
+      <ParallelCamera />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="OVERLAY" fill="#171717" height="173.0" stroke="#171717" strokeType="INSIDE" width="1908.0">
+         <effect>
+            <Bloom>
+               <input>
+                  <MotionBlur />
+               </input>
+            </Bloom>
+         </effect>
+      </Rectangle>
+      <ImageView blendMode="LIGHTEN" fitHeight="247.0" fitWidth="406.0" layoutX="554.0" layoutY="-33.0">
+         <image>
+            <Image url="@../image/pngegg.png" />
+         </image>
+         <effect>
+            <BoxBlur height="0.0" iterations="0" width="0.0">
+               <input>
+                  <ColorAdjust />
+               </input>
+            </BoxBlur>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="173.0" fitWidth="199.0" layoutX="13.0" layoutY="4.0">
+         <image>
+            <Image url="@../image/tumblr_pgqibbgJ971wo2jbao1_1280.png" />
+         </image>
+      </ImageView>
+      <ImageView blendMode="COLOR_BURN" fitHeight="195.0" fitWidth="200.0" layoutX="1708.0" layoutY="800.0">
+         <image>
+            <Image url="@../image/kisspng-the-wynwood-yard-clip-art-vector-red-circle-ink-5a6de493f02c47.1778542515171513799838.png" />
+         </image>
+      </ImageView>
+      <Legend />
+      <ImageView fitHeight="284.0" fitWidth="1044.0" layoutX="283.0" layoutY="359.0">
+         <image>
+            <Image url="@../image/kindpng_514128.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="10.0" layoutY="10.0">
+         <image>
+            <Image url="@../image/participant.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="10.0" layoutY="10.0">
+         <image>
+            <Image url="@../image/participant.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="10.0" layoutY="10.0">
+         <image>
+            <Image url="@../image/participant.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

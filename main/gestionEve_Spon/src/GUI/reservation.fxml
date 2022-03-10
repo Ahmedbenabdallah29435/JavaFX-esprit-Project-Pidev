@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="674.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReservationController">
+   <children>
+      <ImageView fitHeight="849.0" fitWidth="1051.0" layoutX="-130.0" layoutY="-110.0">
+         <image>
+            <Image url="@../image/Nng67j.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="94.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Réservation" wrappingWidth="467.6708984375">
+         <font>
+            <Font name="Cooper Black" size="45.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtnom" layoutX="286.0" layoutY="209.0" />
+      <TextField fx:id="txtprenom" layoutX="286.0" layoutY="263.0" />
+      <TextField fx:id="txtage" layoutX="286.0" layoutY="322.0" />
+      <ComboBox fx:id="txtevent" layoutX="286.0" layoutY="376.0" prefHeight="40.0" prefWidth="187.0" />
+      <Button fx:id="btnajout" blendMode="RED" layoutX="170.0" layoutY="440.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="68.0" prefWidth="233.0" style="-fx-background-color: #aac0f9;" text="Ajouter" textFill="#18347d" wrapText="true">
+         <font>
+            <Font name="Cooper Black" size="27.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="187.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="89.6708984375">
+         <font>
+            <Font name="Cooper Black" size="34.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="166.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event" wrappingWidth="110.6708984375">
+         <font>
+            <Font name="Cooper Black" size="34.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="187.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" wrappingWidth="98.6708984375">
+         <font>
+            <Font name="Cooper Black" size="34.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="143.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" wrappingWidth="143.6708984375">
+         <font>
+            <Font name="Cooper Black" size="34.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnajout1" blendMode="RED" layoutX="543.0" layoutY="550.0" mnemonicParsing="false" onAction="#acceuil" prefHeight="68.0" prefWidth="58.0" style="-fx-background-color: #aac0f9;" textFill="#18347d" wrapText="true">
+         <font>
+            <Font name="Cooper Black" size="27.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnpdf" blendMode="RED" layoutX="170.0" layoutY="540.0" mnemonicParsing="false" onAction="#PDF" prefHeight="68.0" prefWidth="233.0" style="-fx-background-color: #aac0f9;" text="PDF" textFill="#18347d" wrapText="true">
+         <font>
+            <Font name="Cooper Black" size="27.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="560.0" layoutY="574.0">
+         <image>
+            <Image url="@../image/back.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

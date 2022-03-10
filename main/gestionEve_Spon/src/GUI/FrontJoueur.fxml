@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXColorPicker?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="stckJoueur" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1194.0" styleClass="Applicationlkol" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FrontJoueurController">
+   <children>
+      <AnchorPane fx:id="rootJoueur" prefHeight="801.0" prefWidth="1250.0" styleClass="Applicationlkol" stylesheets="@Style.css">
+         <children>
+            <AnchorPane fx:id="containerAjouterJoueur" layoutX="287.0" layoutY="17.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="580.0" style="-fx-background-radius: 10em;" visible="false">
+               <children>
+                  <HBox alignment="CENTER" layoutX="-1.0" layoutY="28.0" prefHeight="45.0" prefWidth="587.0">
+                     <children>
+                        <Text fx:id="textTitreUser" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h2" text="Ajouter un Joueur">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <JFXButton fx:id="btnSaveJoueur" layoutX="309.0" layoutY="574.0" onMouseClicked="#AjouterJoueur" prefHeight="31.0" prefWidth="131.0" styleClass="action-button" text="Enregistrer" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCancelAddJoueur" layoutX="163.0" layoutY="574.0" onMouseClicked="#closeDialogAjouterJoueur" prefHeight="31.0" prefWidth="131.0" styleClass="button-cancel" text="Annuler">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnModifierJoueur" layoutX="309.0" layoutY="574.0" onMouseClicked="#ModifierJoueur" prefHeight="31.0" prefWidth="131.0" styleClass="action-button" text="Modifier" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton contentDisplay="CENTER" layoutX="547.0" layoutY="-3.0" onMouseClicked="#closeDialogAddJoueur" prefHeight="28.0" prefWidth="20.0" styleClass="button-close" text=" ">
+                     <graphic>
+                        <MaterialDesignIconView fill="#989cab" glyphName="CLOSE" size="20" />
+                     </graphic>
+                  </JFXButton>
+                  <Line endX="203.0" layoutX="300.0" layoutY="564.0" startX="-200.0" style="-fx-opacity: 0.9;" />
+                  <JFXTextField fx:id="txtLocationJoueur" layoutX="201.0" layoutY="175.0" prefHeight="30.0" prefWidth="186.0" promptText="Localisation" />
+                  <JFXTextField fx:id="txtPrenomJoueur" layoutX="132.0" layoutY="119.0" prefHeight="30.0" prefWidth="136.0" promptText="Prénom" />
+                  <JFXTextField fx:id="txtNomJoueur" layoutX="329.0" layoutY="119.0" prefHeight="30.0" prefWidth="136.0" promptText="Nom" />
+                  <JFXDatePicker fx:id="txtDateNaissanceJoueur" layoutX="201.0" layoutY="231.0" onAction="#MetierAGE" prefHeight="30.0" prefWidth="221.0" promptText="Date de naissance" />
+                  <JFXComboBox fx:id="comboSexeJoueur" layoutX="146.0" layoutY="286.0" prefHeight="30.0" prefWidth="138.0" promptText="Genre" />
+                  <ImageView fitHeight="45.0" fitWidth="59.0" layoutX="87.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/prenom.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="45.0" fitWidth="59.0" layoutX="279.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/nom.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="45.0" fitWidth="59.0" layoutX="136.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/DatePicker.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="45.0" fitWidth="59.0" layoutX="93.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/sexe.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="45.0" fitWidth="59.0" layoutX="140.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/localisation.png" />
+                     </image>
+                  </ImageView>
+                  <JFXTextField fx:id="txtAgeJoueur" disable="true" layoutX="360.0" layoutY="285.0" prefHeight="30.0" prefWidth="138.0" promptText="Age" />
+                  <ImageView fitHeight="45.0" fitWidth="59.0" layoutX="311.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/age.png" />
+                     </image>
+                  </ImageView>
+                  <JFXComboBox fx:id="comboCategorie" layoutX="230.0" layoutY="345.0" prefHeight="30.0" prefWidth="186.0" promptText="Categorie" />
+                  <ImageView fitHeight="45.0" fitWidth="59.0" layoutX="165.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/categorize.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="DragimgRec" fitHeight="159.0" fitWidth="295.0" layoutX="158.0" layoutY="398.0" onDragDropped="#handleDrop_reclamation" onDragOver="#handleDragOver_reclamation" onMouseClicked="#OpenCamera" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@../ressource/drag-drop.gif" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="ContainerJoueur" prefHeight="700.0" prefWidth="1198.0" styleClass="pageApplication" stylesheets="@Style.css">
+         <children>
+            <HBox fx:id="Userinformations" layoutX="26.0" layoutY="22.0" prefHeight="100.0" prefWidth="238.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="100.0">
+                     <children>
+                        <Group fx:id="parentImage">
+                           <children>
+                              <Pane fx:id="imageProfileContainer">
+                                 <children>
+                                    <ImageView fx:id="imageViewProfile" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../ressource/image-not-found.png" />
+                                       </image>
+                                    </ImageView>
+                                    <MaterialDesignIconView fx:id="icon" fill="WHITE" glyphName="BORDER_COLOR" layoutX="48.0" layoutY="70.0" size="25" visible="false" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Group>
+                     </children>
+                  </HBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="163.0" spacing="5.0">
+                     <children>
+                        <Text fx:id="textName" fill="#ababab" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h3" text="Administrator">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="textUserType" fill="#bebec2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="Administrator">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <ImageView fx:id="verified" fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressource/checkkk.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" ellipsisString="" layoutX="260.0" layoutY="37.0" prefHeight="25.0" prefWidth="34.0" ripplerFill="#ffffff16" text=" " textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="#76787c" glyphName="SETTINGS" size="25" />
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </JFXButton>
+            <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" ellipsisString="" layoutX="260.0" layoutY="71.0" prefHeight="25.0" prefWidth="25.0" ripplerFill="#ffffff16" text=" " textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="#76787c" glyphName="EXIT_TO_APP" size="25" />
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </JFXButton>
+            <TabPane fx:id="PaneTableau" layoutX="9.0" layoutY="252.0" prefHeight="349.0" prefWidth="1186.0" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Tableau">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="316.0" prefWidth="563.0">
+                           <children>
+                              <TableView fx:id="TableViewJoueur" prefHeight="317.0" prefWidth="1186.0" stylesheets="@Style.css">
+                                 <columns>
+                                    <TableColumn fx:id="col_NomJoueur" prefWidth="129.0" text="Nom" />
+                                    <TableColumn fx:id="col_PrenomJoueur" prefWidth="136.0" text="Prenom" />
+                                    <TableColumn fx:id="col_SexeJoueur" prefWidth="106.0" text="Sexe" />
+                                    <TableColumn fx:id="col_NaissanceJoueur" prefWidth="146.0" text="DateNaissance" />
+                                    <TableColumn fx:id="col_AgeJoueur" prefWidth="91.0" text="Age" />
+                                    <TableColumn fx:id="col_VilleJoueur" prefWidth="100.0" text="Ville" />
+                                    <TableColumn fx:id="col_imageJoueur" prefWidth="143.0" text="image" />
+                                    <TableColumn fx:id="col_Categorie" prefWidth="149.0" text="Categorie" />
+                                    <TableColumn fx:id="col_ActionJoueur" prefWidth="93.0" text="Action" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+            <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="1111.0" layoutY="614.0" onMouseClicked="#iconAddJoueurClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ressource/AddUser.png" />
+               </image>
+            </ImageView>
+            <AnchorPane fx:id="ContainerCodeQR" layoutX="363.0" layoutY="169.0" prefHeight="362.0" prefWidth="395.0" visible="false">
+               <children>
+                  <Text fill="#bebec2" layoutX="9.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="CodeQR" textAlignment="CENTER" wrappingWidth="394.35414123535156" />
+                  <ImageView fx:id="imgQRCodeGen" fitHeight="200.0" fitWidth="249.0" layoutX="106.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/qr.png" />
+                     </image>
+                  </ImageView>
+                  <JFXButton layoutX="141.0" layoutY="317.0" onMouseClicked="#hideDialogCodeQR" prefHeight="31.0" prefWidth="131.0" styleClass="button-cancel" text="Cancel">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton contentDisplay="CENTER" layoutX="338.0" layoutY="6.0" onMouseClicked="#hideDialogCodeQR" prefHeight="28.0" prefWidth="20.0" styleClass="button-close" text=" ">
+                     <graphic>
+                        <MaterialDesignIconView fill="#989cab" glyphName="CLOSE" size="20" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="ContainerDeleteJoueur" layoutX="383.0" layoutY="169.0" prefHeight="362.0" prefWidth="395.0" visible="false">
+               <children>
+                  <Text layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="Êtes-vous sûr de supprimer définitivement ce Joueur?" textAlignment="CENTER" wrappingWidth="405.6171875" />
+                  <Text fill="#bebec2" layoutX="9.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="Les informations ne peuvent pas être récupérées" textAlignment="CENTER" wrappingWidth="394.35414123535156" />
+                  <ImageView fitHeight="216.0" fitWidth="249.0" layoutX="89.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/delete.png" />
+                     </image>
+                  </ImageView>
+                  <JFXButton layoutX="46.0" layoutY="317.0" onMouseClicked="#hideDialogDeleteJoueur" prefHeight="31.0" prefWidth="131.0" styleClass="button-cancel" text="Cancel">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="235.0" layoutY="317.0" onMouseClicked="#deleteJoueurClicked" prefHeight="31.0" prefWidth="131.0" styleClass="button-delete" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton contentDisplay="CENTER" layoutX="338.0" layoutY="6.0" onMouseClicked="#hideDialogDeleteJoueur" prefHeight="28.0" prefWidth="20.0" styleClass="button-close" text=" ">
+                     <graphic>
+                        <MaterialDesignIconView fill="#989cab" glyphName="CLOSE" size="20" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+             <Circle fx:id="imgOnline" fill="#2f9a48" layoutX="37.0" layoutY="34.0" radius="9.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" />
+            <JFXButton layoutX="1149.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#close_app" prefHeight="30.0" prefWidth="40.0">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/close_window.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton layoutX="1114.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#minimize_app" prefHeight="30.0" prefWidth="40.0">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/minimize_window.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <TextField fx:id="txtSearch" layoutX="14.0" layoutY="147.0" onKeyReleased="#SearchAnything" prefHeight="45.0" prefWidth="263.0" promptText="Tapez Quelque chose Pour chercher" style="-fx-prompt-text-fill: white;" styleClass="iconbar" stylesheets="@Style.css" />
+             <ComboBox fx:id="CombofiltreSearch" layoutX="46.0" layoutY="205.0" prefHeight="31.0" prefWidth="145.0" promptText="Filtre" styleClass="NbUser" stylesheets="@Style.css" />
+            <JFXButton layoutX="199.0" layoutY="202.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#SearchParFiltre" prefHeight="37.0" prefWidth="45.0" text="Filtre">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/filtre.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Pane fx:id="PanePull" layoutX="483.0" layoutY="31.0" prefHeight="217.0" prefWidth="238.0">
+               <children>
+                  <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#f2f5f8" height="189.0" layoutX="109.0" layoutY="20.0" stroke="#f2f5f8" strokeType="INSIDE" width="87.0" />
+                  <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#f2f5f8" height="189.0" layoutX="43.0" layoutY="20.0" stroke="#f2f5f8" strokeType="INSIDE" width="75.0" />
+                  <ImageView fx:id="imageViewPull" fitHeight="198.0" fitWidth="196.0" layoutX="21.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressource/big.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="nomEquipemaillot" layoutX="64.0" layoutY="-2.0" prefHeight="21.0" prefWidth="112.0" style="-fx-alignment: center;" textFill="#656565">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <JFXButton fx:id="btnSavePull" layoutX="721.0" layoutY="202.0" onAction="#SavePull" prefHeight="25.0" prefWidth="100.0" styleClass="NbUser" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXColorPicker fx:id="colorpicker" layoutX="717.0" layoutY="110.0" />
+            <JFXColorPicker fx:id="colorpicker1" layoutX="717.0" layoutY="110.0" />
+            <TextField fx:id="tfNomEquipe" layoutX="717.0" layoutY="154.0" prefHeight="31.0" prefWidth="100.0" />
+         </children>
+      </Pane>
+   </children>
+</StackPane>
