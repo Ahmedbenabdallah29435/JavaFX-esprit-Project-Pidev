@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="left_main" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.GestionProduitController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="810.0" prefWidth="365.0" style="-fx-background-color: #cccccc;" styleClass="right-bar" stylesheets="@Css/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox fx:id="chosenhotelCard" alignment="CENTER" prefHeight="110.0" prefWidth="200.0" styleClass="shadow" stylesheets="@Css/style.css">
+                     <children>
+                        <Label text="TECH MASTERS" textFill="#8d8686">
+                           <font>
+                              <Font name="Cambria Bold" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="310.0" styleClass="search-box" stylesheets="@Css/style.css">
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <TextField fx:id="TFSearch" prefHeight="50.0" prefWidth="180.0" promptText="Type here to search" styleClass="transparent" stylesheets="@Css/style.css">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#Acceuil" prefHeight="36.0" prefWidth="88.0" styleClass="search-button" stylesheets="@Css/style.css" text="Acceuil" />
+                     </children>
+                  </HBox>
+                  <BorderPane prefHeight="53.0" prefWidth="385.0" />
+                  <VBox alignment="CENTER_LEFT" prefHeight="484.0" prefWidth="274.0" style="-fx-background-color: #a6a6a6;" styleClass="chosen-fruit-card" stylesheets="@Css/style.css">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </VBox.margin>
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" translateX="65.0" translateY="80.0">
+                           <image>
+                              <Image url="@image/received_241888231474213-removebg-preview.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </ImageView>
+                        <VBox prefHeight="80.0" prefWidth="265.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="12.0" prefWidth="99.0" text="Language" textFill="#c6c1c100">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Separator prefHeight="74.0" prefWidth="265.0" />
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#AjouterProduit" prefHeight="31.0" prefWidth="177.0" styleClass="add-btn" stylesheets="@Css/style.css" text="Ajouter Produit" translateY="-35.0">
+                           <VBox.margin>
+                              <Insets left="45.0" right="40.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="12.0" prefWidth="99.0" text="Language" textFill="#b2aaaa">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="84.0" text="French" textFill="#b2aaaa">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="65.0" prefWidth="489.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="926.0">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="310.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0" />
+                           </children>
+                        </VBox>
+                        <Label prefHeight="72.0" prefWidth="445.0" text="Gérer Produit" textFill="#8d8686">
+                           <font>
+                              <Font name="Cambria Bold" size="59.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="22.0" prefWidth="192.0">
+                           <HBox.margin>
+                              <Insets left="100.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="label" prefHeight="17.0" prefWidth="194.0">
+                           <HBox.margin>
+                              <Insets left="-200.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="638.0" prefWidth="950.0">
+                     <children>
+                        <VBox prefHeight="575.0" prefWidth="446.0">
+                           <children>
+                              <TextField fx:id="nomft" prefHeight="66.0" prefWidth="400.0" promptText="Nom" translateY="60.0">
+                                 <VBox.margin>
+                                    <Insets left="20.0" right="20.0" top="20.0" />
+                                 </VBox.margin></TextField>
+                              <TextField fx:id="prixft" prefHeight="66.0" prefWidth="400.0" promptText="Prix" translateY="100.0">
+                                 <VBox.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </VBox.margin></TextField>
+                              <ImageView fx:id="image_view" fitHeight="91.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+                              <DatePicker fx:id="date" prefHeight="66.0" prefWidth="400.0" translateY="60.0">
+                                 <VBox.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </VBox.margin>
+                              </DatePicker>
+                           </children>
+                        </VBox>
+                        <TableView fx:id="TableProduit" onMouseClicked="#fillforum" prefHeight="345.0" prefWidth="960.0" style="-fx-background-color: #a6a6a6;">
+                           <columns>
+                              <TableColumn fx:id="IdPoduitTab" prefWidth="146.0" text="ID Produit" />
+                              <TableColumn fx:id="nomTab" minWidth="0.0" prefWidth="183.19998168945312" text="Nom" />
+                              <TableColumn fx:id="prixTab" prefWidth="159.20001220703125" text="Prix" />
+                              <TableColumn fx:id="dateTab" prefWidth="231.99996948242188" text="Date" />
+                           </columns>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                        </TableView>
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#ModifierProduit" prefHeight="38.0" prefWidth="129.0" style="-fx-background-color: #796565; -fx-background-radius: 10;" text="Modifier" translateX="320.0" translateY="85.0">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font></Button>
+                        <Button mnemonicParsing="false" onAction="#SupprimerProduit" prefHeight="38.0" prefWidth="145.0" style="-fx-background-color: #796565; -fx-background-radius: 10;" text="Supprimer" translateX="600.0" translateY="45.0">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font></Button>
+                        <Button mnemonicParsing="false" onAction="#Statistique" prefHeight="38.0" prefWidth="129.0" style="-fx-background-color: #796565; -fx-background-radius: 10;" text="Statistique" translateX="20.0" translateY="10.0">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font></Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
