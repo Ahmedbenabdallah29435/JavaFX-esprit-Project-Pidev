@@ -1,30 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import com.sun.javafx.charts.Legend?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.ParallelCamera?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.MotionBlur?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="968.0" prefWidth="1827.0" style="-fx-background-color: linear-gradient(to right top, #000000, #250d12, #410f1a, #5f0d1d, #7d0b1b, #7d0b1b, #7d0b1b, #7d0b1b, #5f0d1d, #410f1a, #250d12, #000000);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AffichereservationController">
+<AnchorPane id="AnchorPane" prefHeight="968.0" prefWidth="1827.0" style="-fx-background-color: linear-gradient(to right top, #000000, #250d12, #410f1a, #5f0d1d, #7d0b1b, #7d0b1b, #7d0b1b, #7d0b1b, #5f0d1d, #410f1a, #250d12, #000000);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CategorieController">
    <children>
       <VBox blendMode="OVERLAY" layoutX="-7.0" layoutY="170.0" prefHeight="831.0" prefWidth="238.0" style="-fx-background-color: #171717;" stylesheets="@../image/style.css">
          <children>
-            <Button fx:id="btnAcceuil" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#acceuil" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Accueil" textFill="#e7e5e5">
+            <Button fx:id="btnAcceuil1" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#acceuil1" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Accueil" textFill="#e7e5e5">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -85,7 +101,7 @@
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnev" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gererevent" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Evénements">
+            <Button fx:id="btnev1" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gererevent1" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Evénements">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -114,7 +130,14 @@
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnsp" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gerersponsor" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Sponsor">
+            <Button fx:id="btnsp1" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gerersponsor1" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Sponsor">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/category.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -135,13 +158,6 @@
                <font>
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/category.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </Button>
             <Button fx:id="btnres" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gererreservation" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Reservation">
                <padding>
@@ -376,7 +392,7 @@
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#logout" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Déconnexion">
+            <Button fx:id="btnSignout1" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#logout" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Déconnexion">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -405,6 +421,11 @@
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
             </Button>
+            <ImageView fitHeight="26.0" fitWidth="22.0">
+               <image>
+                  <Image url="@../image/participant.png" />
+               </image>
+            </ImageView>
          </children></VBox>
       <ParallelCamera />
       <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="OVERLAY" fill="#171717" height="173.0" stroke="#171717" strokeType="INSIDE" width="1908.0">
@@ -439,45 +460,214 @@
          </image>
       </ImageView>
       <Legend />
-      <ImageView fitHeight="728.0" fitWidth="999.0" layoutX="258.0" layoutY="137.0">
+      <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="10.0" layoutY="10.0">
          <image>
-            <Image url="@../image/—Pngtree—red%20webcam%20frame%20gaming%20border_6104750.png" />
+            <Image url="@../image/participant.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnsupprimer" layoutX="1238.0" layoutY="412.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="46.0" prefWidth="65.0" style="-fx-background-color: white;">
-         <font>
-            <Font name="Cooper Black" size="19.0" />
-         </font>
-      </Button>
-      <TextField fx:id="txtrecherche" layoutX="663.0" layoutY="753.0" prefHeight="39.0" prefWidth="189.0" />
-      <Button fx:id="btnsearch" layoutX="861.0" layoutY="753.0" mnemonicParsing="false" onAction="#rechercher" prefHeight="39.0" prefWidth="65.0" style="-fx-background-color: white;">
-         <font>
-            <Font name="Cooper Black" size="19.0" />
-         </font>
-      </Button>
-      <TableView fx:id="listReservation" layoutX="325.0" layoutY="289.0" prefHeight="413.0" prefWidth="865.0" stylesheets="@../image/styleTournoi.css">
-         <columns>
-            <TableColumn fx:id="txtnom" prefWidth="245.0" text="nom" />
-            <TableColumn fx:id="txtprenom" prefWidth="241.0" text="prenom" />
-            <TableColumn fx:id="txtage" prefWidth="167.0" text="age" />
-            <TableColumn fx:id="txtidr" prefWidth="209.0" text="idr" />
-         </columns>
-      </TableView>
-      <Button fx:id="afficher" layoutX="1238.0" layoutY="334.0" mnemonicParsing="false" onAction="#afficher" prefHeight="46.0" prefWidth="65.0" style="-fx-background-color: white;" />
-      <ImageView fitHeight="39.0" fitWidth="39.0" layoutX="1249.0" layoutY="338.0">
+      <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="10.0" layoutY="10.0">
          <image>
-            <Image url="@../image/refresh-page-option.png" />
+            <Image url="@../image/participant.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="39.0" fitWidth="39.0" layoutX="1251.0" layoutY="416.0">
+      <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="10.0" layoutY="10.0">
          <image>
-            <Image url="@../image/erreurCheckMark.png" />
+            <Image url="@../image/participant.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="29.0" fitWidth="47.0" layoutX="870.0" layoutY="758.0">
-         <image>
-            <Image url="@../image/icons8_Search_52px.png" />
-         </image>
-      </ImageView>
+      <StackPane fx:id="stckCategorie" layoutX="231.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1194.0" styleClass="Applicationlkol" stylesheets="@Style.css">
+         <children>
+            <AnchorPane fx:id="rootCategorie" prefHeight="801.0" prefWidth="1250.0" styleClass="Applicationlkol" stylesheets="@Style.css">
+               <children>
+                  <Pane fx:id="ContainerUsersAdmin" blendMode="HARD_LIGHT" layoutY="18.0" prefHeight="700.0" prefWidth="1198.0" styleClass="pageApplication" stylesheets="@Style.css">
+                     <children>
+                        <HBox fx:id="Userinformations" layoutX="26.0" layoutY="22.0" prefHeight="100.0" prefWidth="238.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <Group fx:id="parentImage">
+                                       <children>
+                                          <Pane fx:id="imageProfileContainer">
+                                             <children>
+                                                <MaterialDesignIconView fx:id="icon" fill="WHITE" glyphName="BORDER_COLOR" layoutX="48.0" layoutY="70.0" size="25" visible="false" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </Group>
+                                 </children>
+                              </HBox>
+                              <VBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="163.0" spacing="5.0">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" ellipsisString="" layoutX="260.0" layoutY="37.0" prefHeight="25.0" prefWidth="34.0" ripplerFill="#ffffff16" text=" " textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </JFXButton>
+                        <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" ellipsisString="" layoutX="260.0" layoutY="71.0" prefHeight="25.0" prefWidth="25.0" ripplerFill="#ffffff16" text=" " textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </JFXButton>
+                        <TabPane fx:id="PaneTableau" layoutX="4.0" layoutY="270.0" prefHeight="350.0" prefWidth="1194.0" tabClosingPolicy="UNAVAILABLE">
+                           <tabs>
+                              <Tab text="Tableau">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="316.0" prefWidth="563.0">
+                                       <children>
+                                          <TableView fx:id="TableViewCategorie" prefHeight="317.0" prefWidth="1194.0" stylesheets="@Style.css">
+                                             <columns>
+                                                <TableColumn fx:id="col_NomCategorie" prefWidth="186.0" text="Nom" />
+                                                <TableColumn fx:id="col_GenreCategorie" prefWidth="165.0" text="Genre" />
+                                                <TableColumn fx:id="col_ActionCategorie" prefWidth="177.0" text="Action" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                        <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="1111.0" layoutY="614.0" onMouseClicked="#iconAddCategorieClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressource/categorize.png" />
+                           </image>
+                        </ImageView>
+                        <AnchorPane fx:id="ContainerDeleteCategorie" layoutX="383.0" layoutY="169.0" prefHeight="362.0" prefWidth="395.0" visible="false">
+                           <children>
+                              <Text layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="Êtes-vous sûr de supprimer définitivement cette Categorie ?" textAlignment="CENTER" wrappingWidth="405.6171875" />
+                              <Text fill="#bebec2" layoutX="9.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="Les informations ne peuvent pas être récupérées" textAlignment="CENTER" wrappingWidth="394.35414123535156" />
+                              <ImageView fitHeight="216.0" fitWidth="249.0" layoutX="95.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../ressource/delete.png" />
+                                 </image>
+                              </ImageView>
+                              <JFXButton layoutX="46.0" layoutY="317.0" onMouseClicked="#hideDialogDeleteCategorie" prefHeight="31.0" prefWidth="131.0" styleClass="button-cancel" text="Cancel">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton layoutX="235.0" layoutY="317.0" onMouseClicked="#deleteCategorieClicked" prefHeight="31.0" prefWidth="131.0" styleClass="button-delete" text="Delete" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton contentDisplay="CENTER" layoutX="338.0" layoutY="6.0" onMouseClicked="#hideDialogDeleteCategorie" prefHeight="28.0" prefWidth="20.0" styleClass="button-close" text=" ">
+                                 <graphic>
+                                    <MaterialDesignIconView fill="#989cab" glyphName="CLOSE" size="20" />
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                        <Circle fx:id="imgOnline" fill="#2f9a48" layoutX="37.0" layoutY="34.0" radius="9.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" />
+                        <TextField fx:id="txtSearch" layoutX="624.0" layoutY="248.0" onKeyReleased="#SearchAnything" prefHeight="45.0" prefWidth="263.0" promptText="Tapez Quelque chose Pour chercher" style="-fx-prompt-text-fill: white;" styleClass="iconbar" stylesheets="@Style.css" />
+                        <ComboBox fx:id="CombofiltreSearch" layoutX="924.0" layoutY="255.0" prefHeight="31.0" prefWidth="145.0" promptText="Filtre" styleClass="NbUser" stylesheets="@Style.css" />
+                        <JFXButton layoutX="1076.0" layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#SearchParFiltre" prefHeight="37.0" prefWidth="45.0" text="Filtre">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../ressource/filtre.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <Pane layoutX="30.0" layoutY="169.0" prefHeight="86.0" prefWidth="200.0" styleClass="NotVerifiedUser">
+                           <children>
+                              <Label layoutX="6.0" layoutY="9.0" prefHeight="27.0" prefWidth="185.0" style="-fx-alignment: center;" text="Total" textAlignment="CENTER" textFill="#ae453b">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="txtStatTotal" layoutX="85.0" layoutY="23.0" text="0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="48.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="297.0" layoutY="169.0" prefHeight="86.0" prefWidth="200.0" styleClass="UserTypeAdmin">
+                           <children>
+                              <Label layoutX="6.0" layoutY="9.0" prefHeight="27.0" prefWidth="185.0" style="-fx-alignment: center;" text="Max" textAlignment="CENTER" textFill="#ae453b">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="txtStatMax" layoutX="-3.0" layoutY="23.0" prefHeight="70.0" prefWidth="200.0" style="-fx-alignment: center;" text="0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="688.0" layoutY="137.0" onMouseClicked="#GeneratePDF" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressource/fichierPDF.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Pane>
+                  <AnchorPane fx:id="containerAjouterCategorie" layoutX="287.0" layoutY="110.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="342.0" prefWidth="580.0" style="-fx-background-radius: 10em;" visible="false">
+                     <children>
+                        <HBox alignment="CENTER" layoutX="-1.0" layoutY="28.0" prefHeight="45.0" prefWidth="587.0">
+                           <children>
+                              <Text fx:id="textTitreCategorie" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h2" text="Ajouter une Categorie">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <JFXButton fx:id="btnSaveCategorie" layoutX="340.0" layoutY="283.0" onMouseClicked="#AjouterCategorie" prefHeight="31.0" prefWidth="131.0" styleClass="action-button" text="Enregistrer" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="btnCancelAddCategorie" layoutX="154.0" layoutY="283.0" onMouseClicked="#closeDialogAjouterCategorie" prefHeight="31.0" prefWidth="131.0" styleClass="button-cancel" text="Annuler">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="btnModifierCategorie" layoutX="340.0" layoutY="283.0" onMouseClicked="#ModifierCategorie" prefHeight="31.0" prefWidth="131.0" styleClass="action-button" text="Modifier" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton contentDisplay="CENTER" layoutX="547.0" layoutY="-3.0" onMouseClicked="#closeDialogAddCategorie" prefHeight="28.0" prefWidth="20.0" styleClass="button-close" text=" ">
+                           <graphic>
+                              <MaterialDesignIconView fill="#989cab" glyphName="CLOSE" size="20" />
+                           </graphic>
+                        </JFXButton>
+                        <Line endX="203.0" layoutX="291.0" layoutY="263.0" startX="-200.0" style="-fx-opacity: 0.9;" />
+                        <JFXTextField fx:id="txtNom" layoutX="242.0" layoutY="120.0" prefHeight="30.0" prefWidth="136.0" promptText="Nom" />
+                        <ImageView fx:id="iconNom" fitHeight="45.0" fitWidth="59.0" layoutX="192.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressource/nomGame.png" />
+                           </image>
+                        </ImageView>
+                        <JFXComboBox fx:id="comboGenre" layoutX="219.0" layoutY="188.0" prefHeight="30.0" prefWidth="186.0" promptText="Genre" />
+                        <ImageView fx:id="iconRole" fitHeight="45.0" fitWidth="59.0" layoutX="154.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressource/categorize.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>

@@ -193,6 +193,12 @@ public class ASController implements Initializable {
     private Button btnsp;
     @FXML
     private Button btnres;
+    @FXML
+    private Button btnut;
+    @FXML
+    private Button btnjo;
+    @FXML
+    private Button btnca;
     /**
      * Initializes the controller class.
      */
@@ -769,6 +775,22 @@ Font titledesc = FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD, new 
     private void gererreservation(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../GUI/affichereservation.fxml"));
         btnres.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gereruser(ActionEvent event) {
+    }
+
+   @FXML
+    private void gererjoueur(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("../GUI/Joueur.fxml"));
+        btnjo.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gerercategorie(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("../GUI/Categorie.fxml"));
+        btnca.getScene().setRoot(root);
     }
 
     
