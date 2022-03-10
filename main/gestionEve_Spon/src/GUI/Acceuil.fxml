@@ -53,7 +53,7 @@
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
             </Button>
-            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="238.0" styleClass="button" stylesheets="@../style.css" text="Utilisateurs">
+            <Button fx:id="btnut" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gereruser" prefHeight="48.0" prefWidth="238.0" styleClass="button" stylesheets="@../style.css" text="Utilisateurs">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -169,7 +169,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+            <Button fx:id="btnjo" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gererjoueur" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Joueur">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -190,8 +190,15 @@
                <font>
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="29.0" fitWidth="25.0">
+                     <image>
+                        <Image url="@../image/development.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+            <Button fx:id="btnca" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gerercategorie" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Categorie">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -212,8 +219,15 @@
                <font>
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="29.0">
+                     <image>
+                        <Image url="@../image/application.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Reclamation">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -234,8 +248,15 @@
                <font>
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="31.0">
+                     <image>
+                        <Image url="@../image/call.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Magasin">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -256,6 +277,13 @@
                <font>
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="31.0">
+                     <image>
+                        <Image url="@../image/view.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
             <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
                <padding>

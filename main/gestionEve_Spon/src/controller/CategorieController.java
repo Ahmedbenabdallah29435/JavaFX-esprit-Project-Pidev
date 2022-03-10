@@ -159,6 +159,12 @@ public class CategorieController implements Initializable {
     private Button btnres;
     @FXML
     private Button btnSignout1;
+    @FXML
+    private Button btnut;
+    @FXML
+    private Button btnjo;
+    @FXML
+    private Button btnca;
 
     /**
      * Initializes the controller class.
@@ -493,14 +499,12 @@ public class CategorieController implements Initializable {
         }
     }
 
-    @FXML
     private void GoToCategorie(MouseEvent event) throws IOException {
         Parent menu = FXMLLoader.load(getClass().getResource("/GUI/Categorie.fxml"));
         stckCategorie.getChildren().removeAll();
         stckCategorie.getChildren().setAll(menu);
     }
 
-    @FXML
     private void GoToJoueur(MouseEvent event) throws IOException {
         Parent menu = FXMLLoader.load(getClass().getResource("/GUI/Joueur.fxml"));
         stckCategorie.getChildren().removeAll();
@@ -562,25 +566,45 @@ public class CategorieController implements Initializable {
 
     }
 
-    @FXML
-    private void acceuil1(ActionEvent event) {
+      @FXML
+    private void acceuil1(ActionEvent event) throws IOException {
+           Parent root = FXMLLoader.load(getClass().getResource("../GUI/Acceuil.fxml"));
+        btnAcceuil1.getScene().setRoot(root);
     }
-
-    @FXML
-    private void gererevent1(ActionEvent event) {
+@FXML
+    private void gererevent1(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/Even.fxml"));
+        btnev1.getScene().setRoot(root);
     }
-
-    @FXML
-    private void gerersponsor1(ActionEvent event) {
+@FXML
+    private void gerersponsor1(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/ajouterSponsor.fxml"));
+        btnsp1.getScene().setRoot(root);
     }
-
-    @FXML
-    private void gererreservation(ActionEvent event) {
-    }
-
     @FXML
     private void logout(ActionEvent event) {
     }
+ @FXML
+    private void gererreservation(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/affichereservation.fxml"));
+        btnres.getScene().setRoot(root);
+    }
 
+    @FXML
+    private void gereruser(ActionEvent event) {
+       
+    }
+
+   @FXML
+    private void gererjoueur(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("../GUI/Joueur.fxml"));
+        btnjo.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gerercategorie(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("../GUI/Categorie.fxml"));
+        btnca.getScene().setRoot(root);
+    }
 
 }

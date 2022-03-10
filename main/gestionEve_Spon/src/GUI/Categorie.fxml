@@ -19,6 +19,7 @@
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.MotionBlur?>
 <?import javafx.scene.effect.Shadow?>
@@ -71,7 +72,7 @@
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
             </Button>
-            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="238.0" styleClass="button" stylesheets="@../style.css" text="Utilisateurs">
+            <Button fx:id="btnut" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gereruser" prefHeight="48.0" prefWidth="238.0" styleClass="button" stylesheets="@../style.css" text="Utilisateurs">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -187,7 +188,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+            <Button fx:id="btnjo" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gererjoueur" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Joueur">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -208,8 +209,15 @@
                <font>
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0">
+                     <image>
+                        <Image url="@../image/development.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+            <Button fx:id="btnca" alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" onAction="#gerercategorie" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Categorie">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -230,8 +238,15 @@
                <font>
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0">
+                     <image>
+                        <Image url="@../image/application.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Reclamation">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -252,8 +267,15 @@
                <font>
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0">
+                     <image>
+                        <Image url="@../image/call.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
+            <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="Magasin">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -274,6 +296,13 @@
                <font>
                   <Font name="Eras Medium ITC" size="15.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0">
+                     <image>
+                        <Image url="@../image/view.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
             <Button alignment="BASELINE_LEFT" blendMode="LIGHTEN" cache="true" cacheHint="QUALITY" depthTest="DISABLE" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="button" stylesheets="@../style.css" text="***">
                <padding>
@@ -450,7 +479,7 @@
          <children>
             <AnchorPane fx:id="rootCategorie" prefHeight="801.0" prefWidth="1250.0" styleClass="Applicationlkol" stylesheets="@Style.css">
                <children>
-                  <Pane fx:id="ContainerUsersAdmin" layoutY="18.0" prefHeight="700.0" prefWidth="1198.0" styleClass="pageApplication" stylesheets="@Style.css">
+                  <Pane fx:id="ContainerUsersAdmin" blendMode="HARD_LIGHT" layoutY="18.0" prefHeight="700.0" prefWidth="1198.0" styleClass="pageApplication" stylesheets="@Style.css">
                      <children>
                         <HBox fx:id="Userinformations" layoutX="26.0" layoutY="22.0" prefHeight="100.0" prefWidth="238.0">
                            <children>
@@ -586,6 +615,9 @@
                            </image>
                         </ImageView>
                      </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </Pane>
                   <AnchorPane fx:id="containerAjouterCategorie" layoutX="287.0" layoutY="110.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="342.0" prefWidth="580.0" style="-fx-background-radius: 10em;" visible="false">
                      <children>

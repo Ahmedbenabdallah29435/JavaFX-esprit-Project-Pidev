@@ -73,6 +73,12 @@ private ObservableList<Reservation> masterData = FXCollections.observableArrayLi
     private Button btnSignout;
     @FXML
     private Button btnres;
+    @FXML
+    private Button btnut;
+    @FXML
+    private Button btnjo;
+    @FXML
+    private Button btnca;
     /**
      * Initializes the controller class.
      */
@@ -239,6 +245,21 @@ listReservation.setItems(sortedData);
 
     @FXML
     private void logout(ActionEvent event) {
+    }
+
+    @FXML
+    private void gereruser(ActionEvent event) {
+    }
+@FXML
+    private void gererjoueur(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("../GUI/Joueur.fxml"));
+        btnjo.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gerercategorie(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("../GUI/Categorie.fxml"));
+        btnca.getScene().setRoot(root);
     }
 
 
